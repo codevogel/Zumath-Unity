@@ -122,6 +122,110 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &226593337
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 226593339}
+  - component: {fileID: 226593338}
+  m_Layer: 0
+  m_Name: PathCreator
+  m_TagString: PathCreator
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &226593338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226593337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  editorData:
+    _bezierPath:
+      points:
+      - {x: 7.414547, y: 1.257757, z: 0}
+      - {x: 12.775837, y: -0.036204815, z: 0}
+      - {x: 14.066412, y: 1.1155576, z: 0}
+      - {x: 14.283863, y: 1.2431483, z: 0}
+      - {x: 15.910093, y: 2.1973474, z: 0}
+      - {x: 16.437056, y: 6.741984, z: 0}
+      - {x: 15.280396, y: 8.051737, z: 0}
+      - {x: 14.291051, y: 9.17203, z: 0}
+      - {x: 12.751432, y: 9.070426, z: 0}
+      - {x: 11.677449, y: 9.0650425, z: 0}
+      - {x: 9.643122, y: 9.054845, z: 0}
+      - {x: 3.6388652, y: 9.05948, z: 0}
+      - {x: 3.5237513, y: 9.050555, z: 0}
+      - {x: 1.3501301, y: 8.882038, z: 0}
+      - {x: 0.92139506, y: 7.732606, z: 0}
+      - {x: 0.6057987, y: 6.926872, z: 0}
+      - {x: 0.2006464, y: 5.8924966, z: 0}
+      - {x: -0.020621138, y: -0.010310621, z: 0}
+      - {x: 0, y: 0, z: 0}
+      isClosed: 0
+      space: 1
+      controlMode: 0
+      autoControlLength: 0.3
+      boundsUpToDate: 0
+      bounds:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 2, y: 0.14433756, z: 0}
+      perAnchorNormalsAngle:
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      globalNormalsAngle: 0
+      flipNormals: 0
+    vertexPathUpToDate: 1
+    vertexPathMaxAngleError: 0.3
+    vertexPathMinVertexSpacing: 0.01
+    showTransformTool: 1
+    showPathBounds: 0
+    showPerSegmentBounds: 0
+    displayAnchorPoints: 1
+    displayControlPoints: 1
+    bezierHandleScale: 1
+    globalDisplaySettingsFoldout: 0
+    keepConstantHandleSize: 0
+    showNormalsInVertexMode: 0
+    showBezierPathInVertexMode: 0
+    showDisplayOptions: 0
+    showPathOptions: 1
+    showVertexPathDisplayOptions: 0
+    showVertexPathOptions: 1
+    showNormals: 0
+    showNormalsHelpInfo: 0
+    tabIndex: 0
+  initialized: 1
+--- !u!4 &226593339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226593337}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.04, y: -4.93, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 894648359}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &400153703
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03c38221126e4b4c9721491788a8406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 7985054740223862871, guid: 7c53211c9d02b1742ad042148462c161, type: 3}
+  ball: {fileID: 5379388368401088065, guid: 7c53211c9d02b1742ad042148462c161, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +404,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1098962723
+--- !u!1 &894648358
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -308,25 +412,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1098962724}
+  - component: {fileID: 894648359}
   m_Layer: 0
-  m_Name: Route
+  m_Name: Gutter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1098962724
+--- !u!4 &894648359
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1098962723}
+  m_GameObject: {fileID: 894648358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.16711941, y: -0.023653083, z: -0.01903086}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 226593339}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

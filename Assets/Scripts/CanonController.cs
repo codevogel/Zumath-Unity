@@ -29,7 +29,7 @@ public class CanonController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            Instantiate(ball, transform.position, transform.rotation);
+            Instantiate(ball, transform.position, Quaternion.identity);
         }
     }
 }
