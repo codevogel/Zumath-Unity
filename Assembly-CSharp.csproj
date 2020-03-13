@@ -63,9 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\BallSpawner.cs" />
+    <Compile Include="Assets\Gutter.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\GeneratePathExample.cs" />
-    <Compile Include="Assets\PathCreator\Examples\Scripts\PathFollower.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathPlacer.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathSceneTool.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathSpawner.cs" />
@@ -73,7 +72,9 @@
     <Compile Include="Assets\Scripts\CanonController.cs" />
     <Compile Include="Assets\Scripts\NumberBall.cs" />
     <Compile Include="Assets\Scripts\NumberBallController.cs" />
-    <Compile Include="Assets\WorldBoundsController.cs" />
+    <Compile Include="Assets\Scripts\NumberBallSpawner.cs" />
+    <Compile Include="Assets\Scripts\PathFollower.cs" />
+    <Compile Include="Assets\Scripts\WorldBoundsController.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/workspace/HvA/HvA-Assignments/PADGD/Zumath-Unity/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

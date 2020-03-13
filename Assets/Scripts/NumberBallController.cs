@@ -5,8 +5,6 @@ using UnityEngine;
 public class NumberBallController : MonoBehaviour
 {
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +13,6 @@ public class NumberBallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.up * Time.deltaTime);
+        transform.Translate(Vector3.up * Time.deltaTime);
     }
 }

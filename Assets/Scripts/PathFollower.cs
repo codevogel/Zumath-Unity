@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PathCreation.Examples
+namespace PathCreation
 {
     // Moves along a path at constant speed.
     // Depending on the end of path instruction, will either loop, reverse, or stop at the end of the path.
@@ -9,6 +9,8 @@ namespace PathCreation.Examples
         public PathCreator pathCreator;
         public EndOfPathInstruction endOfPathInstruction;
         public float speed = 5;
+        public bool following;
+        private bool goingForwards = true;
         float distanceTravelled;
 
         void Start() {
@@ -22,12 +24,34 @@ namespace PathCreation.Examples
 
         void Update()
         {
-            if (pathCreator != null)
+            if (pathCreator != null && following)
             {
-                distanceTravelled += speed * Time.deltaTime;
+                if (goingForwards)
+                {
+                    distanceTravelled += speed * Time.deltaTime;
+                }
+                else
+                {
+                    distanceTravelled -= speed * Time.deltaTime;
+                }
                 transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
                 //transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
             }
+        }
+
+        public void Reverse()
+        {
+            goingForwards = !goingForwards;
+        }
+
+        public void StartFollowing()
+        {
+            following = true;
+        }
+
+        public void StopFollowing()
+        {
+            following = false;
         }
 
         // If the path changes during the game, update the distance travelled so that the follower's position on the new path
