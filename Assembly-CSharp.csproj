@@ -70,9 +70,10 @@
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathSpawner.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\RoadMeshCreator.cs" />
     <Compile Include="Assets\Scripts\CanonController.cs" />
-    <Compile Include="Assets\Scripts\NumberBall.cs" />
+    <Compile Include="Assets\Scripts\NodeManager.cs" />
     <Compile Include="Assets\Scripts\NumberBallController.cs" />
     <Compile Include="Assets\Scripts\NumberBallSpawner.cs" />
+    <Compile Include="Assets\Scripts\NumberNode.cs" />
     <Compile Include="Assets\Scripts\PathFollower.cs" />
     <Compile Include="Assets\Scripts\WorldBoundsController.cs" />
     <Reference Include="Unity.Timeline.Editor">

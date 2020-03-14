@@ -7,9 +7,6 @@ public class CanonController : MonoBehaviour
     // Start is called before the first frame update
 
     public GameObject ball;
-    public Gutter gutter;
-
-    private int ballId = 0;
 
     void Start()
     {
@@ -31,9 +28,7 @@ public class CanonController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject newball = Instantiate(ball, transform.position, transform.rotation);
-            gutter.InsertBall(ballId, newball.GetComponent<NumberBall>());
-            ballId++;
+            Instantiate(ball, transform.position, transform.rotation);
         }
     }
 }

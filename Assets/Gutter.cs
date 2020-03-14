@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,37 +6,30 @@ using UnityEngine;
 public class Gutter : MonoBehaviour
 {
 
-    public List<NumberBall> numberBalls;
+    public List<NumberNode> nodesInGutter;
 
-    public Gutter()
+    // Start is called before the first frame update
+    void Start()
     {
-        numberBalls = new List<NumberBall>();
+        RefreshNodes();
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            ContinueMovement();
-        }
+        RefreshNodes();
+        NodeManager.MoveNodes();
     }
 
-    private void ContinueMovement()
+    private void RefreshNodes()
     {
-        foreach (NumberBall ball in numberBalls)
-        {
-            ball.pathFollower.StartFollowing();
-        }
+        nodesInGutter = NodeManager.GetNodes();
     }
 
-    public bool InsertBall(int index, NumberBall ball)
+    private void Update()
     {
-        if (ball != null)
+        if (Input.GetMouseButtonDown(0))
         {
-            ball.SetIndex(index);
-            numberBalls.Insert(index, ball);
-            return true;
+            NodeManager.StartMovingNodes();
         }
-        return false;
     }
 }

@@ -145,7 +145,6 @@ MonoBehaviour:
   pathCreator: {fileID: 0}
   endOfPathInstruction: 2
   speed: 2
-  following: 0
 --- !u!114 &3906103232887748988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 476d7d92d16b5b44cb532b7361a11d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moving: 0
+  radius: 1
   pathFollower: {fileID: 0}
+  collider: {fileID: 0}
 --- !u!114 &4372566430916973088
 MonoBehaviour:
   m_ObjectHideFlags: 0

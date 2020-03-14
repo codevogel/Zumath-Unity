@@ -9,9 +9,8 @@ namespace PathCreation
         public PathCreator pathCreator;
         public EndOfPathInstruction endOfPathInstruction;
         public float speed = 5;
-        public bool following;
         private bool goingForwards = true;
-        float distanceTravelled;
+        public float distanceTravelled;
 
         void Start() {
             pathCreator = GameObject.FindGameObjectWithTag("PathCreator").GetComponent<PathCreator>();
@@ -22,9 +21,9 @@ namespace PathCreation
             }
         }
 
-        void Update()
+        public void Follow()
         {
-            if (pathCreator != null && following)
+            if (pathCreator != null)
             {
                 if (goingForwards)
                 {
@@ -35,23 +34,17 @@ namespace PathCreation
                     distanceTravelled -= speed * Time.deltaTime;
                 }
                 transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
-                //transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
             }
         }
 
-        public void Reverse()
+        public void GoForwards()
         {
-            goingForwards = !goingForwards;
+            goingForwards = true;
         }
 
-        public void StartFollowing()
+        public void GoBackwards()
         {
-            following = true;
-        }
-
-        public void StopFollowing()
-        {
-            following = false;
+            goingForwards = false;
         }
 
         // If the path changes during the game, update the distance travelled so that the follower's position on the new path

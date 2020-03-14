@@ -317,7 +317,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 5379388368401088065, guid: 7c53211c9d02b1742ad042148462c161, type: 3}
-  gutter: {fileID: 894648360}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,9 +429,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6304e8c1ad2e3fb43844ed61ce985fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gutter: {fileID: 894648360}
   numberBall: {fileID: 5379388368401088065, guid: 7c53211c9d02b1742ad042148462c161,
     type: 3}
+  spawnUnderParent: {fileID: 894648359}
   pathCreator: {fileID: 226593338}
 --- !u!4 &644059438
 Transform:
@@ -492,7 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19b63f2cd5bc1f4eb0dc2a5200f377c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: []
+  nodesInGutter: []
 --- !u!1 &2032880937
 GameObject:
   m_ObjectHideFlags: 0

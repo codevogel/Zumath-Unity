@@ -1,4 +1,5 @@
-﻿using PathCreation;
+﻿using Assets.Scripts;
+using PathCreation;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,26 +7,25 @@ using UnityEngine;
 public class NumberBallSpawner : MonoBehaviour
 {
     private int index = 0;
-    public Gutter gutter;
     public GameObject numberBall;
+    public Transform spawnUnderParent;
     public PathCreator pathCreator;
+
+    private float ballRadius;
 
     // Start is called before the first frame update
     void Start()
     {
-        print(pathCreator.path.GetPoint(0));
-        print(pathCreator.path.GetPoint(pathCreator.path.NumPoints - 1));
-
+        ballRadius = numberBall.GetComponent<NumberNode>().radius;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.frameCount % 300 == 0)
+        if (Time.frameCount % 150 == 0)
         {
-            GameObject newBall = Instantiate(numberBall, pathCreator.path.GetPoint(0), Quaternion.identity);
-            gutter.InsertBall(index++, newBall.GetComponent<NumberBall>());
-            newBall.GetComponent<PathFollower>().StartFollowing();
+            GameObject newBall = Instantiate(numberBall, pathCreator.path.GetPoint(0), Quaternion.identity, spawnUnderParent);
+            NodeManager.InsertNode(index++, newBall.GetComponent<NumberNode>());
         }
     }
 }
