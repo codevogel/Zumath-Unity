@@ -48,7 +48,7 @@ public class NumberNode : MonoBehaviour
                 // if this node comes later in the array than the one it's touching
                 if (indexThisNode > indexOtherNode)
                 {
-                    pathFollower.StopFollowing();
+                    //pathFollower.StopFollowing();
                 }
             }
             else

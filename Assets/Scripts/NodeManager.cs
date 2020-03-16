@@ -31,8 +31,17 @@ public static class NodeManager
         node.inGutter = true;
         InsertNode(index, node);
         nodeList[index].pathFollower.SetDistanceTravelled(distanceTravelled);
+        int indexFor=0;
+        foreach (NumberNode numberNode in nodeList)
+        {
+            if (indexFor++ >= index+1)
+            {
+                numberNode.pathFollower.AddDistanceTravelled(-1f);
+            }
+        }
         node.pathFollower.StartFollowing();
         node.gameObject.transform.position = node.pathFollower.pathCreator.path.GetPointAtDistance(distanceTravelled);
+      
     }
 
     public static void AddNode(NumberNode node)
