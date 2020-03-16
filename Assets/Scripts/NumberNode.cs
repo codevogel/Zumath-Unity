@@ -1,119 +1,71 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using PathCreation;
-using System;
-using Assets.Scripts;
+
+
+[RequireComponent(typeof(PathFollower))]
+[RequireComponent(typeof(NodeController))]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(CircleCollider2D))]
 
 public class NumberNode : MonoBehaviour
 {
-    private int value;
-    public bool moving;
-    public float radius = 1f;
     public PathFollower pathFollower;
-    public CircleCollider2D collider;
-    private NumberNode nodeTouchedInFront, nodeTouchedBehind;
+    private CircleCollider2D circleCollider;
+    public NodeController nodeController;
+    public static GameObject preFab;
+
+    public bool inGutter;
+
+    public int value;
+    public float radius = 1f;
+
+    void Awake()
+    {
+        Init();
+    }
+
+    public void Init()
+    {
+        preFab = Resources.Load("Prefabs/NumberNode") as GameObject;
+        pathFollower = GetComponent<PathFollower>();
+        circleCollider = GetComponent<CircleCollider2D>();
+        nodeController = GetComponent<NodeController>();
+        inGutter = false;
+    }
+
+    
+    void OnTriggerEnter2D(Collider2D other)  
+    {
+        NumberNode otherNode = other.gameObject.GetComponent<NumberNode>();
+
+        if (otherNode != null)
+        {
+            int indexThisNode = NodeManager.GetIndex(this);
+            int indexOtherNode = NodeManager.GetIndex(otherNode);
+            if (NodeManager.GetIndex(otherNode) != -1)
+            {
+                // if this node comes later in the array than the one it's touching
+                if (indexThisNode > indexOtherNode)
+                {
+                    pathFollower.StopFollowing();
+                }
+            }
+            else
+            {
+                NodeManager.InsertNodeAtDistance(indexThisNode, otherNode, this.pathFollower.distanceTravelled);
+            }
+        }
+    }
+
 
     public NumberNode(int value)
     {
         this.value = value;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void SetValue(int value)
     {
-        moving = true;
-        // Initialize components
-        pathFollower = GetComponent<PathFollower>();
-        collider = GetComponentInChildren<CircleCollider2D>();
-        GetComponentInChildren<RectTransform>().transform.localScale = new Vector3(radius, radius, 1);
-
-        // Set scaling for text renderer
-        Transform textRendererTransform = GetComponentInChildren<MeshRenderer>().GetComponent<Transform>();
-        textRendererTransform.transform.localPosition = new Vector3(-0.36f * radius, 0.314f * radius, 1);
-        textRendererTransform.transform.localScale = new Vector3(radius / 10f, radius / 10f, 1);
-
-        // Format this numbernodes value into a string to display
-        GetComponentInChildren<TextMesh>().text = FormatValue();
-    }
-
-    // Moves this node forwards.
-    public void Move()
-    {
-        if (moving)
-        {
-            pathFollower.GoForwards();
-            pathFollower.Follow();
-            return;
-        }
-    }
-
-    // Tries to go backward every time it's called until it's no longer touching otherNode.
-    public void ReverseOutOfNode(NumberNode otherNode)
-    {
-        if (!IsTouching(otherNode))
-        {
-            moving = false;
-        }
-        if (moving)
-        {
-            nodeTouchedInFront = otherNode;
-            pathFollower.GoBackwards();
-            pathFollower.Follow();
-        }
-    }
-
-    // Tries to go forward every time it's called until it's no longer touching otherNode.
-    public void GoForwardsOutOfNode(NumberNode otherNode)
-    {
-        if (!IsTouching(otherNode))
-        {
-            moving = false;
-        }
-        if (moving)
-        {
-            nodeTouchedBehind = otherNode;
-            pathFollower.GoForwards();
-            pathFollower.Follow();
-        }
-    }
-
-    // Returns true if otherNode is touching this node;
-    public bool IsTouching(NumberNode otherNode)
-    {
-        if (collider.IsTouching(otherNode.collider))
-        {
-            return true;
-        }
-        return false;
-    }
-
-    // Returns true if otherNode was touched by this node.
-    public bool WasTouching(NumberNode otherNode)
-    {
-        if (nodeTouchedInFront == otherNode)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    // Start moving the ball again after collision detection.
-    public void StartMoving()
-    {
-        moving = true;
-        // Clear touched objects out of memory
-        nodeTouchedInFront = null;
-        nodeTouchedBehind = null;
-    }
-
-    // Formats the integer value into a displayable number string
-    private string FormatValue()
-    {
-        if (value < 10)
-        {
-            return " " + value;
-        }
-        return value.ToString();
+        this.value = value;
     }
 }

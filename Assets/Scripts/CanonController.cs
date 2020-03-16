@@ -6,11 +6,8 @@ public class CanonController : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public GameObject ball;
-
-    void Start()
-    {
-    }
+    public GameObject node;
+    public Transform parentTransform;
 
     // Update is called once per frame
     void Update()
@@ -28,7 +25,11 @@ public class CanonController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            Instantiate(ball, transform.position, transform.rotation);
+            NumberNode newNode = Instantiate(node, transform.position, Quaternion.identity, parentTransform).GetComponent<NumberNode>();
+            Vector3 heading = mousePos - transform.position;
+            float distance = heading.magnitude;
+            newNode.nodeController.SetDirection(heading / distance);
         }
     }
 }
+

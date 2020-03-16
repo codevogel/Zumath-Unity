@@ -1,80 +1,63 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using UnityEngine;
 
-namespace Assets.Scripts
+public static class NodeManager
 {
-    static class NodeManager
+
+    public static List<NumberNode> nodeList = new List<NumberNode>();
+    public static List<NumberNode> frontNodes;
+    public static List<NumberNode> hindNodes;
+    public static NumberNode insertedNode;
+
+    public static bool inserting, frontDispersing, hindDispersing;
+
+
+    // Returns -1 if node is not in nodeList.
+    public static int GetIndex(NumberNode node)
     {
-        private static List<NumberNode> nodeList = new List<NumberNode>();
+        return nodeList.IndexOf(node);
+    }
 
-        public static void InsertNode(int index, NumberNode node)
+    public static void InsertNode(int index, NumberNode node)
+    {
+        nodeList.Insert(index, node);
+    }
+
+    public static void InsertNodeAtDistance(int index, NumberNode node, float distanceTravelled)
+    {
+        insertedNode = node;
+        node.inGutter = true;
+        InsertNode(index, node);
+        nodeList[index].pathFollower.SetDistanceTravelled(distanceTravelled);
+        node.pathFollower.StartFollowing();
+        node.gameObject.transform.position = node.pathFollower.pathCreator.path.GetPointAtDistance(distanceTravelled);
+    }
+
+    public static void AddNode(NumberNode node)
+    {
+        nodeList.Add(node);
+    }
+
+    public static void Update()
+    {
+        MoveNodes();
+    }
+
+    public static void MoveNodes()
+    {
+        foreach (NumberNode node in nodeList)
         {
-            nodeList.Insert(index, node);
+            node.pathFollower.Follow();
         }
+    }
 
-        public static int GetIndex(NumberNode node)
+    public static void StopNodes()
+    {
+        foreach (NumberNode node in nodeList)
         {
-            return nodeList.IndexOf(node);
-        }
-
-        public static List<NumberNode> GetNodes()
-        {
-            return nodeList;
-        }
-
-        public static void StartMovingNodes()
-        {
-            foreach (NumberNode node in nodeList)
-            {
-                node.StartMoving();
-            }
-        }
-
-        public static void MoveNodes()
-        {
-            for (int i = 0; i < nodeList.Count; i++)
-            {
-                // Node in front
-                if (i == 0)
-                {
-                    nodeList[i].Move();
-                }
-                else {
-                    NumberNode currentNode = nodeList[i];
-                    NumberNode nodeInFront = nodeList[i - 1];
-                    NumberNode nodeBehind = null;
-                    if (i != nodeList.Count - 1)
-                    {
-                        nodeBehind = nodeList[i + 1];
-                    }
-                    // Check for collision with node in front
-                    if (currentNode.IsTouching(nodeInFront) || currentNode.WasTouching(nodeInFront))
-                    {
-                        currentNode.ReverseOutOfNode(nodeInFront);
-                    }
-                    else
-                    {
-                        if (nodeBehind != null)
-                        {
-                            if (currentNode.IsTouching(nodeBehind) || currentNode.WasTouching(nodeBehind))
-                            {
-                                currentNode.GoForwardsOutOfNode(nodeBehind);
-                            }
-                            else
-                            {
-                                currentNode.Move();
-                            }
-                        }
-                        else
-                        {
-                            currentNode.Move();
-                        }
-                    }
-                }
-            }
+            node.pathFollower.StopFollowing();
         }
     }
 }

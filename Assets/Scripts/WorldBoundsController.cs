@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WorldBoundsController : MonoBehaviour
 {
-    // Update is called once per frame
     void OnTriggerExit2D(Collider2D other)
     {
         Destroy(other.gameObject);
