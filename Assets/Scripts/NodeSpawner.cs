@@ -10,6 +10,9 @@ public class NodeSpawner : MonoBehaviour
     public Transform parentTransform;
     private PathCreator pathCreator;
     private Vector3 pathStart;
+    private float timeStamp = 0;
+    private float cooldown = 0.5f; // in seconds
+
 
     void Awake()
     {
@@ -19,8 +22,7 @@ public class NodeSpawner : MonoBehaviour
 
     void Update()
     {
-        // Spawn a ball every 2 frames.
-        if (Time.frameCount % 300 == 0)
+        if (timeStamp<Time.time)
         {
             NumberNode newNode = Instantiate(numberBall, pathStart, Quaternion.identity, parentTransform).GetComponent<NumberNode>();
             NodeManager.AddNode(newNode);
@@ -29,6 +31,7 @@ public class NodeSpawner : MonoBehaviour
             newNode.SetValue(Random.Range(0, 50));
             newNode.pathFollower.FollowForwards();
             newNode.pathFollower.StartFollowing();
+            timeStamp = Time.time + cooldown;
         }
     }
 

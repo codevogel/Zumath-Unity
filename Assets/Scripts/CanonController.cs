@@ -9,7 +9,7 @@ public class CanonController : MonoBehaviour
     public GameObject node;
     public Transform parentTransform;
     private float timeStamp = 0;
-    private const float COOLDOWN = 1;
+    private const float COOLDOWN = 1; // in seconds
 
     // Update is called once per frame
     void Update()
