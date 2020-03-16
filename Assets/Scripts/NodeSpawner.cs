@@ -20,7 +20,7 @@ public class NodeSpawner : MonoBehaviour
     void Update()
     {
         // Spawn a ball every 2 frames.
-        if (Time.frameCount % 120 == 0)
+        if (Time.frameCount % 300 == 0)
         {
             NumberNode newNode = Instantiate(numberBall, pathStart, Quaternion.identity, parentTransform).GetComponent<NumberNode>();
             NodeManager.AddNode(newNode);
