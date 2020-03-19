@@ -39,4 +39,9 @@ public class PathFollower : MonoBehaviour
     {
         this.distanceTravelled = distanceTravelled;
     }
+
+    public void AddDistanceTravelled(float add)
+    {
+        distanceTravelled += add;
+    }
 }

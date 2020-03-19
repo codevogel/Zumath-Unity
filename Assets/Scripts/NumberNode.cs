@@ -35,7 +35,21 @@ public class NumberNode : MonoBehaviour
         NumberNode otherNode = collision.GetComponent<NumberNode>();
         if (otherNode != null)
         {
+<<<<<<< HEAD
             if (! NodeManager.Contains(otherNode))
+=======
+            int indexThisNode = NodeManager.GetIndex(this);
+            int indexOtherNode = NodeManager.GetIndex(otherNode);
+            if (NodeManager.GetIndex(otherNode) != -1)
+            {
+                // if this node comes later in the array than the one it's touching
+                if (indexThisNode > indexOtherNode)
+                {
+                    //pathFollower.StopFollowing();
+                }
+            }
+            else
+>>>>>>> f5112203668974e8ac2ed5ebaccfe304b64f461c
             {
                 NodeManager.InsertBeforeNode(NodeManager.GetNodes().Find(this), otherNode);
             }

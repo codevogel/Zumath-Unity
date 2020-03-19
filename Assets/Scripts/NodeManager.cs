@@ -31,11 +31,29 @@ public static class NodeManager
 
     public static bool Contains(NumberNode node)
     {
+<<<<<<< HEAD
         if (nodes.Contains(node))
         {
             return true;
         }
         return false;
+=======
+        insertedNode = node;
+        node.inGutter = true;
+        InsertNode(index, node);
+        nodeList[index].pathFollower.SetDistanceTravelled(distanceTravelled);
+        int indexFor=0;
+        foreach (NumberNode numberNode in nodeList)
+        {
+            if (indexFor++ >= index+1)
+            {
+                numberNode.pathFollower.AddDistanceTravelled(-1f);
+            }
+        }
+        node.pathFollower.StartFollowing();
+        node.gameObject.transform.position = node.pathFollower.pathCreator.path.GetPointAtDistance(distanceTravelled);
+      
+>>>>>>> f5112203668974e8ac2ed5ebaccfe304b64f461c
     }
 
     public static void InsertBeforeNode(LinkedListNode<NumberNode> listNode, NumberNode nodeToInsert)
