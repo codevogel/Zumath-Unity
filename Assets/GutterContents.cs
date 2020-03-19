@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GutterContents : MonoBehaviour
 {
 
-    public List<NumberNode> nodes;
-    public List<NumberNode> frontNodes;
-    public List<NumberNode> hindNodes;
+    public LinkedList<NumberNode> nodes = new LinkedList<NumberNode>();
+    public List<NumberNode> nodeList = new List<NumberNode>();
 
     void Start()
     {
@@ -22,8 +22,7 @@ public class GutterContents : MonoBehaviour
 
     void RefreshGutter()
     {
-        nodes = NodeManager.nodeList;
-        frontNodes = NodeManager.frontNodes;
-        hindNodes = NodeManager.hindNodes;
+        nodes = NodeManager.GetNodes();
+        nodeList = nodes.ToList<NumberNode>();
     }
 }

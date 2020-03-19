@@ -11,14 +11,12 @@ using UnityEngine;
 public class NumberNode : MonoBehaviour
 {
     public PathFollower pathFollower;
-    private CircleCollider2D circleCollider;
+    public CircleCollider2D circleCollider;
     public NodeController nodeController;
-    public static GameObject preFab;
-
-    public bool inGutter;
+    public NodeState state;
 
     public int value;
-    public float radius = 1f;
+    public const float RADIUS = 1f;
 
     void Awake()
     {
@@ -27,45 +25,41 @@ public class NumberNode : MonoBehaviour
 
     public void Init()
     {
-        preFab = Resources.Load("Prefabs/NumberNode") as GameObject;
         pathFollower = GetComponent<PathFollower>();
         circleCollider = GetComponent<CircleCollider2D>();
         nodeController = GetComponent<NodeController>();
-        inGutter = false;
     }
 
-    
-    void OnTriggerEnter2D(Collider2D other)  
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        NumberNode otherNode = other.gameObject.GetComponent<NumberNode>();
-
+        NumberNode otherNode = collision.GetComponent<NumberNode>();
         if (otherNode != null)
         {
-            int indexThisNode = NodeManager.GetIndex(this);
-            int indexOtherNode = NodeManager.GetIndex(otherNode);
-            if (NodeManager.GetIndex(otherNode) != -1)
+            if (! NodeManager.Contains(otherNode))
             {
-                // if this node comes later in the array than the one it's touching
-                if (indexThisNode > indexOtherNode)
-                {
-                    pathFollower.StopFollowing();
-                }
-            }
-            else
-            {
-                NodeManager.InsertNodeAtDistance(indexThisNode, otherNode, this.pathFollower.distanceTravelled);
+                NodeManager.InsertBeforeNode(NodeManager.GetNodes().Find(this), otherNode);
             }
         }
     }
 
-
-    public NumberNode(int value)
+    public bool IsTouching(NumberNode otherNode)
     {
-        this.value = value;
+        if (otherNode != null)
+        {
+            if (circleCollider.IsTouching(otherNode.circleCollider))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void SetValue(int value)
     {
         this.value = value;
+    }
+    public void SetState(NodeState state)
+    {
+        this.state = state;
     }
 }

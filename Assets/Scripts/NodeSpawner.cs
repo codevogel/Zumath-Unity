@@ -11,7 +11,7 @@ public class NodeSpawner : MonoBehaviour
     private PathCreator pathCreator;
     private Vector3 pathStart;
     private float timeStamp = 0;
-    private float cooldown = 0.5f; // in seconds
+    private float cooldown = 1f; // in seconds
 
 
     void Awake()
@@ -22,15 +22,13 @@ public class NodeSpawner : MonoBehaviour
 
     void Update()
     {
-        if (timeStamp<Time.time)
+        if (timeStamp < Time.time)
         {
             NumberNode newNode = Instantiate(numberBall, pathStart, Quaternion.identity, parentTransform).GetComponent<NumberNode>();
             NodeManager.AddNode(newNode);
+            newNode.SetState(NodeState.FORWARD);
             newNode.Init();
-            newNode.inGutter = true;
             newNode.SetValue(Random.Range(0, 50));
-            newNode.pathFollower.FollowForwards();
-            newNode.pathFollower.StartFollowing();
             timeStamp = Time.time + cooldown;
         }
     }

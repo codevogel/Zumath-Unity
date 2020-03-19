@@ -6,8 +6,9 @@ using PathCreation;
 public class PathFollower : MonoBehaviour
 {
     public PathCreator pathCreator;
+    private NumberNode attachedNode;
     public EndOfPathInstruction endOfPathInstruction;
-    public float speed = 5;
+    public float speed = 2f;
     public bool following;
     public bool forwards;
     public float distanceTravelled;
@@ -15,42 +16,23 @@ public class PathFollower : MonoBehaviour
     void Awake()
     {
         pathCreator = GameObject.FindGameObjectWithTag("Gutter").GetComponent<PathCreator>();
+        attachedNode = GetComponent<NumberNode>();
     }
 
     public void Follow()
     {
-        if (pathCreator != null && following)
+        switch (attachedNode.state)
         {
-            if (forwards)
-            {
+            case NodeState.FORWARD:
                 distanceTravelled += speed * Time.deltaTime;
-            }
-            else
-            {
+                break;
+            case NodeState.BACKWARD:
                 distanceTravelled -= speed * Time.deltaTime;
-            }
-            transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
+                break;
+            case NodeState.STANDSTILL:
+                return;
         }
-    }
-
-    public void StartFollowing()
-    {
-        following = true;
-    }
-
-    public void StopFollowing()
-    {
-        following = false;
-    }
-
-    public void FollowForwards()
-    {
-        forwards = true;
-    }
-
-    public void FollowBackwards()
-    {
-        forwards = false;
+        transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
     }
 
     public void SetDistanceTravelled(float distanceTravelled)

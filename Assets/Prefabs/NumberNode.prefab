@@ -53,6 +53,7 @@ MonoBehaviour:
   nodeController: {fileID: 9017973024207869389}
   inGutter: 1
   value: 0
+  radius: 0
 --- !u!114 &9017973024207869389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67d438a822b689a4c8b56661f948ce97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 8
 --- !u!114 &9017973024207869376
 MonoBehaviour:
   m_ObjectHideFlags: 0

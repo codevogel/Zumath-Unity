@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(NumberNode))]
 public class NodeController : MonoBehaviour
 {
 
-    private Rigidbody2D rb;
     private NumberNode numberNode;
 
     private Vector3 direction;
@@ -15,7 +13,6 @@ public class NodeController : MonoBehaviour
 
     void Awake()
     {
-        speed = 2f;
         numberNode = GetComponent<NumberNode>();
     }
 
@@ -24,15 +21,10 @@ public class NodeController : MonoBehaviour
         this.direction = direction;
     }
 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
     // Update is called once per frame
     void Update()
     {
-        if (numberNode.inGutter)
+        if (numberNode.state != NodeState.PROJECTILE)
         {
             this.enabled = false;
             return;
