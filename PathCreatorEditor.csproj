@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{5E3D41BF-ED01-CB85-341C-FCE421644BEE}</ProjectGuid>
+    <ProjectGuid>{C4092B70-7671-479C-B494-C9E25687D9A4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>PathCreatorEditor</AssemblyName>
@@ -68,16 +68,16 @@
     <Compile Include="Assets\PathCreator\Core\Editor\Helper\ScreenSpacePolyLine.cs" />
     <Compile Include="Assets\PathCreator\Core\Editor\PathEditor.cs" />
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/workspace/Zumath/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/workspace/HvA/HvA-Assignments/PADGD/Zumath-Unity/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/workspace/Zumath/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/workspace/HvA/HvA-Assignments/PADGD/Zumath-Unity/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
-      <HintPath>C:/workspace/Zumath/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+      <HintPath>C:/workspace/HvA/HvA-Assignments/PADGD/Zumath-Unity/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-      <HintPath>C:/workspace/Zumath/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+      <HintPath>C:/workspace/HvA/HvA-Assignments/PADGD/Zumath-Unity/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.4f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -269,7 +269,7 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>C:/workspace/Zumath/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
+      <HintPath>C:/workspace/HvA/HvA-Assignments/PADGD/Zumath-Unity/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.4f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -628,7 +628,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="PathCreator.csproj">
-      <Project>{4EBA384D-5500-E980-BCC3-80BC499242CE}</Project>
+      <Project>{BF5FF9CA-5E23-08E9-C0FD-EC98A9CC2819}</Project>
       <Name>PathCreator</Name>
     </ProjectReference>
   </ItemGroup>

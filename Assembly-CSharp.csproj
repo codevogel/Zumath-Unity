@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{2C7496DD-45E4-8519-D28B-CCC09305FAA5}</ProjectGuid>
+    <ProjectGuid>{28CF11C2-E0E8-A881-FAFC-54BE081AD7EA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CanonController.cs" />
     <Compile Include="Assets\Scripts\GutterContents.cs" />
+    <Compile Include="Assets\Scripts\MoveType.cs" />
     <Compile Include="Assets\Scripts\NodeController.cs" />
     <Compile Include="Assets\Scripts\NodeManager.cs" />
     <Compile Include="Assets\Scripts\NodeManagerHandler.cs" />
@@ -92,37 +93,37 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/workspace/Zumath/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/workspace/HvA/HvA-Assignments/PADGD/Zumath-Unity/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/workspace/Zumath/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>C:/workspace/HvA/HvA-Assignments/PADGD/Zumath-Unity/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/workspace/Zumath/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/workspace/HvA/HvA-Assignments/PADGD/Zumath-Unity/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/workspace/Zumath/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/workspace/HvA/HvA-Assignments/PADGD/Zumath-Unity/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/workspace/Zumath/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/workspace/HvA/HvA-Assignments/PADGD/Zumath-Unity/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/workspace/Zumath/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/workspace/HvA/HvA-Assignments/PADGD/Zumath-Unity/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/workspace/Zumath/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>C:/workspace/HvA/HvA-Assignments/PADGD/Zumath-Unity/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>C:/workspace/Zumath/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>C:/workspace/HvA/HvA-Assignments/PADGD/Zumath-Unity/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>C:/workspace/Zumath/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>C:/workspace/HvA/HvA-Assignments/PADGD/Zumath-Unity/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/workspace/Zumath/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/workspace/HvA/HvA-Assignments/PADGD/Zumath-Unity/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/workspace/Zumath/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/workspace/HvA/HvA-Assignments/PADGD/Zumath-Unity/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.4f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -649,11 +650,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="PathCreator.csproj">
-      <Project>{4EBA384D-5500-E980-BCC3-80BC499242CE}</Project>
+      <Project>{BF5FF9CA-5E23-08E9-C0FD-EC98A9CC2819}</Project>
       <Name>PathCreator</Name>
     </ProjectReference>
     <ProjectReference Include="PathCreatorEditor.csproj">
-      <Project>{5E3D41BF-ED01-CB85-341C-FCE421644BEE}</Project>
+      <Project>{C4092B70-7671-479C-B494-C9E25687D9A4}</Project>
       <Name>PathCreatorEditor</Name>
     </ProjectReference>
   </ItemGroup>

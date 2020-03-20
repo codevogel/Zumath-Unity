@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{4EBA384D-5500-E980-BCC3-80BC499242CE}</ProjectGuid>
+    <ProjectGuid>{BF5FF9CA-5E23-08E9-C0FD-EC98A9CC2819}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>PathCreator</AssemblyName>
@@ -75,10 +75,10 @@
     <Compile Include="Assets\PathCreator\Core\Runtime\Utility\MathUtility.cs" />
     <Compile Include="Assets\PathCreator\Core\Runtime\Utility\VertexPathUtility.cs" />
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/workspace/Zumath/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/workspace/HvA/HvA-Assignments/PADGD/Zumath-Unity/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/workspace/Zumath/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/workspace/HvA/HvA-Assignments/PADGD/Zumath-Unity/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.4f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

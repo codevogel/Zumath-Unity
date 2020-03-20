@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +30,21 @@ public static class NodeManager
         nodes.AddFirst(node);
     }
 
+    public static void InsertAtPlaceOf(LinkedListNode<NumberNode> nodeInGutter, NumberNode node)
+    {
+        newlyInsertedNode = node;
+        dispersing = true;
+
+        float distTravelled = nodeInGutter.Value.pathFollower.distanceTravelled - NumberNode.RADIUS / 2f;
+        newlyInsertedNode.pathFollower.SetDistanceTravelled(distTravelled);
+        newlyInsertedNode.transform.position = nodeInGutter.Value.pathFollower.pathCreator.path.GetPointAtDistance(distTravelled);
+
+        //TODO: weghalen dat dit nodig is (projectile state zorgt voor de nodecontroller)
+        node.SetState(NodeState.STANDSTILL);
+
+        nodes.AddBefore(nodeInGutter, newlyInsertedNode);
+    }
+
     public static bool Contains(NumberNode node)
     {
         if (nodes.Contains(node))
@@ -38,70 +54,80 @@ public static class NodeManager
         return false;
     }
 
-    public static void InsertAfterNode(LinkedListNode<NumberNode> listNode, NumberNode nodeToInsert)
-    {
-        NumberNode nodeHere = listNode.Value;
-        newlyInsertedNode = nodeToInsert;
-        newlyInsertedNode.SetState(NodeState.FORWARD);
-        float distTravelled = nodeHere.pathFollower.distanceTravelled + NumberNode.RADIUS / 2f;
-        newlyInsertedNode.pathFollower.SetDistanceTravelled(distTravelled);
-        newlyInsertedNode.transform.position = nodeToInsert.pathFollower.pathCreator.path.GetPointAtDistance(distTravelled);
-        nodes.AddAfter(listNode, newlyInsertedNode);
-    }
-
     public static void Update()
     {
-        if (nodes.Count > 0)
+        if (dispersing)
         {
-            MoveNode(nodes.First);
+            LinkedListNode<NumberNode> insertedNode = nodes.Find(newlyInsertedNode);
+            LinkedListNode<NumberNode> nextNode = insertedNode.Next;
+            LinkedListNode<NumberNode> prevNode = insertedNode.Previous;
+            bool touching = false;
+
+            // if node in front exists
+            if (nextNode != null)
+            {
+                // if inserted node is touching the next node
+                if (insertedNode.Value.IsTouching(nextNode.Value))
+                {
+                    touching = true;
+                    MoveNode(MoveType.FORWARD, nextNode);
+                }
+            }
+            // if node behind exists
+            if (prevNode != null)
+            {
+                // if inserted node is touching the enode behind
+                if (insertedNode.Value.IsTouching(prevNode.Value))
+                {
+                    touching = true;
+                    MoveNode(MoveType.BACKWARD, prevNode);
+                }
+            }
+            if (!touching)
+            {
+                newlyInsertedNode = null;
+                dispersing = false;
+            }
+        }
+        else if (nodes.Count > 0)
+        {
+            MoveNode(MoveType.FORWARD, nodes.First);
         }
     }
 
-    public static void MoveNode(LinkedListNode<NumberNode> listNode)
+    public static void MoveNode(MoveType moveType, LinkedListNode<NumberNode> node)
     {
-        NumberNode node = listNode.Value;
-        node.pathFollower.Follow();
+        LinkedListNode<NumberNode> prevNode = node.Previous;
+        LinkedListNode<NumberNode> nextNode = node.Next;
 
-        LinkedListNode<NumberNode> nextListNode;
-        switch (node.state)
+        switch (moveType)
         {
-            case NodeState.FORWARD:
-                nextListNode = listNode.Next;
-                if (nextListNode != null)
+            case MoveType.FORWARD:
+                node.Value.pathFollower.Follow(moveType);
+                if (nextNode != null)
                 {
-                    NumberNode nextNode = nextListNode.Value;
-                    if (node.IsTouching(nextNode))
+                    if (node.Value.IsTouching(nextNode.Value))
                     {
-                        MoveNode(nextListNode);
+                        MoveNode(MoveType.FORWARD, nextNode);
                     }
                 }
                 return;
-            case NodeState.BACKWARD:
-                LinkedListNode<NumberNode> prevListNode = listNode.Next;
-                if (prevListNode != null)
+            case MoveType.BACKWARD:
+                if (nextNode != null)
                 {
-                    NumberNode prevNode = prevListNode.Value;
-
-                    // Move next node backwards only if we're still touching the previous node.
-                    if (node.IsTouching(prevNode))
+                    if (node.Value.IsTouching(nextNode.Value))
                     {
-                        nextListNode = listNode.Previous;
-                        if (nextListNode != null)
+                        if (prevNode != null)
                         {
-                            NumberNode nextNode = nextListNode.Value;
-                            if (node.IsTouching(nextNode))
+                            if (node.Value.IsTouching(prevNode.Value))
                             {
-                                MoveNode(nextListNode);
+                                MoveNode(MoveType.BACKWARD, prevNode);
                             }
                         }
                     }
                 }
+                node.Value.pathFollower.Follow(moveType);
                 return;
-
         }
-
     }
-
-
-
 }

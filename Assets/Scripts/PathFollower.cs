@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using PathCreation;
+using Assets.Scripts;
 
 // Moves along a path at constant speed.
 // Depending on the end of path instruction, will either loop, reverse, or stop at the end of the path.
@@ -19,14 +20,14 @@ public class PathFollower : MonoBehaviour
         attachedNode = GetComponent<NumberNode>();
     }
 
-    public void Follow()
+    public void Follow(MoveType moveType)
     {
-        switch (attachedNode.state)
+        switch (moveType)
         {
-            case NodeState.FORWARD:
+            case MoveType.FORWARD:
                 distanceTravelled += speed * Time.deltaTime;
                 break;
-            case NodeState.BACKWARD:
+            case MoveType.BACKWARD:
                 distanceTravelled -= speed * Time.deltaTime;
                 break;
         }

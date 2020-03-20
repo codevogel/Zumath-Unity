@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 
@@ -7,12 +8,12 @@ using UnityEngine;
 [RequireComponent(typeof(NodeController))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CircleCollider2D))]
-
 public class NumberNode : MonoBehaviour
 {
     public PathFollower pathFollower;
-    public CircleCollider2D circleCollider;
+    private CircleCollider2D circleCollider;
     public NodeController nodeController;
+    private TextMeshPro textMeshPro;
     public NodeState state;
 
     public int value;
@@ -28,6 +29,7 @@ public class NumberNode : MonoBehaviour
         pathFollower = GetComponent<PathFollower>();
         circleCollider = GetComponent<CircleCollider2D>();
         nodeController = GetComponent<NodeController>();
+        textMeshPro = GetComponentInChildren<TextMeshPro>();
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -37,7 +39,7 @@ public class NumberNode : MonoBehaviour
         {
             if (! NodeManager.Contains(otherNode))
             {
-                NodeManager.InsertAfterNode(NodeManager.GetNodes().Find(this), otherNode);
+                NodeManager.InsertAtPlaceOf(NodeManager.GetNodes().Find(this), otherNode);
             }
         }
     }
@@ -57,6 +59,10 @@ public class NumberNode : MonoBehaviour
     public void SetValue(int value)
     {
         this.value = value;
+        if (textMeshPro != null)
+        {
+            textMeshPro.SetText(value.ToString());
+        }
     }
     public void SetState(NodeState state)
     {
