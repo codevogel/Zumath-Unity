@@ -11,27 +11,19 @@ public static class NodeManager
     // The first node encountered when you go from the start of the path to the end of the path,
     // is the first node in this list.
     // The final node encountered is the final node in this list.
-    private static LinkedList<NumberNode> nodes = new LinkedList<NumberNode>();
+    private static NumberList numberList = new NumberList();
+
+    private static NodeDestroyer nodeDestroyer;
 
     private static NumberNode newlyInsertedNode = null;
 
-    private static bool dispersing, dispersingLeft, dispersingRight;
+    public static int target = 5;
 
-    public static LinkedList<NumberNode> GetNodes()
-    {
-        return nodes;
-    }
+    private static bool dispersing;
 
-    internal static float GetSpeed()
+    public static void Init(NodeDestroyer _nodeDestroyer)
     {
-        if (dispersing)
-        {
-            return 2f;
-        }
-        else
-        {
-            return 1f;
-        }
+        nodeDestroyer = _nodeDestroyer;
     }
 
     // Newly added nodes are placed in the front of the list, 
@@ -39,7 +31,12 @@ public static class NodeManager
     // (from start to end)
     public static void AddNode(NumberNode node)
     {
-        nodes.AddFirst(node);
+        numberList.numberLinkedList.AddFirst(node);
+    }
+
+    public static void RemoveNode(NumberNode node)
+    {
+        numberList.numberLinkedList.Remove(node);
     }
 
     public static void InsertAtPlaceOf(LinkedListNode<NumberNode> nodeInGutter, NumberNode node)
@@ -54,12 +51,12 @@ public static class NodeManager
         //TODO: weghalen dat dit nodig is (projectile state zorgt voor de nodecontroller)
         node.SetState(NodeState.STANDSTILL);
 
-        nodes.AddBefore(nodeInGutter, newlyInsertedNode);
+        numberList.numberLinkedList.AddBefore(nodeInGutter, newlyInsertedNode);
     }
 
     public static bool Contains(NumberNode node)
     {
-        if (nodes.Contains(node))
+        if (numberList.numberLinkedList.Contains(node))
         {
             return true;
         }
@@ -70,40 +67,14 @@ public static class NodeManager
     {
         if (dispersing)
         {
-            LinkedListNode<NumberNode> insertedNode = nodes.Find(newlyInsertedNode);
-            LinkedListNode<NumberNode> nextNode = insertedNode.Next;
-            LinkedListNode<NumberNode> prevNode = insertedNode.Previous;
-            bool touching = false;
-
-            // if node in front exists
-            if (nextNode != null)
-            {
-                // if inserted node is touching the next node
-                if (insertedNode.Value.IsTouching(nextNode.Value))
-                {
-                    touching = true;
-                    MoveNode(MoveType.FORWARD, nextNode);
-                }
-            }
-            // if node behind exists
-            if (prevNode != null)
-            {
-                // if inserted node is touching the enode behind
-                if (insertedNode.Value.IsTouching(prevNode.Value))
-                {
-                    touching = true;
-                    MoveNode(MoveType.BACKWARD, prevNode);
-                }
-            }
-            if (!touching)
-            {
-                newlyInsertedNode = null;
-                dispersing = false;
-            }
+            DisperseNodes();
         }
-        else if (nodes.Count > 0)
+        if (numberList != null)
         {
-            MoveNode(MoveType.FORWARD, nodes.First);
+            if (numberList.numberLinkedList.Count > 0)
+            {
+                MoveNode(MoveType.FORWARD, numberList.numberLinkedList.First);
+            }
         }
     }
 
@@ -142,4 +113,73 @@ public static class NodeManager
                 return;
         }
     }
+
+    private static void DisperseNodes()
+    {
+        LinkedListNode<NumberNode> insertedNode = numberList.numberLinkedList.Find(newlyInsertedNode);
+        LinkedListNode<NumberNode> nextNode = insertedNode.Next;
+        LinkedListNode<NumberNode> prevNode = insertedNode.Previous;
+        bool touching = false;
+
+        // if node in front exists
+        if (nextNode != null)
+        {
+            // if inserted node is touching the next node
+            if (insertedNode.Value.IsTouching(nextNode.Value))
+            {
+                touching = true;
+                MoveNode(MoveType.FORWARD, nextNode);
+            }
+        }
+        // if node behind exists
+        if (prevNode != null)
+        {
+            // if inserted node is touching the enode behind
+            if (insertedNode.Value.IsTouching(prevNode.Value))
+            {
+                touching = true;
+                MoveNode(MoveType.BACKWARD, prevNode);
+            }
+        }
+        if (!touching)
+        {
+            OnDispersed();
+        }
+    }
+
+    private static void OnDispersed()
+    {
+        int index = numberList.GetIndexOfNode(newlyInsertedNode);
+        if (numberList.CheckForComboAt(index, target))
+        {
+            target = UnityEngine.Random.Range(NumberList.BOUND_LOW, NumberList.BOUND_HIGH);
+            nodeDestroyer.DestroyDeadNodes();
+        }
+
+        newlyInsertedNode = null;
+        dispersing = false;
+
+    }
+
+    public static float GetSpeed()
+    {
+        if (dispersing)
+        {
+            return 2f;
+        }
+        else
+        {
+            return 1f;
+        }
+    }
+
+    public static LinkedList<NumberNode> GetNodes()
+    {
+        if (numberList != null)
+        {
+            return numberList.numberLinkedList;
+        }
+        return new LinkedList<NumberNode>();
+    }
+
 }

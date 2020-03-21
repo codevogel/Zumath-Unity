@@ -31,7 +31,7 @@ public class NodeSpawner : MonoBehaviour
                 NodeManager.AddNode(newNode);
                 newNode.SetState(NodeState.FORWARD);
                 newNode.Init();
-                newNode.SetValue(Random.Range(0, 50));
+                newNode.SetValue(Random.Range(NumberList.BOUND_LOW, NumberList.BOUND_HIGH));
                 timeStamp = Time.time + cooldown;
             }
         }

@@ -33,7 +33,8 @@ public class CanonController : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && timeStamp < Time.time)
         {
             NumberNode newNode = Instantiate(node, transform.position, Quaternion.identity, parentTransform).GetComponent<NumberNode>();
-            newNode.SetValue(Random.Range(0, 50));
+            //newNode.SetValue(Random.Range(NumberList.BOUND_LOW, NumberList.BOUND_HIGH));
+            newNode.SetValue(2);
             newNode.SetState(NodeState.PROJECTILE);
 
             Vector3 heading = mousePos - transform.position;

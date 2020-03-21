@@ -18,6 +18,7 @@ public class NumberNode : MonoBehaviour
 
     public int value;
     public const float RADIUS = 1f;
+    public bool alive;
 
     void Awake()
     {
@@ -26,6 +27,7 @@ public class NumberNode : MonoBehaviour
 
     public void Init()
     {
+        alive = true;
         pathFollower = GetComponent<PathFollower>();
         circleCollider = GetComponent<CircleCollider2D>();
         nodeController = GetComponent<NodeController>();
@@ -42,6 +44,11 @@ public class NumberNode : MonoBehaviour
                 NodeManager.InsertAtPlaceOf(NodeManager.GetNodes().Find(this), otherNode);
             }
         }
+    }
+
+    public void Kill()
+    {
+        alive = false;
     }
 
     public bool IsTouching(NumberNode otherNode)
