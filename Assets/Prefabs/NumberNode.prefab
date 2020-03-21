@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 526200095876771215}
   - component: {fileID: 526200095876771214}
   - component: {fileID: 526200095876771217}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NumberNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathFollower: {fileID: 0}
-  circleCollider: {fileID: 0}
   nodeController: {fileID: 0}
   state: 0
   value: 0
@@ -68,7 +67,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 0}
   endOfPathInstruction: 2
-  speed: 1
   following: 0
   forwards: 0
   distanceTravelled: 0

@@ -22,6 +22,18 @@ public static class NodeManager
         return nodes;
     }
 
+    internal static float GetSpeed()
+    {
+        if (dispersing)
+        {
+            return 2f;
+        }
+        else
+        {
+            return 1f;
+        }
+    }
+
     // Newly added nodes are placed in the front of the list, 
     // so nodes in the list are ordered like they are on the path 
     // (from start to end)

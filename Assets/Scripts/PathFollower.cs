@@ -9,7 +9,6 @@ public class PathFollower : MonoBehaviour
     public PathCreator pathCreator;
     private NumberNode attachedNode;
     public EndOfPathInstruction endOfPathInstruction;
-    public float speed = 2f;
     public bool following;
     public bool forwards;
     public float distanceTravelled;
@@ -22,6 +21,7 @@ public class PathFollower : MonoBehaviour
 
     public void Follow(MoveType moveType)
     {
+        float speed = NodeManager.GetSpeed();
         switch (moveType)
         {
             case MoveType.FORWARD:
