@@ -67,7 +67,8 @@ public class PathFollower : MonoBehaviour
     {
         if (distanceTravelled >= pathCreator.path.length / (amountOfCheckpoints + 1) * nextCheckpoint && nextCheckpoint!= (amountOfCheckpoints + 1))
         {
-            nextCheckpoint++;
+            GameStateManager.Pause();
+            print(nextCheckpoint++);
         }
     }
 }
