@@ -24,11 +24,14 @@ public class NodeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (numberNode.state != NodeState.PROJECTILE)
+        if (!GameStateManager.IsPaused())
         {
-            this.enabled = false;
-            return;
+            if (numberNode.state != NodeState.PROJECTILE)
+            {
+                this.enabled = false;
+                return;
+            }
+            transform.Translate(direction * speed * Time.deltaTime);
         }
-        transform.Translate(direction * speed * Time.deltaTime);
     }
 }

@@ -65,16 +65,19 @@ public static class NodeManager
 
     public static void Update()
     {
-        nodeDestroyer.DestroyDeadNodes();
-        if (dispersing)
+        if (!GameStateManager.IsPaused())
         {
-            DisperseNodes();
-        }
-        if (numberList != null)
-        {
-            if (numberList.numberLinkedList.Count > 0)
+            nodeDestroyer.DestroyDeadNodes();
+            if (dispersing)
             {
-                MoveNode(MoveType.FORWARD, numberList.numberLinkedList.First);
+                DisperseNodes();
+            }
+            if (numberList != null)
+            {
+                if (numberList.numberLinkedList.Count > 0)
+                {
+                    MoveNode(MoveType.FORWARD, numberList.numberLinkedList.First);
+                }
             }
         }
     }

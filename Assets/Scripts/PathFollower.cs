@@ -12,8 +12,8 @@ public class PathFollower : MonoBehaviour
     public bool following;
     public bool forwards;
     public float distanceTravelled;
-    private int lastCheckpoint;
-    private static int amountOfCheckpoints=3;
+    private static int nextCheckpoint = 1;
+    private static int amountOfCheckpoints = 3;
 
     void Awake()
     {
@@ -34,7 +34,7 @@ public class PathFollower : MonoBehaviour
                 break;
         }
         transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
-        CheckEnd();
+        Check();
     }
 
     public void SetDistanceTravelled(float distanceTravelled)
@@ -47,6 +47,14 @@ public class PathFollower : MonoBehaviour
         distanceTravelled += add;
     }
 
+
+    private void Check()
+    {
+        CheckCheckpoint();
+        CheckEnd();
+
+    }
+
     private void CheckEnd()
     {
         if (distanceTravelled >= pathCreator.path.length)
@@ -57,9 +65,9 @@ public class PathFollower : MonoBehaviour
 
     private void CheckCheckpoint()
     {
-        if (distanceTravelled >= pathCreator.path.length)
+        if (distanceTravelled >= pathCreator.path.length / (amountOfCheckpoints + 1) * nextCheckpoint && nextCheckpoint!= (amountOfCheckpoints + 1))
         {
-            
+            nextCheckpoint++;
         }
     }
 }

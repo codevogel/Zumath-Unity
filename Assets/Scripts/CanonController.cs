@@ -14,18 +14,21 @@ public class CanonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //rotation
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = 10f;
+        if (!GameStateManager.IsPaused())
+        {
+            //rotation
+            Vector3 mousePos = Input.mousePosition;
+            mousePos.z = 10f;
 
-        Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
-        mousePos.x = mousePos.x - objectPos.x;
-        mousePos.y = mousePos.y - objectPos.y;
+            Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
+            mousePos.x = mousePos.x - objectPos.x;
+            mousePos.y = mousePos.y - objectPos.y;
 
-        float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
+            float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
 
-        Shoot(mousePos);
+            Shoot(mousePos);
+        }
     }
 
     private void Shoot(Vector3 mousePos)
@@ -41,7 +44,7 @@ public class CanonController : MonoBehaviour
             float distance = heading.magnitude;
             newNode.nodeController.SetDirection(heading / distance);
 
-            timeStamp = Time.time+COOLDOWN;
+            timeStamp = Time.time + COOLDOWN;
         }
     }
 }

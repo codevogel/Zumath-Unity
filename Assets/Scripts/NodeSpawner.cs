@@ -22,17 +22,20 @@ public class NodeSpawner : MonoBehaviour
 
     void Update()
     {
-        if (timeStamp < Time.time)
+        if (!GameStateManager.IsPaused())
         {
-            LayerMask nodeMask = LayerMask.GetMask("NodeLayer");
-            if (! Physics2D.OverlapCircle(transform.position, NumberNode.RADIUS, nodeMask))
+            if (timeStamp < Time.time)
             {
-                NumberNode newNode = Instantiate(numberBall, pathStart, Quaternion.identity, parentTransform).GetComponent<NumberNode>();
-                NodeManager.AddNode(newNode);
-                newNode.SetState(NodeState.FORWARD);
-                newNode.Init();
-                newNode.SetValue(Random.Range(NumberList.BOUND_LOW, NumberList.BOUND_HIGH));
-                timeStamp = Time.time + cooldown;
+                LayerMask nodeMask = LayerMask.GetMask("NodeLayer");
+                if (!Physics2D.OverlapCircle(transform.position, NumberNode.RADIUS, nodeMask))
+                {
+                    NumberNode newNode = Instantiate(numberBall, pathStart, Quaternion.identity, parentTransform).GetComponent<NumberNode>();
+                    NodeManager.AddNode(newNode);
+                    newNode.SetState(NodeState.FORWARD);
+                    newNode.Init();
+                    newNode.SetValue(Random.Range(NumberList.BOUND_LOW, NumberList.BOUND_HIGH));
+                    timeStamp = Time.time + cooldown;
+                }
             }
         }
     }

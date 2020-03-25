@@ -17,7 +17,10 @@ public class GutterContents : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RefreshGutter();
+        if (!GameStateManager.IsPaused())
+        {
+            RefreshGutter();
+        }
     }
 
     void RefreshGutter()
