@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NodeDestroyer : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     public void DestroyDeadNodes()
     {
         List<NumberNode> nodesToDestroy = new List<NumberNode>();

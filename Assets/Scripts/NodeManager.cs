@@ -65,6 +65,7 @@ public static class NodeManager
 
     public static void Update()
     {
+        nodeDestroyer.DestroyDeadNodes();
         if (dispersing)
         {
             DisperseNodes();
@@ -153,7 +154,6 @@ public static class NodeManager
         if (numberList.CheckForComboAt(index, target))
         {
             target = UnityEngine.Random.Range(NumberList.BOUND_LOW, NumberList.BOUND_HIGH);
-            nodeDestroyer.DestroyDeadNodes();
         }
 
         newlyInsertedNode = null;
