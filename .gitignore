@@ -1,2 +1,7 @@
 .vs/
 Temp/UnityLockfile
+Temp
+*.lock
+*.ide
+*.ide-shm
+*.ide-wal
