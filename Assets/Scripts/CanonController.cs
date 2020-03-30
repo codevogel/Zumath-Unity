@@ -8,8 +8,15 @@ public class CanonController : MonoBehaviour
 
     public GameObject node;
     public Transform parentTransform;
+    private NumberNode newNode;
     private float timeStamp = 0;
     private const float COOLDOWN = 1; // in seconds
+    private bool fired = true;
+
+    void Start()
+    {
+        newNode = new NumberNode();
+    }
 
     // Update is called once per frame
     void Update()
@@ -31,12 +38,24 @@ public class CanonController : MonoBehaviour
         }
     }
 
+
     private void Shoot(Vector3 mousePos)
-    {
+    { 
+        if (fired)
+        {
+            Vector3 ballInCannon = transform.position;
+            ballInCannon.y -= 1;
+            newNode = Instantiate(node, ballInCannon, Quaternion.identity, parentTransform).GetComponent<NumberNode>();
+            //newNode.SetValue(Random.Range(NumberList.BOUND_LOW, NumberList.BOUND_HIGH));
+            newNode.SetValue(2);
+            newNode.SetState(NodeState.STANDSTILL);
+            
+            fired = false;
+        }
+        
         if (Input.GetMouseButtonDown(0) && timeStamp < Time.time)
         {
-            NumberNode newNode = Instantiate(node, transform.position, Quaternion.identity, parentTransform).GetComponent<NumberNode>();
-            //newNode.SetValue(Random.Range(NumberList.BOUND_LOW, NumberList.BOUND_HIGH));
+            newNode = Instantiate(node, transform.position, Quaternion.identity, parentTransform).GetComponent<NumberNode>();
             newNode.SetValue(2);
             newNode.SetState(NodeState.PROJECTILE);
 
@@ -45,6 +64,8 @@ public class CanonController : MonoBehaviour
             newNode.nodeController.SetDirection(heading / distance);
 
             timeStamp = Time.time + COOLDOWN;
+            //fired = true;
+           
         }
     }
 }

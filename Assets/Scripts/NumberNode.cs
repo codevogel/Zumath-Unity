@@ -37,6 +37,12 @@ public class NumberNode : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         NumberNode otherNode = collision.GetComponent<NumberNode>();
+
+        if (state == NodeState.STANDSTILL || otherNode.state == NodeState.STANDSTILL)
+        {
+            return;
+        }
+
         if (otherNode != null)
         {
             if (! NodeManager.Contains(otherNode))
