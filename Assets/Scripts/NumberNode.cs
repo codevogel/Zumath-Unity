@@ -38,13 +38,12 @@ public class NumberNode : MonoBehaviour
     {
         NumberNode otherNode = collision.GetComponent<NumberNode>();
 
-        if (state == NodeState.STANDSTILL || otherNode.state == NodeState.STANDSTILL)
-        {
-            return;
-        }
-
         if (otherNode != null)
         {
+            if (state == NodeState.STANDSTILL || otherNode.state == NodeState.STANDSTILL)
+            {
+                return;
+            }
             if (! NodeManager.Contains(otherNode))
             {
                 NodeManager.InsertAtPlaceOf(NodeManager.GetNodes().Find(this), otherNode);
