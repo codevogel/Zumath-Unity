@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Gutter
   - NodeDestroyer
+  - Canon
+  - NodeSpawner
   layers:
   - Default
   - TransparentFX

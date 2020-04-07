@@ -445,8 +445,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790881883}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5628383, y: -0.7082753, z: -20.583838}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2005120869}
@@ -461,7 +461,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 790881883}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 967f6031db9bc3c49a1de108d9b0b46b, type: 3}
+  m_Script: {fileID: 11500000, guid: ee1edbd6e93704a48943dafe2e379de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1306221665
@@ -536,12 +536,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1437137735}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afbc826d29142a14eb8217b5ccebabc7, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fbc4f29cded3df47b0ca69e79b917af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   numberBall: {fileID: 526200095876771218, guid: 4bb62fb8668fac147866a40a8d4ad8b4,
     type: 3}
   parentTransform: {fileID: 2005120869}
+  nodesToSpawn: 10
 --- !u!4 &1437137737
 Transform:
   m_ObjectHideFlags: 0
@@ -550,7 +551,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437137735}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.17, y: -4.6, z: -11.988039}
+  m_LocalPosition: {x: -7.65, y: -5.91, z: -11.988039}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2005120869}
@@ -776,7 +777,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1883254933}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a54a1b35117b39244a6ebdeb5c5cda0f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4758da5fe8ebfbe48aae5e2e0f823e86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1883254935
@@ -842,8 +843,8 @@ MonoBehaviour:
   editorData:
     _bezierPath:
       points:
-      - {x: -8.150931, y: -4.577806, z: 0}
-      - {x: -7.4229255, y: -4.585988, z: 0}
+      - {x: -7.6560564, y: -5.912903, z: 0}
+      - {x: -6.92805, y: -5.9210844, z: 0}
       - {x: -7.77112, y: 3.1919308, z: 0}
       - {x: -6.6274924, y: 3.1833584, z: 0}
       - {x: -5.4958014, y: 3.1748757, z: 0}
@@ -871,7 +872,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 0
+    vertexPathUpToDate: 1
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
