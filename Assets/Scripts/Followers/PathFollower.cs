@@ -17,8 +17,6 @@ namespace Following
         public bool following;
         public bool forwards;
         public float distanceTravelled;
-        private static int nextCheckpoint = 1;
-        private static int amountOfCheckpoints = 3;
 
         void Awake()
         {
