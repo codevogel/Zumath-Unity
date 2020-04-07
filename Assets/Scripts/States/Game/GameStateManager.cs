@@ -8,7 +8,7 @@ namespace States.Game
         private static GameState currentGameState;
         private static GameState prePauseGameState;
 
-        public static void Start()
+        public static void Awake()
         {
             currentGameState = GameState.SPAWNING;
         }

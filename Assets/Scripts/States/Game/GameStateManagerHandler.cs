@@ -6,9 +6,9 @@ namespace States.Game
     class GameStateManagerHandler : MonoBehaviour
     {
 
-        void Start()
+        private void Awake()
         {
-            GameStateManager.Start();
+            GameStateManager.Awake();
         }
 
         void Update()

@@ -67,7 +67,10 @@ namespace Nodes
 
         public static void Update()
         {
-            nodeDestroyer.DestroyDeadNodes();
+            if (numberList.numberLinkedList.Count > 0)
+            {
+                nodeDestroyer.DestroyDeadNodes();
+            }
 
             switch (GameStateManager.GetGameState())
             {
@@ -75,6 +78,8 @@ namespace Nodes
                     return;
                 case GameState.PREINSERTION:
                     MoveNodesForward();
+                    return;
+                case GameState.SHOOTING:
                     return;
                 case GameState.DISPERSING:
                     DisperseNodes();

@@ -22,14 +22,21 @@ public class NodeSpawner : MonoBehaviour
         this.gameObject.tag = Tags.NODE_SPAWNER;
     }
 
-
     private void Start()
     {
-        float distanceTravelled = NumberNode.RADIUS * nodesToSpawn - NumberNode.RADIUS;
-        for (int i = nodesToSpawn; i > 0; i--)
+        SpawnNodes();
+    }
+
+    public void SpawnNodes()
+    {
+        if (GameStateManager.GetGameState() == GameState.SPAWNING)
         {
-            SpawnNodeAtDistance(distanceTravelled);
-            distanceTravelled -= NumberNode.RADIUS;
+            float distanceTravelled = NumberNode.RADIUS * nodesToSpawn - NumberNode.RADIUS;
+            for (int i = nodesToSpawn; i > 0; i--)
+            {
+                SpawnNodeAtDistance(distanceTravelled);
+                distanceTravelled -= NumberNode.RADIUS;
+            }
         }
         GameStateManager.SetGameState(GameState.PREINSERTION);
     }
