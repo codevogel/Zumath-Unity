@@ -4,8 +4,7 @@ using References;
 using Nodes;
 using States.Node;
 using System;
-
-
+using States.Game;
 
 public class NodeSpawner : MonoBehaviour
 {
@@ -32,6 +31,7 @@ public class NodeSpawner : MonoBehaviour
             SpawnNodeAtDistance(distanceTravelled);
             distanceTravelled -= NumberNode.RADIUS;
         }
+        GameStateManager.SetGameState(GameState.PREINSERTION);
     }
 
     private void SpawnNodeAtDistance(float distanceTravelled)

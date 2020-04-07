@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace States.Game
 {
@@ -32,6 +33,11 @@ namespace States.Game
         {
             prePauseGameState = currentGameState;
             currentGameState = GameState.PAUSED;
+        }
+
+        public static void SetGameState(GameState gameState)
+        {
+            currentGameState = gameState;
         }
 
         public static void Unpause()
