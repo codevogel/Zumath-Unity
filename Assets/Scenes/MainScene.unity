@@ -464,6 +464,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee1edbd6e93704a48943dafe2e379de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &882107686
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 882107690}
+  - component: {fileID: 882107689}
+  - component: {fileID: 882107688}
+  - component: {fileID: 882107687}
+  m_Layer: 0
+  m_Name: DEVTOOLS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &882107687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882107686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83c07983e4d6a5344b37cdb00eef49c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disperseSpeed: 2
+  travelSpeed: 0.2
+  resetSpeed: 1
+--- !u!114 &882107688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882107686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2fed235d48fb649ab899448bd14d16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeList: []
+--- !u!114 &882107689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882107686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294ef8ab7a42da04189e5117cd9a6766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentGameState: 
+--- !u!4 &882107690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882107686}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.950427, y: -1.7536948, z: -63.09029}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1306221665
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1306221667}
   - component: {fileID: 1306221666}
+  - component: {fileID: 1306221668}
   m_Layer: 0
   m_Name: Canon
   m_TagString: Untagged
@@ -510,6 +585,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1306221668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306221665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f54ff28eea18e49ba7b00d682930f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberNodePrefab: {fileID: 526200095876771218, guid: 4bb62fb8668fac147866a40a8d4ad8b4,
+    type: 3}
+  numberNode: {fileID: 0}
 --- !u!1 &1437137735
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,7 +632,7 @@ MonoBehaviour:
   numberBall: {fileID: 526200095876771218, guid: 4bb62fb8668fac147866a40a8d4ad8b4,
     type: 3}
   parentTransform: {fileID: 2005120869}
-  nodesToSpawn: 10
+  nodesToSpawn: 15
 --- !u!4 &1437137737
 Transform:
   m_ObjectHideFlags: 0
@@ -803,7 +893,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2005120869}
-  - component: {fileID: 2005120871}
   - component: {fileID: 2005120870}
   m_Layer: 0
   m_Name: Gutter
@@ -893,16 +982,3 @@ MonoBehaviour:
     showNormalsHelpInfo: 0
     tabIndex: 0
   initialized: 1
---- !u!114 &2005120871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2005120868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f2fed235d48fb649ab899448bd14d16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeList: []

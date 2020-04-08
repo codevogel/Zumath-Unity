@@ -1,8 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using Assets.Scripts;
+using Controllers;
 using Follower;
 using MathLists;
+using References;
 using States.Game;
 using States.Node;
+using UnityEngine;
 
 namespace Nodes
 {
@@ -16,16 +23,44 @@ namespace Nodes
         private static NumberList numberList = new NumberList();
 
         private static NodeDestroyer nodeDestroyer;
+        private static CanonController canonController;
 
         private static NumberNode newlyInsertedNode = null;
 
-        public static int target = 5;
-
-        private static bool dispersing;
-
-        public static void Init(NodeDestroyer _nodeDestroyer)
+        internal static void SetTarget(int v)
         {
-            nodeDestroyer = _nodeDestroyer;
+            throw new NotImplementedException();
+        }
+
+        public static int target = -1;
+        private static int nextBallValue = -1;
+
+        //TODO: make consts after playtesting
+        public static float TRAVEL_SPEED = 0.5f;
+        public static float DISPERSE_SPEED = 2.5f;
+        public static float RESET_SPEED = 2f;
+
+
+        public static void SetTravelSpeed(float speed)
+        {
+            TRAVEL_SPEED = speed;
+        }
+
+        public static void SetDisperseSpeed(float speed)
+        {
+            DISPERSE_SPEED = speed;
+        }
+
+        public static void SetResetSpeed(float speed)
+        {
+            RESET_SPEED = speed;
+        }
+
+        public static void Init()
+        {
+            nodeDestroyer = GameObject.FindGameObjectWithTag(Tags.NODE_DESTROYER).GetComponent<NodeDestroyer>();
+            nextBallValue = UnityEngine.Random.Range(NumberList.BOUND_LOW, NumberList.BOUND_HIGH);
+            NodeManager.GetValidTarget();
         }
 
         // Newly added nodes are placed in the front of the list, 
@@ -41,19 +76,21 @@ namespace Nodes
             numberList.numberLinkedList.Remove(node);
         }
 
+        internal static void SetNextBallValue(int _nextBallValue)
+        {
+            nextBallValue = _nextBallValue;
+        }
+
         public static void InsertAtPlaceOf(LinkedListNode<NumberNode> nodeInGutter, NumberNode node)
         {
             newlyInsertedNode = node;
-            dispersing = true;
-
             float distTravelled = nodeInGutter.Value.pathFollower.distanceTravelled - NumberNode.RADIUS / 2f;
             newlyInsertedNode.pathFollower.SetDistanceTravelled(distTravelled);
             newlyInsertedNode.transform.position = nodeInGutter.Value.pathFollower.pathCreator.path.GetPointAtDistance(distTravelled);
 
-            //TODO: weghalen dat dit nodig is (projectile state zorgt voor de nodecontroller)
-            node.SetState(NodeState.STANDSTILL);
-
             numberList.numberLinkedList.AddBefore(nodeInGutter, newlyInsertedNode);
+
+            GameStateManager.SwitchToDispersing();
         }
 
         public static bool Contains(NumberNode node)
@@ -67,28 +104,39 @@ namespace Nodes
 
         public static void Update()
         {
-            if (numberList.numberLinkedList.Count > 0)
+            switch(GameStateManager.GetGameState())
             {
-                nodeDestroyer.DestroyDeadNodes();
-            }
-
-            switch (GameStateManager.GetGameState())
-            {
-                case GameState.SPAWNING:
-                    return;
                 case GameState.PREINSERTION:
                     MoveNodesForward();
                     return;
                 case GameState.SHOOTING:
+                    MoveNodesForward();
                     return;
                 case GameState.DISPERSING:
                     DisperseNodes();
                     return;
                 case GameState.RESETTING:
+                    MoveNodesForward();
+                    if (AllNodesTouch())
+                    {
+                        GameStateManager.SwitchToPreInsertion();
+                    }
                     return;
-                case GameState.PAUSED:
+                case GameState.WON:
                     return;
             }
+        }
+
+        private static bool AllNodesTouch()
+        {
+            bool touching = true;
+            LinkedListNode<NumberNode> currentNode = numberList.numberLinkedList.First;
+            while (currentNode.Next != null && touching)
+            {
+                touching = currentNode.Value.IsTouching(currentNode.Next.Value);
+                currentNode = currentNode.Next;
+            }
+            return touching;
         }
 
         public static void MoveNodesForward()
@@ -174,32 +222,73 @@ namespace Nodes
         private static void OnDispersed()
         {
             int index = numberList.GetIndexOfNode(newlyInsertedNode);
+
+            // eventuele TODO: onderstaande functie een array aanleveren zodat je alleen het deel
+            // van de ketting bekijkt waar:
+            // - De bal net is ingekomen
+            // - De delen die niet door dit deel van de ketting worden aangeraakt 
+            //   worden niet in acht genomen
             if (numberList.CheckForComboAt(index, target))
             {
-                target = UnityEngine.Random.Range(NumberList.BOUND_LOW, NumberList.BOUND_HIGH);
-                // begin te checken of alle ballen elkaar aandrijven
-                // dan mag kanon weer schieten
+                // TODO
             }
-            else
+
+            nodeDestroyer.DestroyDeadNodes();
+
+            if (numberList.numberLinkedList.Count == 0)
             {
-                // kanon mag weer schieten
+                UnityEngine.Debug.Log("GUTTER CLEARED! Game won!");
+                GameStateManager.SwitchToWon();
+                return;
             }
+
+            GetValidTarget();
 
             newlyInsertedNode = null;
-            dispersing = false;
+            GameStateManager.SwitchToResetting();
+        }
 
+
+        /**
+         * Generates a randomly generated possible sum of consecutive numbers in the array
+         * @return a randomly generated possible sum of consecutive numbers in the array
+         */
+        public static void GetValidTarget()
+        {
+            // Get the values from the numberlist object
+            int[] values = numberList.GetValues();
+
+            int firstIndex = UnityEngine.Random.Range(0, values.Length);
+            int times = 1 + UnityEngine.Random.Range(0, 1);
+
+            int sum = 0;
+            // Let the user that the combo starts at this index
+            for (int i = 0; i < times; i++)
+            {
+                int value = 0;
+                if (firstIndex + i < values.Length)
+                {
+                    value = values[firstIndex + i];
+                }
+                sum += value;
+            }
+            target = sum + nextBallValue;
         }
 
         public static float GetSpeed()
         {
-            if (dispersing)
+            switch (GameStateManager.GetGameState())
             {
-                return 2f;
+                case GameState.PREINSERTION:
+                    return TRAVEL_SPEED;
+                case GameState.SHOOTING:
+                    return TRAVEL_SPEED;
+                case GameState.DISPERSING:
+                    return DISPERSE_SPEED;
+                case GameState.RESETTING:
+                    return RESET_SPEED;
             }
-            else
-            {
-                return 1f;
-            }
+            throw new NotImplementedException();
         }
 
         public static LinkedList<NumberNode> GetNodes()
@@ -211,6 +300,10 @@ namespace Nodes
             return new LinkedList<NumberNode>();
         }
 
+        public static int GetNextBallValue()
+        {
+            return nextBallValue;
+        }
     }
 }
 

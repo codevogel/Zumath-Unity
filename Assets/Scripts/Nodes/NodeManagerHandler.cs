@@ -8,9 +8,9 @@ namespace Nodes
     public class NodeManagerHandler : MonoBehaviour
     {
 
-        void Start()
+        void Awake()
         {
-            NodeManager.Init(GameObject.FindGameObjectWithTag(Tags.NODE_DESTROYER).GetComponent<NodeDestroyer>());
+            NodeManager.Init();
         }
 
         // Update is called once per frame

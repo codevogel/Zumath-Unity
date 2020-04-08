@@ -17,6 +17,6 @@ public class TargetUpdater : MonoBehaviour
 
     void Update()
     {
-        textMesh.SetText("Target: " + NodeManager.target.ToString());
+        textMesh.SetText("Target: " + NodeManager.target.ToString() + "\nNext Ball: " + NodeManager.GetNextBallValue());
     }
 }

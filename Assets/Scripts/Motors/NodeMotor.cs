@@ -4,10 +4,10 @@ using States.Node;
 using UnityEngine;
 
 
-namespace Controllers
+namespace Motors
 {
     [RequireComponent(typeof(NumberNode))]
-    public class NodeController : MonoBehaviour
+    public class NodeMotor : MonoBehaviour
     {
 
         private NumberNode numberNode;
@@ -28,13 +28,8 @@ namespace Controllers
         // Update is called once per frame
         void Update()
         {
-            if (GameStateManager.GetGameState() != GameState.PAUSED)
+            if (GameStateManager.GetGameState() == GameState.SHOOTING)
             {
-                if (numberNode.state != NodeState.PROJECTILE)
-                {
-                    this.enabled = false;
-                    return;
-                }
                 transform.Translate(direction * speed * Time.deltaTime);
             }
         }

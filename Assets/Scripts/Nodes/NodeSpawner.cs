@@ -12,33 +12,26 @@ public class NodeSpawner : MonoBehaviour
     public GameObject numberBall;
     public Transform parentTransform;
     private PathCreator pathCreator;
-    private Vector3 pathStart;
-
     public int nodesToSpawn;
 
     void Awake()
     {
         pathCreator = GameObject.FindGameObjectWithTag(Tags.GUTTER).GetComponent<PathCreator>();
-        this.gameObject.tag = Tags.NODE_SPAWNER;
+        SpawnNodes();
     }
 
     private void Start()
     {
-        SpawnNodes();
     }
 
     public void SpawnNodes()
     {
-        if (GameStateManager.GetGameState() == GameState.SPAWNING)
+        float distanceTravelled = NumberNode.RADIUS * nodesToSpawn - NumberNode.RADIUS;
+        for (int i = nodesToSpawn; i > 0; i--)
         {
-            float distanceTravelled = NumberNode.RADIUS * nodesToSpawn - NumberNode.RADIUS;
-            for (int i = nodesToSpawn; i > 0; i--)
-            {
-                SpawnNodeAtDistance(distanceTravelled);
-                distanceTravelled -= NumberNode.RADIUS;
-            }
+            SpawnNodeAtDistance(distanceTravelled);
+            distanceTravelled -= NumberNode.RADIUS;
         }
-        GameStateManager.SetGameState(GameState.PREINSERTION);
     }
 
     private void SpawnNodeAtDistance(float distanceTravelled)

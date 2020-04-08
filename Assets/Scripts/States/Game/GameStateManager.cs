@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Assets.Scripts;
+using Controllers;
+using References;
+using System;
 using UnityEngine;
 
 namespace States.Game
@@ -8,36 +11,15 @@ namespace States.Game
         private static GameState currentGameState;
         private static GameState prePauseGameState;
 
-        public static void Awake()
+        public static void Init()
         {
-            currentGameState = GameState.SPAWNING;
-        }
-
-        public static void Update()
-        {
-            if (currentGameState == GameState.PAUSED)
-            {
-                if (Input.GetKeyDown(KeyCode.U))
-                {
-                    Unpause();
-                }
-                return;
-            }
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                Pause();
-            }
+            SwitchToPreInsertion();
         }
 
         public static void Pause()
         {
             prePauseGameState = currentGameState;
             currentGameState = GameState.PAUSED;
-        }
-
-        public static void SetGameState(GameState gameState)
-        {
-            currentGameState = gameState;
         }
 
         public static void Unpause()
@@ -48,6 +30,46 @@ namespace States.Game
         public static GameState GetGameState()
         {
             return currentGameState;
+        }
+
+        public static void SetGameState(GameState gameState)
+        {
+            currentGameState = gameState;
+        }
+
+        public static void SwitchToShooting()
+        {
+            SetGameState(GameState.SHOOTING);
+        }
+
+        public static void SwitchToDispersing()
+        {
+            SetGameState(GameState.DISPERSING);
+        }
+
+        public static void SwitchToPreInsertion()
+        {
+            SetGameState(GameState.PREINSERTION);
+        }
+
+        public static void SwitchToPaused()
+        {
+            Pause();
+        }
+
+        public static void SwitchToBeforePaused()
+        {
+            Unpause();
+        }
+
+        public static void SwitchToResetting()
+        {
+            SetGameState(GameState.RESETTING);
+        }
+
+        public static void SwitchToWon()
+        {
+            SetGameState(GameState.WON);
         }
     }
 }

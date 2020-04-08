@@ -21,6 +21,14 @@ namespace Nodes
                 {
                     nodesToDestroy.Add(node);
                 }
+                else
+                {
+                    if (node.pathFollower.distanceTravelled >= node.pathFollower.pathCreator.path.length)
+                    {
+                        nodesToDestroy.Add(node);
+                        // TODO: apply penalty
+                    }
+                }
             }
 
             foreach (NumberNode node in nodesToDestroy)

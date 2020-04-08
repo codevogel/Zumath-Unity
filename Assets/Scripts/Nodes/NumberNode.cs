@@ -5,20 +5,23 @@ using UnityEngine;
 using Following;
 using States.Node;
 using Controllers;
-using References;
 using MathLists;
+using References;
+using Motors;
+using Assets.Scripts;
+using States.Game;
 
 namespace Nodes
 {
     [RequireComponent(typeof(PathFollower))]
-    [RequireComponent(typeof(NodeController))]
+    [RequireComponent(typeof(NodeMotor))]
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(CircleCollider2D))]
     public class NumberNode : MonoBehaviour
     {
         public PathFollower pathFollower;
         private CircleCollider2D circleCollider;
-        public NodeController nodeController;
+        public NodeMotor nodeMotor;
         private TextMeshPro textMeshPro;
         public NodeState state;
 
@@ -38,7 +41,7 @@ namespace Nodes
             SetValue(value);
             pathFollower = GetComponent<PathFollower>();
             circleCollider = GetComponent<CircleCollider2D>();
-            nodeController = GetComponent<NodeController>();
+            nodeMotor = GetComponent<NodeMotor>();
             textMeshPro = GetComponentInChildren<TextMeshPro>();
             this.gameObject.layer = LayerMask.NameToLayer(LayerNames.NODE_LAYER);
         }
@@ -49,7 +52,7 @@ namespace Nodes
 
             if (otherNode != null)
             {
-                if (state == NodeState.STANDSTILL || otherNode.state == NodeState.STANDSTILL)
+                if (otherNode.state == NodeState.PREVIEW || this.state == NodeState.PREVIEW)
                 {
                     return;
                 }
@@ -57,7 +60,9 @@ namespace Nodes
                 {
                     return;
                 }
+                otherNode.nodeMotor.enabled = false;
                 NodeManager.InsertAtPlaceOf(NodeManager.GetNodes().Find(this), otherNode);
+                GameStateManager.SwitchToDispersing();
             }
         }
 

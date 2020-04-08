@@ -1,4 +1,5 @@
 ﻿using Nodes;
+using States.Game;
 using States.Node;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace Controllers
             if (otherNode.state == NodeState.PROJECTILE)
             {
                 Destroy(other.gameObject);
+                GameStateManager.SetGameState(GameState.PREINSERTION);
             }
         }
     }

@@ -16,9 +16,6 @@ namespace DevTools
                 case GameState.PREINSERTION:
                     currentGameState = "Pre-insertion";
                     return;
-                case GameState.SPAWNING:
-                    currentGameState = "Spawning";
-                    return;
                 case GameState.DISPERSING:
                     currentGameState = "Dispersing";
                     return;
@@ -30,6 +27,9 @@ namespace DevTools
                     return;
                 case GameState.CHECKPOINT:
                     currentGameState = "Checkpoint";
+                    return;
+                case GameState.WON:
+                    currentGameState = "Won";
                     return;
             }
         }

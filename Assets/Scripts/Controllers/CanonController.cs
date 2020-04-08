@@ -1,4 +1,6 @@
-﻿using Nodes;
+﻿using Assets.Scripts;
+using MathLists;
+using Nodes;
 using References;
 using States.Game;
 using States.Node;
@@ -13,17 +15,10 @@ namespace Controllers
         public GameObject node;
         public Transform parentTransform;
         private NumberNode newNode;
-        private float timeStamp = 0;
-        private const float COOLDOWN = 1; // in seconds
-        private bool locked = true;
 
         private void Awake()
         {
             gameObject.tag = Tags.CANON;
-        }
-
-        void Start()
-        {
         }
 
         // Update is called once per frame
@@ -51,34 +46,19 @@ namespace Controllers
 
         private void Shoot(Vector3 mousePos)
         {
-            if (locked)
-            {
-                return;
-            }
-            if (timeStamp < Time.time)
+            if (GameStateManager.GetGameState() == GameState.PREINSERTION)
             {
                 newNode = Instantiate(node, transform.position, Quaternion.identity, parentTransform).GetComponent<NumberNode>();
-                newNode.SetValue(2);
-                newNode.SetState(NodeState.PROJECTILE);
 
                 Vector3 heading = mousePos - transform.position;
                 float distance = heading.magnitude;
-                newNode.nodeController.SetDirection(heading / distance);
+                newNode.nodeMotor.SetDirection(heading / distance);
 
-                timeStamp = Time.time + COOLDOWN;
-                //fired = true;
-
+                newNode.SetState(NodeState.PROJECTILE);
+                int ballValue = NodeManager.GetNextBallValue();
+                newNode.SetValue(ballValue);
+                GameStateManager.SwitchToShooting();
             }
-        }
-
-        public void Lock()
-        {
-            locked = true;
-        }
-
-        public void Unlock()
-        {
-            locked = true;
         }
     }
 }

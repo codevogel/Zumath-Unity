@@ -9,6 +9,9 @@ namespace MathLists
         public const int BOUND_LOW = 1;
         public const int BOUND_HIGH = 8;
 
+        public const int COMBO_SIZE_MIN = 1;
+        public const int COMBO_SIZE_MAX = 3;
+
         public LinkedList<NumberNode> numberLinkedList = new LinkedList<NumberNode>();
         public NumberNode[] numberArray;
 
@@ -59,7 +62,6 @@ namespace MathLists
          */
         public bool CheckForComboAt(int startIndex, int target)
         {
-            RefreshArray();
             // SumList objects store a sum and the index they're found on.
             SumList sumListLeft = new SumList(), sumListRight = new SumList();
             sumListLeft.Add(0, -1);
@@ -69,13 +71,13 @@ namespace MathLists
              * Disregard all the numbers that cannot be part of the combo and return
              * the shorter array with numbers that can.
              */
-            ShortList sl = FindShortList(startIndex, target);
-            NumberNode[] shortList = sl.array;
+            ShortList shortList = FindShortList(startIndex, target);
+            NumberNode[] shortArray = shortList.array;
 
             // Set the index to start counting from for counting towards
             // left and counting towards right.
-            int leftStartIndex = sl.GetStartIndex();
-            int rightStartIndex = sl.GetStartIndex() + 1;
+            int leftStartIndex = shortList.GetStartIndex();
+            int rightStartIndex = shortList.GetStartIndex() + 1;
 
             // Create a temporary sum.
             int sum = 0;
@@ -83,17 +85,17 @@ namespace MathLists
             for (int i = leftStartIndex; i > -1; i--)
             {
                 // Increase the sum by the current value
-                sum += shortList[i].value;
+                sum += shortArray[i].value;
                 // Store the sum and at what index in the shortList the sum occured
                 sumListLeft.Add(sum, i);
             }
             // Reset the temporary sum.
             sum = 0;
             // Go over all numbers in the short list right of (and excluding) the start index
-            for (int i = rightStartIndex; i < shortList.Length; i++)
+            for (int i = rightStartIndex; i < shortArray.Length; i++)
             {
                 // Increase the sum by the current value
-                sum += shortList[i].value;
+                sum += shortArray[i].value;
                 // Store the sum and at what index in the shortList the sum occured
                 sumListRight.Add(sum, i);
             }
@@ -115,7 +117,7 @@ namespace MathLists
                             int index = sumListLeft.indexList[k];
                             if (index > -1)
                             {
-                                shortList[index].Kill();
+                                shortArray[index].Kill();
                             }
                         }
                         for (int k = 0; k < sumListRightIndex + 1; k++)
@@ -123,7 +125,7 @@ namespace MathLists
                             int index = sumListRight.indexList[k];
                             if (index > -1)
                             {
-                                shortList[index].Kill();
+                                shortArray[index].Kill();
                             }
                         }
                         return true;
@@ -149,8 +151,7 @@ namespace MathLists
          */
         private ShortList FindShortList(int startIndex, int target)
         {
-            // Get values from the list of number nodes
-            int[] values = GetValues();
+            RefreshArray();
 
             // Create the shortlist of numbers
             List<NumberNode> shortList = new List<NumberNode>();
@@ -204,10 +205,10 @@ namespace MathLists
             return new ShortList(shortArray, newStartIndex);
         }
 
-        private int[] GetValues()
+        public int[] GetValues()
         {
-            int[] values;
-            values = new int[numberArray.Length];
+            RefreshArray();
+            int[] values = new int[numberArray.Length];
 
             for (int i = 0; i < numberArray.Length; i++)
             {

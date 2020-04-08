@@ -8,8 +8,7 @@ namespace States.Node
     {
         PROJECTILE,
         FORWARD,
-        STANDSTILL,
-        BACKWARD
+        PREVIEW
     }
 }
 
