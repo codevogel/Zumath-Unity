@@ -26,7 +26,7 @@ namespace Nodes
         public NodeState state;
 
         public int value;
-        public const float RADIUS = 1f;
+        public const float DIAMETER = 1f;
         public bool alive;
 
         void Awake()
@@ -94,11 +94,6 @@ namespace Nodes
         public void SetState(NodeState state)
         {
             this.state = state;
-        }
-
-        public override string ToString()
-        {
-            return value.ToString();
         }
     }
 }

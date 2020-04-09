@@ -9,6 +9,7 @@ using States.Game;
 // Depending on the end of path instruction, will either loop, reverse, or stop at the end of the path.
 namespace Following
 {
+    [RequireComponent(typeof(NumberNode))]
     public class PathFollower : MonoBehaviour
     {
         public PathCreator pathCreator;

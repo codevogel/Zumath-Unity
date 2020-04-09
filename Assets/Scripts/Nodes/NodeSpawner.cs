@@ -26,11 +26,11 @@ public class NodeSpawner : MonoBehaviour
 
     public void SpawnNodes()
     {
-        float distanceTravelled = NumberNode.RADIUS * nodesToSpawn - NumberNode.RADIUS;
+        float distanceTravelled = NumberNode.DIAMETER * nodesToSpawn - NumberNode.DIAMETER;
         for (int i = nodesToSpawn; i > 0; i--)
         {
             SpawnNodeAtDistance(distanceTravelled);
-            distanceTravelled -= NumberNode.RADIUS;
+            distanceTravelled -= NumberNode.DIAMETER;
         }
     }
 
@@ -40,7 +40,8 @@ public class NodeSpawner : MonoBehaviour
         NumberNode newNode = Instantiate(numberBall, pointOnPath, Quaternion.identity, parentTransform).GetComponent<NumberNode>();
         newNode.Init();
         newNode.pathFollower.SetDistanceTravelled(distanceTravelled);
-        newNode.SetState(NodeState.FORWARD);
+        newNode.SetState(NodeState.GUTTER);
+        newNode.nodeMotor.enabled = false;
         NodeManager.AddNode(newNode);
     }
 }

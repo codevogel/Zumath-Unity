@@ -32,7 +32,7 @@ namespace States.Game
             return currentGameState;
         }
 
-        public static void SetGameState(GameState gameState)
+        private static void SetGameState(GameState gameState)
         {
             currentGameState = gameState;
         }

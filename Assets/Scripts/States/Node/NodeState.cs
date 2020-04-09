@@ -7,7 +7,7 @@ namespace States.Node
     public enum NodeState
     {
         PROJECTILE,
-        FORWARD,
+        GUTTER,
         PREVIEW
     }
 }

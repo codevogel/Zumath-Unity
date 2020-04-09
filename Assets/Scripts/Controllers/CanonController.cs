@@ -12,7 +12,7 @@ namespace Controllers
     {
         // Start is called before the first frame update
 
-        public GameObject node;
+        public GameObject nodePrefab;
         public Transform parentTransform;
         private NumberNode newNode;
 
@@ -26,7 +26,7 @@ namespace Controllers
         {
             if (GameStateManager.GetGameState() != GameState.PAUSED)
             {
-                //rotation
+                // Rotate transform towards mouse position
                 Vector3 mousePos = Input.mousePosition;
                 mousePos.z = 10f;
 
@@ -37,19 +37,22 @@ namespace Controllers
                 float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
 
+                // If left mouse clicked
                 if (Input.GetMouseButtonDown(0))
-                {
+                {   
                     Shoot(mousePos);
                 }
             }
         }
 
+        // Instantiates a new node and fires it towards the mouse position.
         private void Shoot(Vector3 mousePos)
         {
             if (GameStateManager.GetGameState() == GameState.PREINSERTION)
             {
-                newNode = Instantiate(node, transform.position, Quaternion.identity, parentTransform).GetComponent<NumberNode>();
+                newNode = Instantiate(nodePrefab, transform.position, Quaternion.identity, parentTransform).GetComponent<NumberNode>();
 
+                // Get the directional vector towards the mouse position
                 Vector3 heading = mousePos - transform.position;
                 float distance = heading.magnitude;
                 newNode.nodeMotor.SetDirection(heading / distance);

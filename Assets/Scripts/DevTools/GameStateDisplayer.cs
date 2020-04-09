@@ -16,6 +16,9 @@ namespace DevTools
                 case GameState.PREINSERTION:
                     currentGameState = "Pre-insertion";
                     return;
+                case GameState.SHOOTING:
+                    currentGameState = "Shooting";
+                    return;
                 case GameState.DISPERSING:
                     currentGameState = "Dispersing";
                     return;
@@ -30,6 +33,9 @@ namespace DevTools
                     return;
                 case GameState.WON:
                     currentGameState = "Won";
+                    return;
+                default:
+                    currentGameState = "Unknown";
                     return;
             }
         }

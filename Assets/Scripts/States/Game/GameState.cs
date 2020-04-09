@@ -12,7 +12,7 @@ namespace States.Game
         SHOOTING,
         // Insertion has happened and balls are being dispersed to accomodate new ball.
         DISPERSING,
-        // TODO: Balls are moving forward untill the gap (that has been created by removing combo-ed balls) has been filled.
+        // Balls are moving forward untill the gap (that has been created by removing combo-ed balls) has been filled.
         RESETTING,
         // TODO: Balls have stopped moving. Player must answer a question before being able to proceed.
         CHECKPOINT,

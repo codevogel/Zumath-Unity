@@ -23,14 +23,8 @@ namespace Nodes
         private static NumberList numberList = new NumberList();
 
         private static NodeDestroyer nodeDestroyer;
-        private static CanonController canonController;
 
         private static NumberNode newlyInsertedNode = null;
-
-        internal static void SetTarget(int v)
-        {
-            throw new NotImplementedException();
-        }
 
         public static int target = -1;
         private static int nextBallValue = -1;
@@ -84,7 +78,7 @@ namespace Nodes
         public static void InsertAtPlaceOf(LinkedListNode<NumberNode> nodeInGutter, NumberNode node)
         {
             newlyInsertedNode = node;
-            float distTravelled = nodeInGutter.Value.pathFollower.distanceTravelled - NumberNode.RADIUS / 2f;
+            float distTravelled = nodeInGutter.Value.pathFollower.distanceTravelled - NumberNode.DIAMETER / 2f;
             newlyInsertedNode.pathFollower.SetDistanceTravelled(distTravelled);
             newlyInsertedNode.transform.position = nodeInGutter.Value.pathFollower.pathCreator.path.GetPointAtDistance(distTravelled);
 
@@ -124,6 +118,8 @@ namespace Nodes
                     return;
                 case GameState.WON:
                     return;
+                default:
+                    throw new NotImplementedException();
             }
         }
 
@@ -223,7 +219,8 @@ namespace Nodes
         {
             int index = numberList.GetIndexOfNode(newlyInsertedNode);
 
-            // eventuele TODO: onderstaande functie een array aanleveren zodat je alleen het deel
+
+            // TODO: onderstaande functie een array aanleveren zodat je alleen het deel
             // van de ketting bekijkt waar:
             // - De bal net is ingekomen
             // - De delen die niet door dit deel van de ketting worden aangeraakt 
@@ -231,6 +228,7 @@ namespace Nodes
             if (numberList.CheckForComboAt(index, target))
             {
                 // TODO
+                nextBallValue = UnityEngine.Random.Range(NumberList.BOUND_LOW, NumberList.BOUND_HIGH);
             }
 
             nodeDestroyer.DestroyDeadNodes();
@@ -243,6 +241,7 @@ namespace Nodes
             }
 
             GetValidTarget();
+            
 
             newlyInsertedNode = null;
             GameStateManager.SwitchToResetting();
@@ -258,8 +257,8 @@ namespace Nodes
             // Get the values from the numberlist object
             int[] values = numberList.GetValues();
 
-            int firstIndex = UnityEngine.Random.Range(0, values.Length);
-            int times = 1 + UnityEngine.Random.Range(0, 1);
+            int firstIndex = UnityEngine.Random.Range(0, values.Length - 1);
+            int times = 1 + UnityEngine.Random.Range(NumberList.COMBO_SIZE_MIN, NumberList.COMBO_SIZE_MAX);
 
             int sum = 0;
             // Let the user that the combo starts at this index
