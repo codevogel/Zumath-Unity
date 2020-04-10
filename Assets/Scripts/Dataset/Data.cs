@@ -15,19 +15,20 @@ namespace Assets.Scripts.Dataset
         public string question;
         public string didYouKnow;
         public string difficulty;
+        public string displayType;
         public string verification;
         public string comments;
-        public string answer;
+        public List<string> answer= new List<string>();
 
 
-        public bool Method1(ref string[] values, ref int i)
+        public bool Method1(ref string[] values, ref int i, ref string veld1, ref int x, ref int y)
         {
             for (; i < values.Length; i++)
             {
-                switch (i % 9)
+                switch ((i+x-y) % 10)
                 {
                     case 0:
-                        misionId = values[i];
+                        misionId = veld1;
                         break;
                     case 1:
                         id = values[i];
@@ -45,14 +46,26 @@ namespace Assets.Scripts.Dataset
                         difficulty = values[i];
                         break;
                     case 6:
-                        verification = values[i];
+                        displayType = values[i];
                         break;
                     case 7:
-                        comments = values[i];
+                        verification = values[i];
                         break;
                     case 8:
-                        answer = values[i];
-                        return true;
+                        comments = values[i];
+                        break;
+                    default:
+                        var temp0 = values[i];
+                        var temp1 = temp0.Split('\n');
+                        answer.Add(temp1[0].Trim());
+                        if (temp1.Length == 2)
+                        {
+                            veld1 = temp1[1];
+                            ++x;
+                            return true;
+                        }
+                        ++y;
+                        break;
                 }
             }
             return false;
