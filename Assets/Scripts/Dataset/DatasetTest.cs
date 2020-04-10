@@ -10,8 +10,8 @@ namespace Assets.Scripts.Dataset
 {
     class DatasetTest : MonoBehaviour
     {
-        List<string> listAll = new List<string>();
-        List<string> listQuestions = new List<string>();
+        public List<string> listAll = new List<string>();
+
 
         private void Start()
         {
@@ -22,13 +22,10 @@ namespace Assets.Scripts.Dataset
 
                 while (!reader.EndOfStream)
                 {
-                    var line = reader.ReadLine();
+                    var line = reader.ReadToEnd();
               
                     var values = line.Split(';');
-
-                    listQuestions.Add(values[3]);
-
-
+                    
                     foreach (string value in values)
                     {
                         listAll.Add(value);
@@ -43,7 +40,7 @@ namespace Assets.Scripts.Dataset
 
         private void Update()
         {
-          Read(listAll);
+          //Read(listAll);
         }
 
         public void Read(List<string> list)
