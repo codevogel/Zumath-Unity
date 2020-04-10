@@ -18,14 +18,14 @@ namespace Assets.Scripts.Dataset
         public string displayType;
         public string verification;
         public string comments;
-        public List<string> answer= new List<string>();
+        public List<string> answers= new List<string>();
 
 
-        public bool Method1(ref string[] values, ref int i, ref string veld1, ref int x, ref int y)
+        public bool Method1(ref string[] values, ref int i, ref string veld1, ref int indexModifier0, ref int indexModifier1)
         {
             for (; i < values.Length; i++)
             {
-                switch ((i+x-y) % 10)
+                switch ((i+indexModifier0-indexModifier1) % 10)
                 {
                     case 0:
                         misionId = veld1;
@@ -57,14 +57,14 @@ namespace Assets.Scripts.Dataset
                     default:
                         var temp0 = values[i];
                         var temp1 = temp0.Split('\n');
-                        answer.Add(temp1[0].Trim());
+                        answers.Add(temp1[0].Trim());
                         if (temp1.Length == 2)
                         {
                             veld1 = temp1[1];
-                            ++x;
+                            ++indexModifier0;
                             return true;
                         }
-                        ++y;
+                        ++indexModifier1;
                         break;
                 }
             }
