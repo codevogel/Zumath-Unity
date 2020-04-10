@@ -568,7 +568,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74be66fe90a6544bbb880020dc48884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  node: {fileID: 526200095876771218, guid: 4bb62fb8668fac147866a40a8d4ad8b4, type: 3}
+  nodePrefab: {fileID: 526200095876771218, guid: 4bb62fb8668fac147866a40a8d4ad8b4,
+    type: 3}
   parentTransform: {fileID: 2005120869}
 --- !u!4 &1306221667
 Transform:
