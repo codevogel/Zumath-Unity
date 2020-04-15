@@ -8,16 +8,21 @@ using UnityEngine;
 
 namespace Assets.Scripts.Dataset
 {
-    class DatasetTest : MonoBehaviour
+    class DataReader
     {
-        public string text;
-
-        public List<Data> questions = new List<Data>();
-
-
-        private void Start()
+        public DataReader()
         {
+            Init();
+        }
 
+        public void Init()
+        {
+            DataHolder.Init(Read());
+        }
+
+        private List<MissionData> Read()
+        {
+            List<MissionData> missionDatas= new List<MissionData>();
             using (StreamReader reader = new StreamReader(@"missions_plussommen_tot_100_export.csv"))
             {
                 string text = reader.ReadToEnd();
@@ -28,11 +33,15 @@ namespace Assets.Scripts.Dataset
                 int i = 0;
                 while (i < values.Length)
                 {
-                    Data data = new Data();
-                    if (data.Method1(ref values, ref i, ref missionId, ref indexModifier0, ref indexModifier1) && (i > 9))
-                        questions.Add(data);
+                    bool addToList;
+                    MissionData data = new MissionData(ref values, ref i, ref missionId, ref indexModifier0, ref indexModifier1, out addToList);
+                    if (addToList && (i > 9))
+                    {
+                        missionDatas.Add(data);
+                    }
                 }
             }
+            return missionDatas;
         }
 
 
