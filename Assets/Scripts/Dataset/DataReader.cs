@@ -29,12 +29,16 @@ namespace Assets.Scripts.Dataset
                 var values = text.Split(';');
                 string missionId = "";
                 int indexModifier0 = 0;
-                int indexModifier1 = 0;
+                //the i needs this modifier because the because not all lines are sepperated properly in the csv
+                //so this makes sure the switch in the constructor keeps putting all the data into the right properties.
+                int indexModifier1 = 0; 
+                //the i needs this modifier because of the the possibility for mulltiple answers
                 int i = 0;
                 while (i < values.Length)
                 {
                     bool addToList;
                     MissionData data = new MissionData(ref values, ref i, ref missionId, ref indexModifier0, ref indexModifier1, out addToList);
+                    //ref allows the program to store the changes to the variable
                     if (addToList && (i > 9))
                     {
                         missionDatas.Add(data);
