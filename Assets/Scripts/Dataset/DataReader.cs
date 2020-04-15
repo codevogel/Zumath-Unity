@@ -32,7 +32,7 @@ namespace Assets.Scripts.Dataset
                 //the i needs this modifier because the because not all lines are sepperated properly in the csv
                 //so this makes sure the switch in the constructor keeps putting all the data into the right properties.
                 int indexModifier1 = 0; 
-                //the i needs this modifier because of the the possibility for mulltiple answers
+                //the i needs this modifier because of the the possibility for mulltiple entries to one field
                 int i = 0;
                 while (i < values.Length)
                 {
