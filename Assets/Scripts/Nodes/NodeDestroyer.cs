@@ -20,7 +20,7 @@ namespace Nodes
                 if (!node.alive)
                 {
                     nodesToDestroy.Add(node);
-                    SoreCounter.AddScore();
+                    ScoreCounter.AddScore();
                 }
                 else
                 {

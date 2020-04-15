@@ -4,6 +4,8 @@ using States.Game;
 using UnityEngine;
 using TMPro;
 
+
+[RequireComponent(typeof(TextMeshProUGUI))]
 public class ScoreCounter : MonoBehaviour
 	{
 		static private TextMeshProUGUI textMesh;
