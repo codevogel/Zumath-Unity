@@ -11,7 +11,7 @@ namespace Assets.Scripts.Dataset
     {
         public DataReader dataReader;
 
-        public int randomId;
+        public string display;
 
         private void Start()
         {
@@ -20,7 +20,7 @@ namespace Assets.Scripts.Dataset
 
         private void Update()
         {
-            randomId = DataHolder.GetRandomMission().id; //for testing purposes
+            display = DataHolder.GetRandomMission().questionType; //for testing purposes
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Assets.Scripts.Dataset
         private static void Load(List<MissionData> missionDatas)
         {
             dataArray = new MissionData[missionDatas.Count];
-            for (int i =0; i< dataArray.Length; i++)
+            for (int i = 0; i < dataArray.Length; i++)
             {
                 dataArray[i] = missionDatas.ElementAt(i); //fils the array with all of the information from the list.
             }
@@ -24,14 +24,20 @@ namespace Assets.Scripts.Dataset
             Load(missionDatas);
             return true;
         }
-        
+
         //returns a random mission from the array.
         public static MissionData GetRandomMission()
         {
             int lowerBound = 0;
             int upperBound = dataArray.Length;
 
-            return dataArray[UnityEngine.Random.Range(lowerBound, upperBound)]; 
+            int index = UnityEngine.Random.Range(lowerBound, upperBound);
+            while (dataArray[index].questionType == "select")
+            {
+                index = UnityEngine.Random.Range(lowerBound, upperBound);
+            }
+
+            return dataArray[index];
         }
     }
 }
