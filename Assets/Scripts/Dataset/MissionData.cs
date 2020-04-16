@@ -72,13 +72,14 @@ namespace Assets.Scripts.Dataset
                         var temp1 = temp0.Split('\n'); //for when a question has multiple answers.
 
                         //This question type has the correct answer hidden in the did you know and this puts the correct answer on the first spot in the answers list
-                        if (questionType == "Fill in the blanks")
+                        if (questionType == "Fill in the blanks" && answers.Count==0)
                         {
                             var temp2 = didYouKnow.Split('=');
                             temp2[0] += "=";
                             temp2[0] += temp2[1];
                             temp2[0] += "=";
-                            answers.Add(new String (temp2[2].Where(c => char.IsDigit(c)).ToArray())); //makes sure the answer only contains numbers
+                            // makes sure the answer only contains numbers
+                            answers.Add(new String (temp2[2].Where(c => char.IsDigit(c)).ToArray())); 
                             didYouKnow = temp2[0];
                         }
 
