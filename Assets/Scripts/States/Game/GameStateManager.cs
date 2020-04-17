@@ -3,6 +3,7 @@ using Controllers;
 using References;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace States.Game
 {
@@ -20,6 +21,7 @@ namespace States.Game
         {
             prePauseGameState = currentGameState;
             currentGameState = GameState.PAUSED;
+            SceneManager.LoadScene(sceneName:"PauseScreen",LoadSceneMode.Additive);
         }
 
         public static void Unpause()
