@@ -12,7 +12,9 @@ namespace Assets.Scripts.Checkpoint
     {
         private TextMeshProUGUI textMesh;
 
-        public bool correct;
+        public string answer;
+
+
 
         private void Start()
         {
@@ -21,8 +23,7 @@ namespace Assets.Scripts.Checkpoint
 
         private void Update()
         {
-            correct = CheckpointManager.CheckAnswer();
-            CheckpointManager.SetAnswer(textMesh.GetParsedText());
+            answer = textMesh.GetParsedText();
         }
 
     }
