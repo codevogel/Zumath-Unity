@@ -12,6 +12,7 @@ namespace Assets.Scripts.Checkpoint
 
     {
         private static MissionData currentQuestion;
+        private static string answer = "";
 
         public static void Start()
         {
@@ -21,6 +22,16 @@ namespace Assets.Scripts.Checkpoint
         public static MissionData GetCurrentQuestion()
         {
             return currentQuestion;
+        }
+
+        public static bool CheckAnswer()
+        {
+            return answer.Equals(currentQuestion.answers[0]);
+        }
+
+        public static void SetAnswer(String answer)
+        {
+            CheckpointManager.answer = answer;
         }
 
         
