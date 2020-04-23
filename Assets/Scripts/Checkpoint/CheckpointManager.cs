@@ -26,9 +26,6 @@ namespace Assets.Scripts.Checkpoint
 
         public static bool CheckAnswer()
         {
-            int x=currentQuestion.answers[0].Length;
-            x = answer.Length;
-            //x = int.Parse(answer);
             return answer.Equals(currentQuestion.answers[0]);
         }
 

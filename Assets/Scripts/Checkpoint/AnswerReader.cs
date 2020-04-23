@@ -13,9 +13,6 @@ namespace Assets.Scripts.Checkpoint
         private TextMeshProUGUI textMesh;
         public bool correct;
         public string answer="";
-        public int integer = 0;
-        public int answerLength = 0;
-        public char c;
 
         private void Start()
         {
@@ -25,10 +22,8 @@ namespace Assets.Scripts.Checkpoint
         private void Update()
         {
             correct = CheckpointManager.CheckAnswer();
-            answer = textMesh.text.Trim((char)8203);
-            answerLength = answer.Length;
+            answer = textMesh.text.Trim((char)8203); //removes invisible character
             CheckpointManager.SetAnswer(answer);
-            //integer = int.Parse(answer)!=null ? int.Parse(answer) : -1 ;
         }
 
     }
