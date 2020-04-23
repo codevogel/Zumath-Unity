@@ -13,7 +13,7 @@ namespace Assets.Scripts.Dataset
 
         public string display;
 
-        private void Start()
+        private void Awake()
         {
             dataReader = new DataReader();
         }
