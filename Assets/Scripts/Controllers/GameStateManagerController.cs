@@ -12,6 +12,10 @@ namespace Controllers
             {
                 GameStateManager.Pause();
             }
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                GameStateManager.SwitchToCheckpoint();
+            }
         }
     }
 }
