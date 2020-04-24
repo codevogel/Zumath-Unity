@@ -10,9 +10,9 @@ namespace Assets.Scripts.Checkpoint
 {
     class CheckpointHandler : MonoBehaviour
     {
-        private void Start()
+        private void Awake()
         {
-            CheckpointManager.Start();
+            CheckpointManager.Awake();
         }
 
     }

@@ -14,7 +14,7 @@ namespace Assets.Scripts.Checkpoint
         private static MissionData currentQuestion;
         private static string answer = "";
 
-        public static void Start()
+        public static void Awake()
         {
                 currentQuestion = DataHolder.GetRandomMission();
         }
@@ -33,7 +33,6 @@ namespace Assets.Scripts.Checkpoint
         {
             CheckpointManager.answer = answer;
         }
-
         
     }
 }

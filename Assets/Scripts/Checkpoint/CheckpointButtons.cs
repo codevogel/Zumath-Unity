@@ -11,7 +11,13 @@ namespace Assets.Scripts.Checkpoint
     {
         public void CheckButtonPressed()
         {
+            TextFieldEditableManager.SetUneditable();
+            DisplayResult.SetShouldDisplayTrue();
 
+            if (CheckpointManager.CheckAnswer())
+            {
+                
+            }
         }
     }
 }
