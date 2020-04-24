@@ -69,6 +69,7 @@ namespace States.Game
 
         public static void SwitchToWon()
         {
+            ScoreAdd.AddEndLevelScore();
             SetGameState(GameState.WON);
         }
     }

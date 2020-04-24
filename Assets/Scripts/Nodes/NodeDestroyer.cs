@@ -20,7 +20,7 @@ namespace Nodes
                 if (!node.alive)
                 {
                     nodesToDestroy.Add(node);
-                    ScoreCounter.AddScore();
+                    ScoreAdd.AddScore(10);
                 }
                 else
                 {
@@ -34,6 +34,7 @@ namespace Nodes
 
             foreach (NumberNode node in nodesToDestroy)
             {
+                ScoreAdd.SetFurthestDistanceTravelled(node.pathFollower.distanceTravelled);
                 NodeManager.RemoveNode(node);
                 Destroy(node.gameObject);
             }
