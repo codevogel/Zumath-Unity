@@ -19,7 +19,7 @@ namespace Assets.Scripts.Checkpoint
 
         void Update()
         {
-            textMesh.SetText(CheckpointManager.GetCurrentQuestion().question+"\n"+ CheckpointManager.GetCurrentQuestion().didYouKnow);
+            textMesh.SetText(CheckpointManager.GetCurrentQuestion().question);//+"\n"+ CheckpointManager.GetCurrentQuestion().didYouKnow);
         }
     }
 }

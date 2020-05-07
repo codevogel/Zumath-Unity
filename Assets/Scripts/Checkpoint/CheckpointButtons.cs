@@ -33,7 +33,7 @@ namespace Assets.Scripts.Checkpoint
             if (timeStamp < Time.time && submitted)
             {
                 GameStateManager.Unpause();
-                SceneManager.UnloadSceneAsync(sceneName: "CheckPoint");
+                SceneManager.UnloadSceneAsync(sceneName: "Checkpoint");
             }
         }
     }
