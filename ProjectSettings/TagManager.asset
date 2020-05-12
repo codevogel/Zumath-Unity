@@ -8,6 +8,7 @@ TagManager:
   - NodeDestroyer
   - Canon
   - NodeSpawner
+  - Health
   layers:
   - Default
   - TransparentFX

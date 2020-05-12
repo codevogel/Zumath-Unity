@@ -18,6 +18,7 @@ namespace States.Game
         CHECKPOINT,
         // TODO: Game is in pause menu
         PAUSED,
-        WON
+        WON,
+        GAMEOVER
     }
 }

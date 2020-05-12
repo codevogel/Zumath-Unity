@@ -1,0 +1,57 @@
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Collections;
+using References;
+using States.Game;
+using Nodes;
+using Assets.Scripts.DevTools;
+
+namespace Controllers
+{
+    public class HealthController : MonoBehaviour
+    {
+        private static float AMOUNT_OF_HEALTH = 3f;
+        private static float DAMAGE_PER_DESTROYED_NODE = 0.5f;
+
+        private HealthAdjuster healthAdjuster;
+
+        private void Awake()
+        {
+            gameObject.tag = Tags.HEALTH;
+            healthAdjuster = GameObject.FindGameObjectWithTag(Tags.HEALTH).GetComponent<HealthAdjuster>();
+        }
+
+        public static void SetAmountOfHealth(float health)
+        {
+            AMOUNT_OF_HEALTH = health;
+        }
+
+        public static void SetDamagePerDestroyedNode(float damage)
+        {
+            DAMAGE_PER_DESTROYED_NODE = damage;
+        }
+        
+        public void RemoveLife()
+        {
+            AMOUNT_OF_HEALTH -= DAMAGE_PER_DESTROYED_NODE;
+
+            if (AMOUNT_OF_HEALTH <= 0)
+            {
+                Debug.Log("Out of health. Game over.");
+                GameStateManager.SwitchToGameover();
+                return;
+            }
+
+            healthAdjuster.UpdateHealth();
+        }
+
+        void Update()
+        {
+            if (GameStateManager.GetGameState() != GameState.PAUSED)
+            {
+                
+            }
+        }
+    }
+}

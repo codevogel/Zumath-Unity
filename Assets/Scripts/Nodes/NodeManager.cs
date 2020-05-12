@@ -98,12 +98,15 @@ namespace Nodes
 
         public static void Update()
         {
-            switch(GameStateManager.GetGameState())
-            {
+
+            switch (GameStateManager.GetGameState())
+            { 
                 case GameState.PREINSERTION:
+                    nodeDestroyer.DestroyDeadNodes();
                     MoveNodesForward();
                     return;
                 case GameState.SHOOTING:
+                    nodeDestroyer.DestroyDeadNodes();
                     MoveNodesForward();
                     return;
                 case GameState.DISPERSING:
@@ -117,6 +120,8 @@ namespace Nodes
                     }
                     return;
                 case GameState.WON:
+                    return;
+                case GameState.GAMEOVER:
                     return;
                 default:
                     throw new NotImplementedException();

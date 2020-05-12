@@ -71,5 +71,10 @@ namespace States.Game
         {
             SetGameState(GameState.WON);
         }
+
+        public static void SwitchToGameover()
+        {
+            SetGameState(GameState.GAMEOVER);
+        }
     }
 }

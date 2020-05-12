@@ -7,5 +7,6 @@ namespace References
         public const string NODE_DESTROYER = "NodeDestroyer";
         public const string GUTTER = "Gutter";
         public const string NODE_SPAWNER = "NodeSpawner";
+        public const string HEALTH = "Health";
     }
 }

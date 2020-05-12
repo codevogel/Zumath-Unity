@@ -34,6 +34,9 @@ namespace DevTools
                 case GameState.WON:
                     currentGameState = "Won";
                     return;
+                case GameState.GAMEOVER:
+                    currentGameState = "Gameover";
+                    return;
                 default:
                     currentGameState = "Unknown";
                     return;
