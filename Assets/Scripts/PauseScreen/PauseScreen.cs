@@ -13,8 +13,9 @@ namespace Assets.Scripts.PauseScreen
     {
         public void ResumeButtonPressed()
         {
-            SceneManager.UnloadScene(sceneName: "PauseScreen");
             GameStateManager.Unpause();
+            SceneManager.UnloadSceneAsync(sceneName: "PauseScreen");
+
         }
 
         public void SettingsButtonPressed()

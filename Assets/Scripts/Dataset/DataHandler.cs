@@ -13,10 +13,11 @@ namespace Assets.Scripts.Dataset
 
         public string display;
 
-        private void Start()
+        public DataHandler()
         {
             dataReader = new DataReader();
         }
+        
 
         private void Update()
         {

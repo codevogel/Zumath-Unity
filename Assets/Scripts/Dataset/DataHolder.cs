@@ -34,7 +34,7 @@ namespace Assets.Scripts.Dataset
             int index = UnityEngine.Random.Range(lowerBound, upperBound);
 
             //the select questiontype requires pictures that we don't have
-            while (dataArray[index].questionType == "select")
+            while (dataArray[index].questionType == "select" || dataArray[index].questionType == "Fill in the blanks")
             {
                 index = UnityEngine.Random.Range(lowerBound, upperBound); //this sure a select is never returned from this method.
             }

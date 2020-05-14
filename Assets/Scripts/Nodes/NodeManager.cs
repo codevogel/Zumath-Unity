@@ -98,7 +98,7 @@ namespace Nodes
 
         public static void Update()
         {
-            switch(GameStateManager.GetGameState())
+            switch (GameStateManager.GetGameState())
             {
                 case GameState.PREINSERTION:
                     MoveNodesForward();
@@ -119,6 +119,8 @@ namespace Nodes
                 case GameState.WON:
                     return;
                 case GameState.PAUSED:
+                    return;
+                case GameState.CHECKPOINT:
                     return;
                 default:
                     throw new NotImplementedException();
@@ -243,7 +245,7 @@ namespace Nodes
             }
 
             GetValidTarget();
-            
+
 
             newlyInsertedNode = null;
             GameStateManager.SwitchToResetting();
