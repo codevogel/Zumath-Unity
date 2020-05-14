@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Audio
 {
-    class CannonAudio : AudioPlayer
+    class CannonAudio : BaseAudioPlayer
     {
-        private bool hasPlayed;
 
         private void Update()
         {

@@ -1,24 +1,31 @@
-﻿using System;
+﻿using States.Game;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnityEngine;
 
 namespace Assets.Scripts.Audio
 {
-    class AudioPlayer : MonoBehaviour
+    public class AudioPlayer : BaseAudioPlayer
     {
-        public AudioSource audio;
-        
+        private bool shouldPlay;
 
-        public void play()
+        public bool ShouldPlay { get => shouldPlay; set => shouldPlay = value; }
+
+        private void Update()
         {
-            if (!audio.isPlaying)
+            if (shouldPlay && !hasPlayed)
             {
-                audio.Play();
+                play();
+                hasPlayed = true;
+                shouldPlay = false;
+            }
+            if (!shouldPlay)
+            {
+                hasPlayed = false;
             }
         }
-        
+
     }
 }
