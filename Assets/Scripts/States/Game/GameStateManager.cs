@@ -3,6 +3,7 @@ using Controllers;
 using References;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace States.Game
 {
@@ -18,8 +19,13 @@ namespace States.Game
 
         public static void Pause()
         {
+            if (currentGameState == GameState.PAUSED)
+            {
+                return;
+            }
             prePauseGameState = currentGameState;
             currentGameState = GameState.PAUSED;
+            SceneManager.LoadScene(sceneName: "PauseScreen", LoadSceneMode.Additive);
         }
 
         public static void Unpause()
@@ -69,12 +75,15 @@ namespace States.Game
 
         public static void SwitchToWon()
         {
+            ScoreAdd.AddEndLevelScore();
             SetGameState(GameState.WON);
         }
 
-        public static void SwitchToGameover()
+        public static void SwitchToCheckpoint()
         {
-            SetGameState(GameState.GAMEOVER);
+            prePauseGameState = currentGameState;
+            SetGameState(GameState.CHECKPOINT);
+            SceneManager.LoadScene(sceneName: "Checkpoint", LoadSceneMode.Additive);
         }
     }
 }

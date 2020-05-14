@@ -24,7 +24,7 @@ namespace Controllers
         // Update is called once per frame
         void Update()
         {
-            if (GameStateManager.GetGameState() != GameState.PAUSED)
+            if (GameStateManager.GetGameState() != GameState.PAUSED && GameStateManager.GetGameState() != GameState.CHECKPOINT)
             {
                 // Rotate transform towards mouse position
                 Vector3 mousePos = Input.mousePosition;
