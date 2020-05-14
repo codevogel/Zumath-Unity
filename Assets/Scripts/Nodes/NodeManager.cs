@@ -307,6 +307,12 @@ namespace Nodes
         {
             return nextBallValue;
         }
+
+        public static float GetPathLength()
+        {
+            return numberList.numberArray[0].pathFollower.pathCreator.path.length;
+        }
+
     }
 }
 
