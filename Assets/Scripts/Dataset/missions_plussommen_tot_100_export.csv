@@ -1,0 +1,222 @@
+mission_id;id;Question type;Question;Did you know?;Difficulty level;Display type;Verification status;Comments;Answers
+6482;49873;open;"Reken uit.
+
+85 + 2 = ...";"Je weet: 5 + 2 = 7
+
+Dan weet je ook 85 + 2!
+Dat is 80 meer!";1;Standard;verified;;87
+6482;49872;open;"Reken uit.
+
+42 + 5 = ...";"Je weet: 2 + 5 = 7
+
+Dan weet je ook 42 + 5!
+Het is 40 meer!";1;Standard;verified;;47
+6482;49871;open;"Reken uit.
+
+36 + 3 = ...";"Je weet: 6 + 3 = 9
+
+Dan weet je ook 36 + 3!
+Het is 30 meer!";1;Standard;verified;;39
+6482;49877;open;"Vul in:
+
+3 + 3 = 6, dus:
+33 + 3 = ...";3 + 3 is een hulpsom van 33 + 3.;1;Standard;verified;;36
+6482;49878;open;"Vul in:
+
+4 + 5 = 9, dus:
+94 + 5 = ...";"Je weet: 4 + 5 = 9
+
+9 + 90 = 99";1;Standard;verified;;99
+6482;94544;Fill in the blanks;Vul het goede antwoord in.;"1 + 7 = 8
+
+Dus:
+
+61 + 7 = 68";1;Standard;verified;;67;76;66
+6482;94545;Fill in the blanks;Vul het goede antwoord in.;"3 + 4 = 7
+
+Dus:
+
+53 + 4 = 57";1;Standard;verified;;60;59;55
+6482;94546;select;"Kies het goede antwoord.
+
+97 + 3 = ...";"7 + 3 = 10 
+
+Dus:
+
+97 + 3 = 100";1;Catapult cans;verified;;94;99;100;103
+6482;49881;open;"Dienke heeft 24 euro.
+Ze krijgt er 4 euro bij.
+
+Dat is samen ... euro.";"4 + 4 = 8, dus:
+
+24 + 4 = 28";1;Standard;verified;;28;28 euro;28euro;€28;€ 28;€28,00;€ 28,00
+6482;49882;open;"Lex heeft 20 euro.
+Hij krijgt er 50 euro bij.
+
+Dat is samen ... euro.";"2 + 5 = 7, dus:
+
+20 + 50 = 70
+
+10 keer zoveel!";1;Standard;verified;;70;70 euro;70euro;€70;€ 70;€70,00;€ 70,00
+6482;49885;select;"40 + 30 = 70
+
+Hoeveel is 43 + 30?
+
+";"40 + 30 = 70
+70 + 3 = 73
+";2;Standard;verified;;73;64;63;74
+6482;49890;select;"40 + 30 = 70
+
+Hoeveel is 43 + 36?
+
+";"40 + 30 = 70
+3 + 6 = 9
+
+70 + 9 = 79
+";2;Standard;verified;;70;79;73;76
+6482;49936;open;"Lina heeft 47 dierenplaatjes.
+Tijl heeft er 30.
+
+Hoeveel is dat samen?";"Tel eerst de tientallen bij elkaar.
+Dan de eenheden. Zo:
+
+40 + 30 = 70
+70 + 7 = 77";2;Standard;verified;;77;77 dierenplaatjes
+6482;49932;select;"20 + 30 = 50
+
+Hoeveel is 24 + 30?
+
+";"20 + 30 = 50
+Dus: 24 + 30 = 54
+
+Want het is 4 meer.
+";2;Standard;verified;;54;50;27;72
+6482;49933;open;"20 + 30 = 50
+
+Hoeveel is 27 + 32?
+
+";"Tel eerst de tientallen bij elkaar.
+Tel dan de eenheden bij elkaar.
+Tel ze dan samen.
+
+20 + 30 = 50
+7 + 2 = 9
+
+50 + 9 = 59";2;Standard;verified;;59
+6482;49937;open;"Reken uit.
+Gebruik de getallenlijn.
+
+26 + 47 = ...
+";"26 + 40 = 66
+Splits 7 en reken eerst tot het tiental:
+66 + 4 = 70
+70 + 3 = 73";2;Standard;verified;;73
+6482;49938;open;"Reken uit.
+Gebruik de getallenlijn.
+
+68 + 25 = ...
+";"68 + 20 = 88
+Splits 5 en reken eerst tot het tiental:
+88 + 2 = 90
+90 + 3 = 93
+
+
+
+";2;Standard;verified;;93
+6482;24239;select;"Kijk naar het plaatje. 
+
+Is de som goed of fout?";"Reken de som in stapjes uit. Bijvoorbeeld:
+
+22 + 10 = 32
+
+32 + 2 = 34
+
+De som van Q is dus fout.";2;Standard;verified;;goed;fout
+6482;24237;select;"Kijk naar het plaatje. 
+
+Is de som goed of fout?";"Reken de som in stapjes uit. Bijvoorbeeld: 
+
+15 + 10 = 25
+
+25 + 2 = 27
+
+De som van Q is dus fout.";2;Standard;verified;;goed;fout
+6482;94548;select;"Kies het goede antwoord.
+
+16 + 37 = ...";"Tel bijvoorbeeld eerst de tientallen erbij.
+Splits de eenheden, zodat je tot het tiental kunt rekenen.
+
+16 + 30 = 46
+46 + 4 = 50
+50 + 3 = 53";3;Catapult cans;verified;;52;43;54;53
+6482;24219;select;"Kijk naar het plaatje.
+
+Wat hoort er op de lege plek?";"Je kunt hier een min-som van maken. 
+
+23 - 10 = 13
+
+10 + 13 = 23";3;Standard;verified;;13;12;11;10
+6482;24231;select;"Kijk naar het plaatje.
+
+Wat hoort er op de lege plek?";"Je kunt hier een min-som van maken. 
+
+37 - 21 = 16 (37 - 20 = 17, 17 - 1 = 16)
+
+21 + 16 = 37";3;Standard;verified;;15;16;17;18
+6482;94550;Fill in the blanks;Kijk naar het plaatje en vul in. ;"Reken de som uit in stapjes. Bijvoorbeeld:
+
+45 + 10 = 55
+
+55 + 2 = 57";3;Standard;verified;;75;55;67
+6482;94551;Fill in the blanks;Kijk naar het plaatje en vul in. ;"Reken de som in stapjes uit. Bijvoorbeeld:
+
+61 + 20 = 81
+
+81 + 4 = 85";3;Standard;verified;;58;86;81
+6482;49934;select;"Karim heeft 72 voetbalplaatjes.
+Sem heeft er 23.
+
+Hoeveel is dat samen?";"Doe het bijvoorbeeld zo:
+
+70 + 20 = 90
+2 + 3 = 5
+
+90 + 5 = 95";3;Standard;verified;fb;95;85;94;87
+6482;49935;select;"Lotte heeft 58 dierenplaatjes.
+Fem heeft er 33.
+
+Hoeveel is dat samen?";"Tel bijvoorbeeld eerst de tientallen samen.
+Dan de eenheden. Zo:
+
+50 + 30 = 80
+8 + 3 = 11
+
+80 + 11 = 91";3;Standard;verified;fb;91;88;83;93
+6482;24723;select;"Joep heeft 23 euro. Tessa heeft 35 euro. Jop heeft 22 euro. 
+
+Hoeveel hebben ze samen?";"Reken de som handig uit.
+
+Bijvoorbeeld: 
+23 + 22 = 45 euro
+45 + 35 = 80 euro";3;Standard;verified;fb;80 euro;75 euro;90 euro;85 euro
+6482;49941;select;"Kijk op het plaatje. 
+
+Hoeveel zijn alle getallen samen?";"Neem eerst 14 + 16 samen.
+Dat is een mooi rond getal! 
+
+14 + 16 = 30
+30 + 50 = 80
+80 + 7 = 87";3;Standard;verified;;87;86;77;79
+6482;49940;select;"Kijk op het plaatje. 
+
+Hoeveel zijn alle getallen samen?";"Reken handig: 
+
+23 + 17 = 40
+40 + 46 = 86
+";3;Standard;verified;plaatje;86;83;79;76
+6482;49948;select;Hoeveel euro zit er in alle zakken samen?;"Kijk goed wat je handig op kunt tellen:
+
+25 + 25 = 50
+30 + 14 = 44
+
+50 + 44 = 94";3;Standard;verified;;94;80;84;99

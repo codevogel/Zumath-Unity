@@ -118,6 +118,8 @@ namespace Nodes
                     return;
                 case GameState.WON:
                     return;
+                case GameState.PAUSED:
+                    return;
                 default:
                     throw new NotImplementedException();
             }

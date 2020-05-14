@@ -8,14 +8,6 @@ namespace Controllers
     {
         void Update()
         {
-            if (GameStateManager.GetGameState() == GameState.PAUSED)
-            {
-                if (Input.GetKeyDown(KeyCode.Y))
-                {
-                    GameStateManager.Unpause();
-                }
-                return;
-            }
             if (Input.GetKeyDown(KeyCode.T))
             {
                 GameStateManager.Pause();
