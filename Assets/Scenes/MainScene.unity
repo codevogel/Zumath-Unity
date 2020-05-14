@@ -714,6 +714,7 @@ GameObject:
   - component: {fileID: 1306221667}
   - component: {fileID: 1306221666}
   - component: {fileID: 1306221668}
+  - component: {fileID: 1306221669}
   m_Layer: 0
   m_Name: Canon
   m_TagString: Untagged
@@ -766,6 +767,21 @@ MonoBehaviour:
   numberNodePrefab: {fileID: 526200095876771218, guid: 4bb62fb8668fac147866a40a8d4ad8b4,
     type: 3}
   numberNode: {fileID: 0}
+--- !u!114 &1306221669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306221665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e34fac5abe6954e9b9fd821ab6dea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cannonTransform: {fileID: 1306221667}
+  cannonMod: 0
+  mininumTracerLength: 50
 --- !u!1 &1437137735
 GameObject:
   m_ObjectHideFlags: 0
