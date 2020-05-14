@@ -58,6 +58,11 @@ namespace States.Game
             SetGameState(GameState.PREINSERTION);
         }
 
+        public static void SwitchToGameover()
+        {
+            SetGameState(GameState.GAMEOVER);
+        }
+
         public static void SwitchToPaused()
         {
             Pause();
