@@ -98,7 +98,7 @@ namespace Nodes
 
         public static void Update()
         {
-            switch(GameStateManager.GetGameState())
+            switch (GameStateManager.GetGameState())
             {
                 case GameState.PREINSERTION:
                     MoveNodesForward();
@@ -117,6 +117,10 @@ namespace Nodes
                     }
                     return;
                 case GameState.WON:
+                    return;
+                case GameState.PAUSED:
+                    return;
+                case GameState.CHECKPOINT:
                     return;
                 default:
                     throw new NotImplementedException();
@@ -241,7 +245,7 @@ namespace Nodes
             }
 
             GetValidTarget();
-            
+
 
             newlyInsertedNode = null;
             GameStateManager.SwitchToResetting();
@@ -303,6 +307,12 @@ namespace Nodes
         {
             return nextBallValue;
         }
+
+        public static float GetPathLength()
+        {
+            return numberList.numberArray[0].pathFollower.pathCreator.path.length;
+        }
+
     }
 }
 
