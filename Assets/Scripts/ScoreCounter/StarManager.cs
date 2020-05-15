@@ -4,37 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.ScoreCounter
 {
     class StarManager : MonoBehaviour
     {
+        public Image OneStar, TwoStar, ThreeStar;
+
         void Start()
         {
-            Star.Start();            
+            OneStar.enabled = false;
+            TwoStar.enabled = false;
+            ThreeStar.enabled = false;         
         }
 
         void Update()
         {
-            if (ScoreAdd.score >= 1000 && ScoreAdd.score < 2000)
+            if (ScoreAdd.score >= 1000)
             {
-                starOne.enabled = true;
-                oneStarEnabled = true;
+                OneStar.enabled = true;
             }
-            else if (ScoreAdd.score >= 2000 && ScoreAdd.score < 3000)
+            if (ScoreAdd.score >= 2000)
             {
-                starTwo.enabled = true;
-                twoStarEnabled = true;
+                TwoStar.enabled = true;
             }
 
-            else if (ScoreAdd.score >= 3000)
+            if (ScoreAdd.score >= 3000)
             {
-                starThree.enabled = true;
-                threeStarEnabled = true;
+                ThreeStar.enabled = true;
             }
         }
-
-
     }
-
 }
