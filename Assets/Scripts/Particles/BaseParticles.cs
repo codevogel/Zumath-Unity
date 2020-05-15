@@ -11,11 +11,12 @@ namespace Assets.Scripts.Particles
     {
         public ParticleSystem particle;
         protected bool hasEmitted;
+        protected const int EMIT = 50;
 
         protected void EmitParticles()
         {
             hasEmitted = true;
-            particle.Emit(1);
+            particle.Emit(EMIT);
         }
     }
 }
