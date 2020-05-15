@@ -13,6 +13,7 @@ namespace Assets.Scripts.Particles
 
         private void Update()
         {
+            //This only happends when a ball is shot
             if (GameStateManager.GetGameState() == GameState.SHOOTING)
             {
                 if (!hasEmitted)
@@ -22,6 +23,7 @@ namespace Assets.Scripts.Particles
             }
             else
             {
+                //resets the hasEmmited for the next time the cannon fires.
                 hasEmitted = false;
             }
             

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Controllers;
+using Assets.Scripts.Particles;
 
 namespace Nodes
 {
@@ -24,6 +25,7 @@ namespace Nodes
                 if (!node.alive)
                 {
                     nodesToDestroy.Add(node);
+                    ParticlesList.Add(node.transform.position); 
                     ScoreAdd.AddScore(10);
                 }
                 else
