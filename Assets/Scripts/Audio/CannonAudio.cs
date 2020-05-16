@@ -12,6 +12,7 @@ namespace Assets.Scripts.Audio
 
         private void Update()
         {
+            //only happens when the ball has been shot
             if (GameStateManager.GetGameState() == GameState.SHOOTING && !hasPlayed)
             {
                 play();
