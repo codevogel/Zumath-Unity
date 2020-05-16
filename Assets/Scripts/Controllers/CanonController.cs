@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts;
+using Assets.Scripts.Particles;
 using MathLists;
 using Nodes;
 using References;
@@ -15,6 +16,7 @@ namespace Controllers
         public GameObject nodePrefab;
         public Transform parentTransform;
         private NumberNode newNode;
+        public NodeInTransitParticles particles;
 
         private void Awake()
         {
@@ -60,6 +62,7 @@ namespace Controllers
                 newNode.SetState(NodeState.PROJECTILE);
                 int ballValue = NodeManager.GetNextBallValue();
                 newNode.SetValue(ballValue);
+                particles.setNode(newNode);
                 GameStateManager.SwitchToShooting();
             }
         }

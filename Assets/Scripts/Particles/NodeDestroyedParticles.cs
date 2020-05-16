@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Particles
 {
-    class NodeParticles : BaseParticles
+    class NodeDestroyedParticles : BaseParticles
     {
         private float timeStamp;
         private const float PARTICLE_COOLDOWN = 0.8f;
