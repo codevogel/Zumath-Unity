@@ -11,7 +11,6 @@ namespace Assets.Scripts
     {
         private LineRenderer directionLine;
         public Transform cannonTransform;
-        public float cannonMod = 0;
         public float mininumTracerLength = 50f;
 
         private const float lineWidth = 0.1f;
@@ -22,7 +21,6 @@ namespace Assets.Scripts
             directionLine.startWidth = lineWidth;
             directionLine.endWidth = lineWidth;
             directionLine.positionCount = 3;
-            cannonMod = cannonTransform.TransformPoint(Vector3.zero).y;
         }
 
         private void Update()
@@ -36,7 +34,7 @@ namespace Assets.Scripts
             float x = actualMousePosition.x - cannonPosition.x;
             float y = actualMousePosition.y - cannonPosition.y;
 
-            while (extendedLine.magnitude < mininumTracerLength)
+            while (extendedLine.magnitude < mininumTracerLength) //causes the line to  extend while keeping the angle correct.
             {
                 extendedLine.x += x;
                 extendedLine.y += y;
