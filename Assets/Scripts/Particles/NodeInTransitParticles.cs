@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.Particles
 {
@@ -15,14 +16,17 @@ namespace Assets.Scripts.Particles
 
         private void Update()
         {
-            if (node != null)
-            {
-                transform.position = node.transform.position;
-            }
+            transform.position = getNodePosition();
             if (GameStateManager.GetGameState() == GameState.SHOOTING)
             {
-                    EmitParticles(STANDARD_AMOUNT_OF_PARTICLES);
+                EmitParticles(STANDARD_AMOUNT_OF_PARTICLES);
             }
+        }
+
+       // returns the position of node if node is not null.
+        private Vector3 getNodePosition()
+        {
+            return node != null ? node.transform.position : transform.position;
         }
 
         public void setNode(NumberNode node)
