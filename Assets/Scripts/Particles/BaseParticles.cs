@@ -11,7 +11,7 @@ namespace Assets.Scripts.Particles
     {
         public ParticleSystem particle;
         protected bool hasEmitted;
-        protected const int STANDARD_AMOUNT_OF_PARTICLES = 50;
+        private const int STANDARD_AMOUNT_OF_PARTICLES = 50;
 
         //Causes the connected particle sytem to emit particles stops particles from constantly spawning.
         protected void EmitParticles(int amountOfParticles = STANDARD_AMOUNT_OF_PARTICLES)

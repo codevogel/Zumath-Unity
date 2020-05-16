@@ -11,7 +11,7 @@ namespace Assets.Scripts.Particles
     public static class ParticlesList
     {
 
-        private static List<Vector3> positions;
+        private static List<Vector3> positions = new List<Vector3>();
 
         //adds 1 or more positions to the particle list
         public static void Add(params Vector3[] positions)
@@ -28,7 +28,7 @@ namespace Assets.Scripts.Particles
         {
             if (positions.Count() > 0)
             {
-                position = positions[0];
+                position = positions.ElementAt(0);
                 positions.Remove(position);
                 return true;
             }

@@ -10,7 +10,8 @@ namespace Assets.Scripts.Particles
     class NodeParticles : BaseParticles
     {
         private float timeStamp;
-        private const float PARTICLE_COOLDOWN = 0.1f;
+        private const float PARTICLE_COOLDOWN = 0.8f;
+        private const int STANDARD_AMOUNT_OF_PARTICLES = 20;
 
 
         //checks if more nodes should spawn particles if no particles have been spawned in the amount of time it takes for the particles to be spawned.
@@ -21,7 +22,7 @@ namespace Assets.Scripts.Particles
                 if (ParticlesList.ShouldEmit(out Vector3 position))
                 {
                     particle.transform.position = position;
-                    EmitParticles();
+                    EmitParticles(STANDARD_AMOUNT_OF_PARTICLES);
                     timeStamp = Time.time + PARTICLE_COOLDOWN;
                 }
             }
