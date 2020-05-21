@@ -13,7 +13,7 @@ namespace Assets.Scripts.ScoreCounter
         public Image OneStar, TwoStar, ThreeStar;
 
         void Start()
-        {
+        { 
             OneStar.enabled = false;
             TwoStar.enabled = false;
             ThreeStar.enabled = false;         
