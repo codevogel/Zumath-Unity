@@ -12,7 +12,8 @@ public static class ScoreAdd
     static float distanceTravelled;
     static float pathLength;
 
-    static public void Start()
+
+    public static void Start()
     {
         score = 0;
 
@@ -38,6 +39,11 @@ public static class ScoreAdd
         AddScore((int)t);
     }
 
+    static public void AddCheckpointScore()
+    {
+        float c = 1000;
+        AddScore((int)c);
+    }
 }
 
 

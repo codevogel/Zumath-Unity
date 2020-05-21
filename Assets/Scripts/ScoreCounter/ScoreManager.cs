@@ -12,6 +12,7 @@ namespace Assets.Scripts.ScoreCounter
     class ScoreManager : MonoBehaviour
     {
         private TextMeshProUGUI textMesh;
+
         void Start()
         {
             ScoreAdd.Start();
