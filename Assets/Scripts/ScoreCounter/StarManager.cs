@@ -21,16 +21,17 @@ namespace Assets.Scripts.ScoreCounter
 
         void Update()
         {
-            if (ScoreAdd.score >= 1000)
+            if (ScoreAdd.score >= 50)
             {
                 OneStar.enabled = true;
             }
-            if (ScoreAdd.score >= 2000)
+
+            if (ScoreAdd.score >= 100)
             {
                 TwoStar.enabled = true;
             }
 
-            if (ScoreAdd.score >= 3000)
+            if (ScoreAdd.score >= 200)
             {
                 ThreeStar.enabled = true;
             }
