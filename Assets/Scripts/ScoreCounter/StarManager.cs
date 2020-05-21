@@ -10,7 +10,7 @@ namespace Assets.Scripts.ScoreCounter
 {
     class StarManager : MonoBehaviour
     {
-        public Image OneStar, TwoStar, ThreeStar;
+        public Image OneStar = null, TwoStar = null, ThreeStar = null;
 
         void Start()
         {
