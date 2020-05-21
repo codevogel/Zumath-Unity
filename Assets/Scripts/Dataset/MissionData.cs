@@ -36,6 +36,7 @@ namespace Assets.Scripts.Dataset
                         }
                         catch (Exception e)
                         {
+                            Console.WriteLine("ERROR IN MISSIONDATA.CS: " + e.Message);
                             addToList = false; //sometimes a csv file contains null here and then we don't want to add it to a list.
                         }
                         break;
