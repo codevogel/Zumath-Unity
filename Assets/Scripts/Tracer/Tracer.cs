@@ -11,7 +11,7 @@ namespace Assets.Scripts
     class Tracer : MonoBehaviour
     {
         private LineRenderer directionLine;
-        public Transform cannonTransform;
+        public Transform cannonTransform = null;
         public float mininumTracerLength = 50f;
 
         private const float lineWidth = 0.1f;

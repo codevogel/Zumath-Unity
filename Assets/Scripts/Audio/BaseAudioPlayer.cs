@@ -9,7 +9,7 @@ namespace Assets.Scripts.Audio
 {
     public abstract class BaseAudioPlayer : MonoBehaviour
     {
-        public AudioSource audio;
+        public new AudioSource audio;
         protected bool hasPlayed;
 
 

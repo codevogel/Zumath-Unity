@@ -14,7 +14,7 @@ namespace Assets.Scripts.Checkpoint
     class CheckpointCollider : MonoBehaviour
     {
         private bool hasTriggered;
-        public CheckpointDevTool devTool;
+        public CheckpointDevTool devTool = null;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
