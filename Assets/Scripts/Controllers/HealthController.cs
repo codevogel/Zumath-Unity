@@ -6,6 +6,7 @@ using References;
 using States.Game;
 using Nodes;
 using Assets.Scripts.DevTools;
+using Assets.Scripts.Audio;
 
 namespace Controllers
 {
@@ -15,6 +16,7 @@ namespace Controllers
         private static float DAMAGE_PER_DESTROYED_NODE = 0.5f;
 
         private HealthAdjuster healthAdjuster;
+        public AudioPlayer damageAudio,deathAudio;
 
         private void Awake()
         {
@@ -34,15 +36,17 @@ namespace Controllers
         
         public void RemoveLife()
         {
+            
             AMOUNT_OF_HEALTH -= DAMAGE_PER_DESTROYED_NODE;
 
             if (AMOUNT_OF_HEALTH <= 0)
             {
+                deathAudio.ShouldPlay = true;
                 Debug.Log("Out of health. Game over.");
                 GameStateManager.SwitchToGameover();
                 return;
             }
-
+            damageAudio.ShouldPlay = true;
             healthAdjuster.UpdateHealth();
         }
 
