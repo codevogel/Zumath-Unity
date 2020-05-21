@@ -10,12 +10,12 @@ namespace MathLists
     public class ShortList
     {
 
-        public NumberNode[] array;
+        public NumberNode[] nodeArray;
         public int startIndex;
 
         public ShortList(NumberNode[] nodeArray, int startIndex)
         {
-            this.array = nodeArray;
+            this.nodeArray = nodeArray;
             this.startIndex = startIndex;
         }
 
