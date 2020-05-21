@@ -72,7 +72,7 @@ namespace MathLists
              * the shorter array with numbers that can.
              */
             ShortList shortList = FindShortList(startIndex, target);
-            NumberNode[] shortArray = shortList.array;
+            NumberNode[] shortArray = shortList.nodeArray;
 
             // Set the index to start counting from for counting towards
             // left and counting towards right.

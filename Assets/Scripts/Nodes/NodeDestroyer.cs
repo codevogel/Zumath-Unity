@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Controllers;
 using Assets.Scripts.Particles;
+using Assets.Scripts.Audio;
 
 namespace Nodes
 {
     public class NodeDestroyer : MonoBehaviour
     {
         private HealthController healthController;
+        public AudioPlayer nodeDestroyedAudio;
 
         private void Awake()
         {
@@ -27,6 +29,7 @@ namespace Nodes
                     nodesToDestroy.Add(node);
                     ParticlesList.Add(node.transform.position); 
                     ScoreAdd.AddScore(10);
+                    nodeDestroyedAudio.ShouldPlay = true;
                 }
                 else
                 {
