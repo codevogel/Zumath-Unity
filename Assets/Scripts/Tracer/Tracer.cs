@@ -1,4 +1,5 @@
-﻿using System;
+﻿using States.Game;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,6 +46,15 @@ namespace Assets.Scripts
             directionLine.SetPosition(2, extendedLine);
 
 
+            GameState gameState = GameStateManager.GetGameState();
+            if (gameState == GameState.CHECKPOINT || gameState == GameState.PAUSED || gameState == GameState.WON)
+            {
+                directionLine.enabled = false;
+            }
+            else
+            {
+                directionLine.enabled = true;
+            }
 
 
         }
