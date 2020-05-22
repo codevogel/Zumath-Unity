@@ -24,17 +24,17 @@ namespace Assets.Scripts.ScoreCounter
 
             if (ScoreAdd.score >= 50)
             {
-                moduleEnabled = GUI.Toggle(new Rect(25, 45, 100, 30), moduleEnabled, "Enabled");
+                moduleEnabled = true;
             }
 
             if (ScoreAdd.score >= 100)
             {
-                moduleEnabled = GUI.Toggle(new Rect(25, 45, 100, 30), moduleEnabled, "Enabled");
+                moduleEnabled = true;
             }
 
             if (ScoreAdd.score >= 200)
             {
-                moduleEnabled = GUI.Toggle(new Rect(25, 45, 100, 30), moduleEnabled, "Enabled");
+                moduleEnabled = true;
             }
 
         }
