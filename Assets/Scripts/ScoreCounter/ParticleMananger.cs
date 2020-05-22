@@ -2,6 +2,7 @@
 using UnityEngine;
 using Unity;
 using UnityEngine.UI;
+using System.Collections;
 
 namespace Assets.Scripts.ScoreCounter
 {
@@ -10,30 +11,30 @@ namespace Assets.Scripts.ScoreCounter
         public ParticleSystem ps;
         public bool moduleEnabled;
 
-        public void Start()
+        void Start()
         {
             ps = gameObject.GetComponent<ParticleSystem>();
             moduleEnabled = false;
         }
 
-        public void Update()
+        void Update()
         {
             var emission = ps.emission;
             emission.enabled = moduleEnabled;
 
             if (ScoreAdd.score >= 50)
             {
-                moduleEnabled = true;
+                moduleEnabled = GUI.Toggle(new Rect(25, 45, 100, 30), moduleEnabled, "Enabled");
             }
 
             if (ScoreAdd.score >= 100)
             {
-                moduleEnabled = true;
+                moduleEnabled = GUI.Toggle(new Rect(25, 45, 100, 30), moduleEnabled, "Enabled");
             }
 
             if (ScoreAdd.score >= 200)
             {
-                moduleEnabled = true;
+                moduleEnabled = GUI.Toggle(new Rect(25, 45, 100, 30), moduleEnabled, "Enabled");
             }
 
         }
