@@ -20228,7 +20228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee1edbd6e93704a48943dafe2e379de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeDestroyedAudio: {fileID: 0}
+  nodeDestroyedAudio: {fileID: 464858295}
 --- !u!1 &845407481
 GameObject:
   m_ObjectHideFlags: 0
@@ -35162,8 +35162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80aa7804e4b22e439fdae6fac70cc11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAudio: {fileID: 0}
-  deathAudio: {fileID: 0}
+  damageAudio: {fileID: 845407483}
+  deathAudio: {fileID: 590095526}
 --- !u!4 &1673351286
 Transform:
   m_ObjectHideFlags: 0
