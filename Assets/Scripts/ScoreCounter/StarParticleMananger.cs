@@ -6,7 +6,7 @@ using System.Collections;
 
 namespace Assets.Scripts.ScoreCounter
 {
-    public class ParticleManager : MonoBehaviour
+    public class StarParticleManager : MonoBehaviour
     {
         public ParticleSystem ps;
         public bool moduleEnabled;
