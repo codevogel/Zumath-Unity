@@ -94,6 +94,7 @@ namespace Nodes
                 return true;
             }
             return false;
+
         }
 
         public static void Update()
@@ -245,6 +246,7 @@ namespace Nodes
 
             newlyInsertedNode = null;
             GameStateManager.SwitchToResetting();
+            ScoreAdd.ReduceScore();
         }
 
 

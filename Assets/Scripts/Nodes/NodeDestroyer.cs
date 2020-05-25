@@ -1,5 +1,6 @@
 ﻿using References;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace Nodes
@@ -22,6 +23,7 @@ namespace Nodes
                     nodesToDestroy.Add(node);
                     ScoreAdd.AddScore(10);
                 }
+
                 else
                 {
                     if (node.pathFollower.distanceTravelled >= node.pathFollower.pathCreator.path.length)
@@ -32,6 +34,8 @@ namespace Nodes
                 }
             }
 
+            
+            
             foreach (NumberNode node in nodesToDestroy)
             {
                 ScoreAdd.SetFurthestDistanceTravelled(node.pathFollower.distanceTravelled);
