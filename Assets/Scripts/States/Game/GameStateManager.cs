@@ -60,6 +60,7 @@ namespace States.Game
 
         public static void SwitchToGameover()
         {
+            ScoreAdd.GameOverScore();
             SetGameState(GameState.GAMEOVER);
         }
 
