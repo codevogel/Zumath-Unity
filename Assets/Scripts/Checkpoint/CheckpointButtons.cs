@@ -24,7 +24,7 @@ namespace Assets.Scripts.Checkpoint
 
             if (CheckpointManager.CheckAnswer())
             {
-
+                ScoreAdd.AddCheckpointScore();
             }
         }
 
