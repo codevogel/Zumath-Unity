@@ -39,6 +39,14 @@ namespace Nodes
         private static float MOVEBACK_COUNTDOWN_LENGHT = 60;
         private static float moveBackCountdownRemaining = 60;
 
+        public static void SetMoveBackLenght(float lenght)
+        {
+            MOVEBACK_COUNTDOWN_LENGHT = lenght * 60;
+        }
+        public static void UpdateMoveBackLenght()
+        {
+            moveBackCountdownRemaining = MOVEBACK_COUNTDOWN_LENGHT;
+        }
 
         public static void SetTravelSpeed(float speed)
         {
@@ -64,7 +72,8 @@ namespace Nodes
         {
             nodeDestroyer = GameObject.FindGameObjectWithTag(Tags.NODE_DESTROYER).GetComponent<NodeDestroyer>();
             nextBallValue = UnityEngine.Random.Range(NumberList.BOUND_LOW, NumberList.BOUND_HIGH);
-            NodeManager.GetValidTarget();
+            GetValidTarget();
+            UpdateMoveBackLenght();
         }
 
         // Newly added nodes are placed in the front of the list, 
