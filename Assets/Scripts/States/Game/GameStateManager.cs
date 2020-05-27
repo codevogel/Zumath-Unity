@@ -53,6 +53,11 @@ namespace States.Game
             SetGameState(GameState.DISPERSING);
         }
 
+        public static void SwitchToMoveBack()
+        {
+            SetGameState(GameState.MOVEBACK);
+        }
+
         public static void SwitchToPreInsertion()
         {
             SetGameState(GameState.PREINSERTION);

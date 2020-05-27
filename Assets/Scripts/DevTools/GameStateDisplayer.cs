@@ -22,6 +22,9 @@ namespace DevTools
                 case GameState.DISPERSING:
                     currentGameState = "Dispersing";
                     return;
+                case GameState.MOVEBACK:
+                    currentGameState = "Move back";
+                    return;
                 case GameState.RESETTING:
                     currentGameState = "Resetting";
                     return;

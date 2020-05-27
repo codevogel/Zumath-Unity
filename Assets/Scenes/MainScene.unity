@@ -681,8 +681,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c07983e4d6a5344b37cdb00eef49c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disperseSpeed: 2
   travelSpeed: 0.2
+  disperseSpeed: 2
+  movebackSpeed: 2
   resetSpeed: 1
 --- !u!114 &882107688
 MonoBehaviour:
@@ -1433,7 +1434,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 1
+    vertexPathUpToDate: 0
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1

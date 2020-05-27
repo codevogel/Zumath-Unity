@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Controllers;
 using AnimationManagers;
+using Follower;
+using States.Game;
 
 namespace Nodes
 {
@@ -34,9 +36,10 @@ namespace Nodes
                     if (node.pathFollower.distanceTravelled >= node.pathFollower.pathCreator.path.length)
                     {
                         nodesToDestroy.Add(node);
-                        
-                        healthController.RemoveLife();
+
                         screenShake.CamShake();
+                        healthController.RemoveLife();
+                        GameStateManager.SwitchToMoveBack();
                     }
                 }
             }
