@@ -22,6 +22,7 @@ namespace DevTools
         void Update()
         {
             numberNode.GetComponent<NumberNode>().SetValue(NodeManager.GetNextBallValue());
+            numberNode.GetComponent<NumberNode>().SetColorToValue();
         }
     }
 }

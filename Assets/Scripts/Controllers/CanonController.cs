@@ -62,6 +62,7 @@ namespace Controllers
                 newNode.SetState(NodeState.PROJECTILE);
                 int ballValue = NodeManager.GetNextBallValue();
                 newNode.SetValue(ballValue);
+                newNode.SetColorToValue();
                 particles.setNode(newNode);
                 GameStateManager.SwitchToShooting();
             }

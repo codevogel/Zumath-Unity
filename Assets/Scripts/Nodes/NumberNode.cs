@@ -46,6 +46,42 @@ namespace Nodes
             this.gameObject.layer = LayerMask.NameToLayer(LayerNames.NODE_LAYER);
         }
 
+        public void SetColorToValue()
+        {
+            SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            switch (value)
+            {
+                case 1:
+                    spriteRenderer.color = Color.white;
+                    return;
+                case 2:
+                    spriteRenderer.color = Color.blue;
+                    return;
+                case 3:
+                    spriteRenderer.color = Color.green;
+                    return;
+                case 4:
+                    spriteRenderer.color = Color.yellow;
+                    return;
+                case 5:
+                    spriteRenderer.color = Color.cyan;
+                    return;
+                case 6:
+                    spriteRenderer.color = Color.magenta;
+                    return;
+                case 7:
+                    spriteRenderer.color = Color.red;
+                    return;
+                case 8:
+                    spriteRenderer.color = Color.gray;
+                    return;
+                case 9:
+                    spriteRenderer.color = Color.black;
+                    return;
+            }
+
+        }
+
         public void OnTriggerEnter2D(Collider2D collision)
         {
             NumberNode otherNode = collision.GetComponent<NumberNode>();

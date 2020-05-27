@@ -28,6 +28,7 @@ public class NodeSpawner : MonoBehaviour
 
     public void SpawnNodes()
     {
+        // .75f is scale of object
         float distanceTravelled = NumberNode.DIAMETER * 0.75f * nodesToSpawn - NumberNode.DIAMETER + INIT_DISTANCE;
         for (int i = nodesToSpawn; i > 0; i--)
         {
@@ -44,6 +45,7 @@ public class NodeSpawner : MonoBehaviour
         newNode.pathFollower.SetDistanceTravelled(distanceTravelled);
         newNode.SetState(NodeState.GUTTER);
         newNode.nodeMotor.enabled = false;
+        newNode.SetColorToValue();
         NodeManager.AddNode(newNode);
     }
 }
