@@ -8,9 +8,10 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
+    [RequireComponent(typeof(LineRenderer))]
     class Tracer : MonoBehaviour
     {
-        private LineRenderer directionLine;
+        public LineRenderer directionLine;
         public Transform cannonTransform = null;
         public float mininumTracerLength = 50f;
 
@@ -18,7 +19,6 @@ namespace Assets.Scripts
 
         public void Start()
         {
-            directionLine = gameObject.AddComponent<LineRenderer>();
             directionLine.startWidth = lineWidth;
             directionLine.endWidth = lineWidth;
             directionLine.positionCount = 3;
