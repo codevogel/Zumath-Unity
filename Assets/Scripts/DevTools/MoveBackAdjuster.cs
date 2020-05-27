@@ -12,6 +12,12 @@ namespace Assets.Scripts.DevTools
     {
         public float moveBackLenght = 1;
 
+        private void Start()
+        {
+            NodeManager.SetMoveBackLenght(moveBackLenght);
+            NodeManager.UpdateMoveBackLenght();
+        }
+
         private void Update()
         {
             NodeManager.SetMoveBackLenght(moveBackLenght);

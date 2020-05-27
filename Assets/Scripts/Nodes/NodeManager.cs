@@ -73,7 +73,7 @@ namespace Nodes
             nodeDestroyer = GameObject.FindGameObjectWithTag(Tags.NODE_DESTROYER).GetComponent<NodeDestroyer>();
             nextBallValue = UnityEngine.Random.Range(NumberList.BOUND_LOW, NumberList.BOUND_HIGH);
             GetValidTarget();
-            UpdateMoveBackLenght();
+            
         }
 
         // Newly added nodes are placed in the front of the list, 
@@ -135,7 +135,7 @@ namespace Nodes
                     if (moveBackCountdownRemaining <= 0)
                     {
                         GameStateManager.SwitchToPreInsertion();
-                        moveBackCountdownRemaining = MOVEBACK_COUNTDOWN_LENGHT;
+                        UpdateMoveBackLenght();
                     }
                     return;
                 case GameState.RESETTING:
