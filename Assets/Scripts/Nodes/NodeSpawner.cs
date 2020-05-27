@@ -14,6 +14,8 @@ public class NodeSpawner : MonoBehaviour
     private PathCreator pathCreator;
     public int nodesToSpawn;
 
+    public int INIT_DISTANCE = 20;
+
     void Awake()
     {
         pathCreator = GameObject.FindGameObjectWithTag(Tags.GUTTER).GetComponent<PathCreator>();
@@ -26,7 +28,7 @@ public class NodeSpawner : MonoBehaviour
 
     public void SpawnNodes()
     {
-        float distanceTravelled = NumberNode.DIAMETER * nodesToSpawn - NumberNode.DIAMETER;
+        float distanceTravelled = NumberNode.DIAMETER * nodesToSpawn - NumberNode.DIAMETER + INIT_DISTANCE;
         for (int i = nodesToSpawn; i > 0; i--)
         {
             SpawnNodeAtDistance(distanceTravelled);
