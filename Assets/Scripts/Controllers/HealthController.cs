@@ -38,6 +38,7 @@ namespace Controllers
         {
             
             AMOUNT_OF_HEALTH -= DAMAGE_PER_DESTROYED_NODE;
+            healthAdjuster.UpdateHealth();
 
             if (AMOUNT_OF_HEALTH <= 0)
             {

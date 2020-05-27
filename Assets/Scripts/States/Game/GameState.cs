@@ -18,6 +18,8 @@ namespace States.Game
         CHECKPOINT,
         // TODO: Game is in pause menu
         PAUSED,
+        // TODO: Balls are moving back after taking damage.
+        MOVEBACK,
         WON,
         GAMEOVER
     }

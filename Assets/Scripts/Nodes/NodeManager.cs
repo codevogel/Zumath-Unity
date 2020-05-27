@@ -32,7 +32,12 @@ namespace Nodes
         //TODO: make consts after playtesting
         public static float TRAVEL_SPEED = 0.5f;
         public static float DISPERSE_SPEED = 2.5f;
+        public static float MOVEBACK_SPEED = 2f;
         public static float RESET_SPEED = 2f;
+
+        // Amount of frames it takes for the balls to move forward again.
+        private static float MOVEBACK_COUNTDOWN_LENGHT = 60;
+        private static float moveBackCountdownRemaining = 60;
 
 
         public static void SetTravelSpeed(float speed)
@@ -43,6 +48,11 @@ namespace Nodes
         public static void SetDisperseSpeed(float speed)
         {
             DISPERSE_SPEED = speed;
+        }
+
+        public static void SetMoveBackSpeed(float speed)
+        {
+            MOVEBACK_SPEED = speed;
         }
 
         public static void SetResetSpeed(float speed)
@@ -111,6 +121,14 @@ namespace Nodes
                 case GameState.DISPERSING:
                     DisperseNodes();
                     return;
+                case GameState.MOVEBACK:
+                    MoveNodesBack();
+                    if (moveBackCountdownRemaining <= 0)
+                    {
+                        GameStateManager.SwitchToPreInsertion();
+                        moveBackCountdownRemaining = MOVEBACK_COUNTDOWN_LENGHT;
+                    }
+                    return;
                 case GameState.RESETTING:
                     MoveNodesForward();
                     if (AllNodesTouch())
@@ -154,6 +172,19 @@ namespace Nodes
             }
         }
 
+        public static void MoveNodesBack()
+        {
+            if (numberList != null)
+            {
+                if (numberList.numberLinkedList.Count > 0)
+                {
+                    MoveNode(MoveType.BACKWARD, numberList.numberLinkedList.Last);
+                }
+            }
+
+            moveBackCountdownRemaining -= 1;
+        }
+
         public static void MoveNode(MoveType moveType, LinkedListNode<NumberNode> node)
         {
             LinkedListNode<NumberNode> prevNode = node.Previous;
@@ -172,9 +203,9 @@ namespace Nodes
                     }
                     return;
                 case MoveType.BACKWARD:
-                    if (nextNode != null)
+                    if (prevNode != null)
                     {
-                        if (node.Value.IsTouching(nextNode.Value))
+                        if (node.Value.IsTouching(prevNode.Value))
                         {
                             if (prevNode != null)
                             {
@@ -292,6 +323,8 @@ namespace Nodes
                     return TRAVEL_SPEED;
                 case GameState.DISPERSING:
                     return DISPERSE_SPEED;
+                case GameState.MOVEBACK:
+                    return MOVEBACK_SPEED;
                 case GameState.RESETTING:
                     return RESET_SPEED;
             }

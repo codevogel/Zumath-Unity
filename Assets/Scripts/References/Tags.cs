@@ -8,5 +8,6 @@ namespace References
         public const string GUTTER = "Gutter";
         public const string NODE_SPAWNER = "NodeSpawner";
         public const string HEALTH = "Health";
+        public const string SCREENSHAKE = "ScreenShake";
     }
 }

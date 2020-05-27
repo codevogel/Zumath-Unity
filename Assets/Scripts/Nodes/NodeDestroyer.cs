@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Controllers;
+using AnimationManagers;
+using Follower;
+using States.Game;
 using Assets.Scripts.Particles;
 using Assets.Scripts.Audio;
 
@@ -10,12 +13,14 @@ namespace Nodes
     public class NodeDestroyer : MonoBehaviour
     {
         private HealthController healthController;
+        private ScreenShake screenShake;
         public AudioPlayer nodeDestroyedAudio;
 
         private void Awake()
         {
             gameObject.tag = Tags.NODE_DESTROYER;
             healthController = GameObject.FindGameObjectWithTag(Tags.HEALTH).GetComponent<HealthController>();
+            screenShake = GameObject.FindGameObjectWithTag(Tags.SCREENSHAKE).GetComponent<ScreenShake>();
         }
             
         public void DestroyDeadNodes()
@@ -36,8 +41,10 @@ namespace Nodes
                     if (node.pathFollower.distanceTravelled >= node.pathFollower.pathCreator.path.length)
                     {
                         nodesToDestroy.Add(node);
-                        
+
+                        screenShake.CamShake();
                         healthController.RemoveLife();
+                        GameStateManager.SwitchToMoveBack();
                     }
                 }
             }
