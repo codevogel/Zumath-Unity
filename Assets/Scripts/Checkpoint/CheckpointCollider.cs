@@ -20,20 +20,30 @@ namespace Assets.Scripts.Checkpoint
         {
             if (devTool.checkpointsOn)
             {
-                if (hasTriggered)
-                {
-                    return;
-                }
                 NumberNode otherNode = collision.gameObject.GetComponent<NumberNode>();
                 if (otherNode != null)
                 {
                     if (otherNode.state == NodeState.GUTTER)
                     {
-                        hasTriggered = devTool.TriggerCheckpoint();
-                        GameStateManager.SwitchToCheckpoint();
+                        Trigger();
                     }
                 }
             }
+        }
+
+        public void Trigger()
+        {
+            if (hasTriggered)
+            {
+                return;
+            }
+            hasTriggered = devTool.TriggerCheckpoint();
+            GameStateManager.SwitchToCheckpoint();
+        }
+
+        public bool GetHasTriggered()
+        {
+            return hasTriggered;
         }
     }
 }
