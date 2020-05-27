@@ -1406,7 +1406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c9cdee3fab692428dfd78d1c9fed9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpointsOn: 0
+  checkpointsOn: 1
   checkpointsTriggered: 0
 --- !u!1 &906541551
 GameObject:
@@ -25674,6 +25674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particle: {fileID: 1567959615}
+  nodeZModifier: 5
 --- !u!199 &1567959614
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -35691,7 +35692,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 0
+    vertexPathUpToDate: 1
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
