@@ -1,5 +1,6 @@
 ﻿using References;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using Controllers;
 using AnimationManagers;
@@ -36,6 +37,7 @@ namespace Nodes
                     ScoreAdd.AddScore(10);
                     nodeDestroyedAudio.ShouldPlay = true;
                 }
+
                 else
                 {
                     if (node.pathFollower.distanceTravelled >= node.pathFollower.pathCreator.path.length)
@@ -49,6 +51,8 @@ namespace Nodes
                 }
             }
 
+            
+            
             foreach (NumberNode node in nodesToDestroy)
             {
                 ScoreAdd.SetFurthestDistanceTravelled(node.pathFollower.distanceTravelled);
