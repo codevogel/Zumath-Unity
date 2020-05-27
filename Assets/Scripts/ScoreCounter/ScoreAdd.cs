@@ -49,6 +49,12 @@ public static class ScoreAdd
         float c = 1000;
         AddScore((int)c);
     }
+
+    static public void ReduceScore()
+    {
+        float r = -10;
+        AddScore((int)r);
+    }
 }
 
 

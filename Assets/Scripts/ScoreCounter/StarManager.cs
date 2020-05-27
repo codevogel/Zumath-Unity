@@ -10,7 +10,9 @@ namespace Assets.Scripts.ScoreCounter
 {
     class StarManager : MonoBehaviour
     {
-        public Image OneStar = null, TwoStar = null, ThreeStar = null;
+        public SpriteRenderer OneStar = null, TwoStar = null, ThreeStar = null;
+        public ParticleSystem ps1, ps2, ps3;
+        public bool particle1Played, particle2Played, particle3Played;
 
         void Start()
         {
@@ -24,15 +26,30 @@ namespace Assets.Scripts.ScoreCounter
             if (ScoreAdd.score >= 1000)
             {
                 OneStar.enabled = true;
+                if (!particle1Played)
+                {
+                    ps1.Emit(50);
+                    particle1Played = true;
+                }
             }
             if (ScoreAdd.score >= 2000)
             {
                 TwoStar.enabled = true;
+                if (!particle2Played)
+                {
+                    ps2.Emit(50);
+                    particle2Played = true;
+                }
             }
 
             if (ScoreAdd.score >= 3000)
             {
                 ThreeStar.enabled = true;
+                if (!particle3Played)
+                {
+                    ps3.Emit(50);
+                    particle3Played = true;
+                }
             }
         }
     }

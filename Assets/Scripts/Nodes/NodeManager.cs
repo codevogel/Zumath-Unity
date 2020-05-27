@@ -284,6 +284,7 @@ namespace Nodes
 
             newlyInsertedNode = null;
             GameStateManager.SwitchToResetting();
+            ScoreAdd.ReduceScore();
         }
 
 
