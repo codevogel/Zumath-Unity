@@ -1,4 +1,5 @@
-﻿using Nodes;
+﻿using Controllers;
+using Nodes;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -19,7 +20,10 @@ namespace DevTools
 
         void Update()
         {
-            textMesh.SetText("Target: " + NodeManager.target.ToString() + "\nNext Ball: " + NodeManager.GetNextBallValue());
+            textMesh.SetText("Doel: " + NodeManager.target.ToString()
+                + "\nVolgende Ball: " + NodeManager.GetNextBallValue()
+                + "\nLevens: " + HealthController.GetHealth()
+                );
         }
     }
 }

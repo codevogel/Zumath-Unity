@@ -58,5 +58,10 @@ namespace Controllers
                 
             }
         }
+
+        public static float GetHealth()
+        {
+            return AMOUNT_OF_HEALTH;
+        }
     }
 }
