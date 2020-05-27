@@ -13,6 +13,7 @@ namespace Assets.Scripts.Particles
     {
         private NumberNode node;
         private const int STANDARD_AMOUNT_OF_PARTICLES = 1;
+        public float nodeZModifier =5;
 
         private void Update()
         {
@@ -23,10 +24,17 @@ namespace Assets.Scripts.Particles
             }
         }
 
-       // returns the position of node if node is not null.
+       // returns the position of node if node is not null. modifies the z so it is placed behind the node.
         private Vector3 getNodePosition()
         {
-            return node != null ? node.transform.position : transform.position;
+            if (node != null)
+            {
+                Vector3 vector = node.transform.position;
+                vector.z += nodeZModifier;
+                return vector;
+            }
+            else return transform.position;
+            
         }
 
         public void setNode(NumberNode node)
