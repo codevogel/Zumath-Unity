@@ -26,7 +26,7 @@ namespace Nodes
         public NodeState state;
 
         public int value;
-        public const float DIAMETER = 1f;
+        public const float DIAMETER = 0.75f;
         public bool alive;
 
         void Awake()

@@ -14,7 +14,7 @@ public class NodeSpawner : MonoBehaviour
     private PathCreator pathCreator;
     public int nodesToSpawn;
 
-    public int INIT_DISTANCE = 20;
+    public const int INIT_DISTANCE = 20;
 
     void Awake()
     {
@@ -28,7 +28,7 @@ public class NodeSpawner : MonoBehaviour
 
     public void SpawnNodes()
     {
-        float distanceTravelled = NumberNode.DIAMETER * nodesToSpawn - NumberNode.DIAMETER + INIT_DISTANCE;
+        float distanceTravelled = NumberNode.DIAMETER * 0.75f * nodesToSpawn - NumberNode.DIAMETER + INIT_DISTANCE;
         for (int i = nodesToSpawn; i > 0; i--)
         {
             SpawnNodeAtDistance(distanceTravelled);
