@@ -21,7 +21,6 @@ namespace DevTools
         void Update()
         {
             textMesh.SetText("Doel: " + NodeManager.target.ToString()
-                + "\nVolgende Ball: " + NodeManager.GetNextBallValue()
                 + "\nLevens: " + HealthController.GetHealth()
                 );
         }
