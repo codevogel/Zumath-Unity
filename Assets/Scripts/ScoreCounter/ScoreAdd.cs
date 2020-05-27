@@ -38,12 +38,6 @@ public static class ScoreAdd
         score += newScore;
     }
 
-    static public void ReduceScore()
-    {
-        float r = -10;
-        AddScore((int)r);
-    }
-
     static public void AddEndLevelScore()
     {
         float t = 1000 - (distanceTravelled / pathLength * 1000);
