@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Dataset;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,8 @@ namespace Assets.Scripts.Checkpoint
 
         void Update()
         {
-            textMesh.SetText(CheckpointManager.GetCurrentQuestion().question);
+            MissionData current = CheckpointManager.GetCurrentQuestion();
+            textMesh.SetText(current.question+'\n'+ (current.questionType == "Fill in the blanks" ? current.didYouKnow:"" ));
         }
     }
 }
