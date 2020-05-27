@@ -11,7 +11,7 @@ namespace Assets.Scripts.ScoreCounter
     class StarManager : MonoBehaviour
     {
         public SpriteRenderer OneStar = null, TwoStar = null, ThreeStar = null;
-        public ParticleSystem ps1, ps2, ps3;
+        public ParticleSystem ps1 = null, ps2 = null, ps3 = null;
         public bool particle1Played, particle2Played, particle3Played;
 
         void Start()
