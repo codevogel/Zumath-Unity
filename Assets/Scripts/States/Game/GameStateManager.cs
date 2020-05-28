@@ -87,7 +87,7 @@ namespace States.Game
         public static void SwitchToWon()
         {
             ScoreAdd.AddEndLevelScore();
-            SetGameState(GameState.WON);
+            SceneManager.LoadScene("WinScreen");
         }
 
         public static void SwitchToCheckpoint()

@@ -35775,6 +35775,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57844d3b2eb420f4a973371360abf6c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OneStarThreshold: 0
+  TwoStarThreshold: 0
+  ThreeStarThreshold: 0
+  EmittedStarParticles: 0
   OneStar: {fileID: 1829209449}
   TwoStar: {fileID: 1018113034}
   ThreeStar: {fileID: 1126932393}
