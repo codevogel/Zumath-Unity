@@ -66,6 +66,7 @@ namespace States.Game
         public static void SwitchToGameover()
         {
             ScoreAdd.GameOverScore();
+            SceneManager.LoadScene("LossScreen");
             SetGameState(GameState.GAMEOVER);
         }
 

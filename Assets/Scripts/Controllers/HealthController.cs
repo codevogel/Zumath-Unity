@@ -42,8 +42,6 @@ namespace Controllers
 
             if (AMOUNT_OF_HEALTH <= 0)
             {
-                deathAudio.ShouldPlay = true;
-                Debug.Log("Out of health. Game over.");
                 GameStateManager.SwitchToGameover();
                 return;
             }
