@@ -10,6 +10,7 @@ using States.Game;
 namespace Following
 {
     [RequireComponent(typeof(NumberNode))]
+    [RequireComponent(typeof(PathCreator))]
     public class PathFollower : MonoBehaviour
     {
         public PathCreator pathCreator;
