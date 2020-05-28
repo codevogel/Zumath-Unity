@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Audio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace Assets.Scripts.ScoreCounter
     {
         public SpriteRenderer OneStar = null, TwoStar = null, ThreeStar = null;
         public ParticleSystem ps1 = null, ps2 = null, ps3 = null;
+        public AudioPlayer audioPlayer=null;
         public bool particle1Played, particle2Played, particle3Played;
 
         void Start()
@@ -26,8 +28,10 @@ namespace Assets.Scripts.ScoreCounter
             if (ScoreAdd.score >= 1000)
             {
                 OneStar.enabled = true;
+                audioPlayer.ShouldPlay = false;
                 if (!particle1Played)
                 {
+                    audioPlayer.ShouldPlay = true;
                     ps1.Emit(50);
                     particle1Played = true;
                 }
@@ -37,6 +41,7 @@ namespace Assets.Scripts.ScoreCounter
                 TwoStar.enabled = true;
                 if (!particle2Played)
                 {
+                    audioPlayer.ShouldPlay = true;
                     ps2.Emit(50);
                     particle2Played = true;
                 }
@@ -47,6 +52,7 @@ namespace Assets.Scripts.ScoreCounter
                 ThreeStar.enabled = true;
                 if (!particle3Played)
                 {
+                    audioPlayer.ShouldPlay = true;
                     ps3.Emit(50);
                     particle3Played = true;
                 }
