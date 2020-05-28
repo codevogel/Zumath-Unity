@@ -1717,8 +1717,9 @@ MonoBehaviour:
     de vragen die tussendoor gesteld worden \\nvoor punten.\r\nDruk op de linker
     muis knop om de tutorial weg te halen"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cc526730fdb38ff49a63ba21077aee4d, type: 2}
+  m_sharedMaterial: {fileID: 4324626204355223355, guid: cc526730fdb38ff49a63ba21077aee4d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1743,8 +1744,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
