@@ -15922,7 +15922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalHealth: 3
-  damagePerNode: 0.5
+  damagePerNode: 1
 --- !u!114 &882107692
 MonoBehaviour:
   m_ObjectHideFlags: 0

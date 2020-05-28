@@ -13,7 +13,7 @@ namespace Assets.Scripts.DevTools
     class HealthAdjuster : MonoBehaviour
     {
         public float totalHealth = 3f;
-        public float damagePerNode = 0.5f;
+        public float damagePerNode = 1;
 
         private void Awake()
         {

@@ -30,7 +30,7 @@ public static class ScoreAdd
 
     static public void GameOverScore()
     {
-        score = 0;
+        //score = 0;
     }
 
     static public void AddScore(int newScore)

@@ -12,7 +12,7 @@ namespace Assets.Scripts.ScoreCounter
     {
         public TextMeshProUGUI textMesh = null;
 
-        private void Start()
+        private void Update()
         {
             textMesh.SetText("Score: " + ScoreAdd.score.ToString());
         }
