@@ -15,12 +15,6 @@ namespace Assets.Scripts.PauseScreen
         {
             GameStateManager.Unpause();
             SceneManager.UnloadSceneAsync(sceneName: "PauseScreen");
-
-        }
-
-        public void SettingsButtonPressed()
-        {
-            print("ToDo Settings");
         }
 
         //copied from MainMenu

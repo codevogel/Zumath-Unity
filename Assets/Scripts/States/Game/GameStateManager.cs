@@ -70,16 +70,6 @@ namespace States.Game
             SetGameState(GameState.GAMEOVER);
         }
 
-        public static void SwitchToPaused()
-        {
-            Pause();
-        }
-
-        public static void SwitchToBeforePaused()
-        {
-            Unpause();
-        }
-
         public static void SwitchToResetting()
         {
             SetGameState(GameState.RESETTING);
