@@ -46,7 +46,6 @@ namespace Controllers
                 return;
             }
             damageAudio.ShouldPlay = true;
-            healthAdjuster.UpdateHealth();
         }
 
         void Update()
