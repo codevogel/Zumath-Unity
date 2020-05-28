@@ -11,6 +11,8 @@ namespace Assets.Scripts.ScoreCounter
 {
     class StarManager : MonoBehaviour
     {
+        public int OneStarThreshold, TwoStarThreshold, ThreeStarThreshold;
+        public int EmittedStarParticles;
         public SpriteRenderer OneStar = null, TwoStar = null, ThreeStar = null;
         public ParticleSystem ps1 = null, ps2 = null, ps3 = null;
         public AudioPlayer audioPlayer=null;
@@ -18,6 +20,12 @@ namespace Assets.Scripts.ScoreCounter
 
         void Start()
         {
+            OneStarThreshold = 1000;
+            TwoStarThreshold = 2000;
+            ThreeStarThreshold = 3000;
+
+            EmittedStarParticles = 50;
+
             OneStar.enabled = false;
             TwoStar.enabled = false;
             ThreeStar.enabled = false;         
@@ -25,35 +33,35 @@ namespace Assets.Scripts.ScoreCounter
 
         void Update()
         {
-            if (ScoreAdd.score >= 1000)
+            if (ScoreAdd.score >= OneStarThreshold)
             {
                 OneStar.enabled = true;
                 audioPlayer.ShouldPlay = false;
                 if (!particle1Played)
                 {
                     audioPlayer.ShouldPlay = true;
-                    ps1.Emit(50);
+                    ps1.Emit(EmittedStarParticles);
                     particle1Played = true;
                 }
             }
-            if (ScoreAdd.score >= 2000)
+            if (ScoreAdd.score >= TwoStarThreshold)
             {
                 TwoStar.enabled = true;
                 if (!particle2Played)
                 {
                     audioPlayer.ShouldPlay = true;
-                    ps2.Emit(50);
+                    ps2.Emit(EmittedStarParticles);
                     particle2Played = true;
                 }
             }
 
-            if (ScoreAdd.score >= 3000)
+            if (ScoreAdd.score >= ThreeStarThreshold)
             {
                 ThreeStar.enabled = true;
                 if (!particle3Played)
                 {
                     audioPlayer.ShouldPlay = true;
-                    ps3.Emit(50);
+                    ps3.Emit(EmittedStarParticles);
                     particle3Played = true;
                 }
             }
