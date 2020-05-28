@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class EndScreen : MonoBehaviour
 {
-    public void BackToMainMenu()
+    public void ExitGame()
     {
-        SceneManager.LoadScene(sceneName: "Menu");
+        Application.Quit();
     }
 }
