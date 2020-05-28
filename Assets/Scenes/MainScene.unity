@@ -5602,9 +5602,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'test
+  m_text: 'Doel
 
-    test'
+    Levens'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cc526730fdb38ff49a63ba21077aee4d, type: 2}
   m_sharedMaterial: {fileID: 4324626204355223355, guid: cc526730fdb38ff49a63ba21077aee4d,
@@ -5674,7 +5674,7 @@ MonoBehaviour:
   m_margin: {x: -0.6969677, y: -0.18467855, z: -0.23232317, w: 0}
   m_textInfo:
     textComponent: {fileID: 471737549}
-    characterCount: 9
+    characterCount: 11
     spriteCount: 0
     spaceCount: 1
     wordCount: 2
