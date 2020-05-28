@@ -13,7 +13,7 @@ namespace Controllers
     public class HealthController : MonoBehaviour
     {
         private static float AMOUNT_OF_HEALTH = 3f;
-        private static float DAMAGE_PER_DESTROYED_NODE = 0.5f;
+        private static float DAMAGE_PER_DESTROYED_NODE = 1f;
 
         private HealthAdjuster healthAdjuster;
         public AudioPlayer damageAudio,deathAudio;
