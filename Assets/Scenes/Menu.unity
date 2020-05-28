@@ -1669,7 +1669,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2008576840
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1686,7 +1686,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 24.325, y: -26.7}
+  m_AnchoredPosition: {x: 79, y: -43}
   m_SizeDelta: {x: 753.35, y: 433}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2008576841
@@ -1707,15 +1707,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Gebruik je muis om te richten.\r                                                
-    Klik op de linkermuisknop om te schieten.\r               Schiet de bal in het
-    kanon naar de ballen in de goot.\r\nMaak combinaties met de cijfers.\r\nAls de
-    cijfers bij elkaar opgeteld hetzelfde als het doel is, \nkrijg je punten erbij.
-    Anders krijg je punten er af.\r\nHoe meer ballen er in de combinatie zitten hoe
-    beter.\r\nAls de ballen het kanon bereiken gaat er een leven af.\r\nAls je levens
-    op zijn ben je gameover.\r\nAls er geen ballen meer zijn heb je gewonnen.\r\nBeantwoord
-    de vragen die tussendoor gesteld worden \\nvoor punten.\r\nDruk op de linker
-    muis knop om de tutorial weg te halen"
+  m_text: "Gebruik je muis om te richten.\r\nKlik op de linkermuisknop om te schieten.\r\n\nSchiet
+    de bal in het kanon naar de ballen in de goot.\r\n\nMaak combinaties met de cijfers.\r\nAls
+    de cijfers bij elkaar opgeteld hetzelfde als het doel is, \nkrijg je punten erbij.
+    Anders krijg je punten er af.\r\n\nAls de ballen het kanon bereiken gaat er een
+    leven af.\r\nAls je levens op zijn ben je gameover.\r\nAls er geen ballen meer
+    over zijn heb je gewonnen.\r\n\nBeantwoord de vragen die tussendoor gesteld worden
+    \\nvoor punten.\r\nDruk op de linker muis knop om de tutorial weg te halen"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cc526730fdb38ff49a63ba21077aee4d, type: 2}
   m_sharedMaterial: {fileID: 4324626204355223355, guid: cc526730fdb38ff49a63ba21077aee4d,
@@ -1725,7 +1723,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1744,8 +1742,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1785,12 +1783,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2008576841}
-    characterCount: 662
+    characterCount: 554
     spriteCount: 0
-    spaceCount: 173
-    wordCount: 110
+    spaceCount: 106
+    wordCount: 101
     linkCount: 0
-    lineCount: 12
+    lineCount: 16
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
