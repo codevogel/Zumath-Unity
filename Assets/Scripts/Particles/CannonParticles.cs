@@ -10,6 +10,13 @@ namespace Assets.Scripts.Particles
 {
     class CannonParticles : BaseParticles
     {
+        public Transform cannonTransform=null;
+
+        private void Start()
+        {
+            transform.position = cannonTransform.position;
+        }
+
 
         private void Update()
         {

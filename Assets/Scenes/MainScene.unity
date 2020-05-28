@@ -20870,6 +20870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particle: {fileID: 1048147717}
+  cannonTransform: {fileID: 1306221667}
 --- !u!1 &1126932391
 GameObject:
   m_ObjectHideFlags: 0
