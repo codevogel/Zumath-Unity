@@ -16,11 +16,13 @@ namespace DevTools
         {
             numberNode = Instantiate(numberNodePrefab, this.transform);
             numberNode.GetComponent<NumberNode>().SetState(States.Node.NodeState.PREVIEW);
+            numberNode.gameObject.transform.rotation = Quaternion.identity;
         }
 
         // Update is called once per frame
         void Update()
         {
+            numberNode.gameObject.transform.rotation = Quaternion.identity;
             numberNode.GetComponent<NumberNode>().SetValue(NodeManager.GetNextBallValue());
             numberNode.GetComponent<NumberNode>().SetColorToValue();
         }
