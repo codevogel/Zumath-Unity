@@ -8,13 +8,9 @@ namespace Controllers
     {
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.T))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 GameStateManager.Pause();
-            }
-            if (Input.GetKeyDown(KeyCode.N))
-            {
-                GameStateManager.SwitchToCheckpoint();
             }
         }
     }
