@@ -12,6 +12,7 @@ namespace Assets.Scripts.Checkpoint
     class QuestionUpdater : MonoBehaviour
     {
         private TextMeshProUGUI textMesh;
+        private bool shouldDisplay = true;
 
         void Start()
         {
@@ -20,8 +21,21 @@ namespace Assets.Scripts.Checkpoint
 
         void Update()
         {
-            MissionData current = CheckpointManager.GetCurrentQuestion();
-            textMesh.SetText(current.question+'\n'+ (current.questionType == "Fill in the blanks" ? current.didYouKnow:"" ));
+            if (shouldDisplay)
+            {
+                MissionData current = CheckpointManager.GetCurrentQuestion();
+                textMesh.SetText(current.question + '\n' + (current.questionType == "Fill in the blanks" ? current.didYouKnow : ""));
+            }
+            else
+            {
+                textMesh.SetText("");
+            }
+
+        }
+
+        public void ShouldNotDisplay()
+        {
+            shouldDisplay = false;
         }
     }
 }

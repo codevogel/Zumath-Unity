@@ -12,6 +12,7 @@ namespace Assets.Scripts.Checkpoint
     {
         TextMeshProUGUI textMesh;
         static bool shouldDisplay;
+        public QuestionUpdater question=null;
         string right, wrong;
 
         private void Start()
@@ -27,6 +28,7 @@ namespace Assets.Scripts.Checkpoint
         {
             if (shouldDisplay)
             {
+                question.ShouldNotDisplay();
                 textMesh.SetText(CheckpointManager.CheckAnswer() ? right : wrong);
                 textMesh.color= CheckpointManager.CheckAnswer() ? Color.green : Color.red;
             }
