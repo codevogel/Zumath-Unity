@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace DevTools
 {
+    // Updates the text that displays the target
     public class TargetUpdater : MonoBehaviour
     {
 
@@ -21,8 +22,7 @@ namespace DevTools
         void Update()
         {
             textMesh.SetText("Doel: " + NodeManager.target.ToString()
-                + "\nLevens: " + HealthController.GetHealth()
-                );
+                            + "\nLevens: " + HealthController.GetHealth());
         }
     }
 }
