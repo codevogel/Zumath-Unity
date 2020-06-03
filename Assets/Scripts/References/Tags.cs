@@ -1,6 +1,7 @@
 ﻿
 namespace References
 {
+    // Used to store commonly used strings used for layer names as to prevent typos
     public class Tags
     {
         public const string CANON = "Canon";
