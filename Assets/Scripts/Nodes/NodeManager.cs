@@ -13,6 +13,7 @@ using UnityEngine;
 
 namespace Nodes
 {
+    // Used to manage the number nodes
     public static class NodeManager
     {
 
@@ -29,43 +30,42 @@ namespace Nodes
         public static int target = -1;
         private static int nextBallValue = -1;
 
-        //TODO: make consts after playtesting
-        public static float TRAVEL_SPEED = 0.5f;
-        public static float DISPERSE_SPEED = 2.5f;
-        public static float MOVEBACK_SPEED = 2f;
-        public static float RESET_SPEED = 2f;
+        public static float travelSpeed = 0.5f;
+        public static float disperseSpeed = 2.5f;
+        public static float moveBackSpeed = 2f;
+        public static float resetSpeed = 2f;
 
         // Amount of frames it takes for the balls to move forward again.
-        private static float MOVEBACK_COUNTDOWN_LENGHT = 60;
+        private static float movebackCountdownLength = 60;
         private static float moveBackCountdownRemaining = 60;
 
-        public static void SetMoveBackLenght(float lenght)
+        public static void SetMoveBackLenght(float length)
         {
-            MOVEBACK_COUNTDOWN_LENGHT = lenght * 60;
+            movebackCountdownLength = length * 60;
         }
         public static void UpdateMoveBackLenght()
         {
-            moveBackCountdownRemaining = MOVEBACK_COUNTDOWN_LENGHT;
+            moveBackCountdownRemaining = moveb;
         }
 
         public static void SetTravelSpeed(float speed)
         {
-            TRAVEL_SPEED = speed;
+            travelSpeed = speed;
         }
 
         public static void SetDisperseSpeed(float speed)
         {
-            DISPERSE_SPEED = speed;
+            disperseSpeed = speed;
         }
 
         public static void SetMoveBackSpeed(float speed)
         {
-            MOVEBACK_SPEED = speed;
+            moveBackSpeed = speed;
         }
 
         public static void SetResetSpeed(float speed)
         {
-            RESET_SPEED = speed;
+            resetSpeed = speed;
         }
 
         public static void Init()
@@ -81,12 +81,12 @@ namespace Nodes
         // (from start to end)
         public static void AddNode(NumberNode node)
         {
-            numberList.numberLinkedList.AddFirst(node);
+            numberList.nodeLinkedList.AddFirst(node);
         }
 
         public static void RemoveNode(NumberNode node)
         {
-            numberList.numberLinkedList.Remove(node);
+            numberList.nodeLinkedList.Remove(node);
         }
 
         internal static void SetNextBallValue(int _nextBallValue)
@@ -96,19 +96,22 @@ namespace Nodes
 
         public static void InsertAtPlaceOf(LinkedListNode<NumberNode> nodeInGutter, NumberNode node)
         {
+            // Set the newlyInserted node
             newlyInsertedNode = node;
+            // Set it's position and distance travelled accordingly
             float distTravelled = nodeInGutter.Value.pathFollower.distanceTravelled - NumberNode.DIAMETER / 2f;
             newlyInsertedNode.pathFollower.SetDistanceTravelled(distTravelled);
             newlyInsertedNode.transform.position = nodeInGutter.Value.pathFollower.pathCreator.path.GetPointAtDistance(distTravelled);
-
-            numberList.numberLinkedList.AddBefore(nodeInGutter, newlyInsertedNode);
-
+            
+            // Add it before the node that was already in the gutter
+            numberList.nodeLinkedList.AddBefore(nodeInGutter, newlyInsertedNode);
+            // Let the gamestate manager know we're now dispersing
             GameStateManager.SwitchToDispersing();
         }
 
         public static bool Contains(NumberNode node)
         {
-            if (numberList.numberLinkedList.Contains(node))
+            if (numberList.nodeLinkedList.Contains(node))
             {
                 return true;
             }
@@ -154,14 +157,15 @@ namespace Nodes
                 case GameState.CHECKPOINT:
                     return;
                 default:
-                    throw new NotImplementedException();
+                    throw new NotImplementedException("An unexpected game state has been encountered!");
             }
         }
 
+        // Check if all nodes are touching
         private static bool AllNodesTouch()
         {
             bool touching = true;
-            LinkedListNode<NumberNode> currentNode = numberList.numberLinkedList.First;
+            LinkedListNode<NumberNode> currentNode = numberList.nodeLinkedList.First;
             while (currentNode.Next != null && touching)
             {
                 touching = currentNode.Value.IsTouching(currentNode.Next.Value);
@@ -170,30 +174,34 @@ namespace Nodes
             return touching;
         }
 
+        // Move nodes forward by attempting to push the very first node.
         public static void MoveNodesForward()
         {
             if (numberList != null)
             {
-                if (numberList.numberLinkedList.Count > 0)
+                if (numberList.nodeLinkedList.Count > 0)
                 {
-                    MoveNode(MoveType.FORWARD, numberList.numberLinkedList.First);
+                    MoveNode(MoveType.FORWARD, numberList.nodeLinkedList.First);
                 }
             }
         }
 
+        // Move nodes backward by attempting to push the very last node.
         public static void MoveNodesBack()
         {
             if (numberList != null)
             {
-                if (numberList.numberLinkedList.Count > 0)
+                if (numberList.nodeLinkedList.Count > 0)
                 {
-                    MoveNode(MoveType.BACKWARD, numberList.numberLinkedList.Last);
+                    MoveNode(MoveType.BACKWARD, numberList.nodeLinkedList.Last);
                 }
             }
 
             moveBackCountdownRemaining -= 1;
         }
 
+        // Move a node using it's pathfollower, then check whether that movement has caused 
+        // the node to touch a node. If it has, try to move that node too.
         public static void MoveNode(MoveType moveType, LinkedListNode<NumberNode> node)
         {
             LinkedListNode<NumberNode> prevNode = node.Previous;
@@ -230,9 +238,10 @@ namespace Nodes
             }
         }
 
+        // Disperse the nodes away from the newly inserted node.
         private static void DisperseNodes()
         {
-            LinkedListNode<NumberNode> insertedNode = numberList.numberLinkedList.Find(newlyInsertedNode);
+            LinkedListNode<NumberNode> insertedNode = numberList.nodeLinkedList.Find(newlyInsertedNode);
             LinkedListNode<NumberNode> nextNode = insertedNode.Next;
             LinkedListNode<NumberNode> prevNode = insertedNode.Previous;
             bool touching = false;
@@ -257,31 +266,33 @@ namespace Nodes
                     MoveNode(MoveType.BACKWARD, prevNode);
                 }
             }
+            // If the nodes next to the newly inserted node are not touching, disperse was completed succesfully
             if (!touching)
             {
                 OnDispersed();
             }
         }
 
+        // Defines what should happen when balls have been succesfully dispersed
         private static void OnDispersed()
         {
             int index = numberList.GetIndexOfNode(newlyInsertedNode);
 
-
-            // TODO: onderstaande functie een array aanleveren zodat je alleen het deel
+            // Check for combo
+            // Suggestion for improvement: onderstaande functie een array aanleveren zodat je alleen het deel
             // van de ketting bekijkt waar:
             // - De bal net is ingekomen
             // - De delen die niet door dit deel van de ketting worden aangeraakt 
             //   worden niet in acht genomen
             if (numberList.CheckForComboAt(index, target))
             {
-                // TODO
                 nextBallValue = UnityEngine.Random.Range(NumberList.BOUND_LOW, NumberList.BOUND_HIGH);
             }
 
             nodeDestroyer.DestroyDeadNodes();
 
-            if (numberList.numberLinkedList.Count == 0)
+            // Check win condition
+            if (numberList.nodeLinkedList.Count == 0)
             {
                 UnityEngine.Debug.Log("GUTTER CLEARED! Game won!");
                 GameStateManager.SwitchToWon();
@@ -290,8 +301,10 @@ namespace Nodes
 
             GetValidTarget();
 
-
+            // Reset the newly inserted node
             newlyInsertedNode = null;
+
+            // Switch the gamestate to resetting
             GameStateManager.SwitchToResetting();
             ScoreAdd.ReduceScore();
         }
@@ -323,29 +336,31 @@ namespace Nodes
             target = sum + nextBallValue;
         }
 
+        // Get the speed based on the gamestate
         public static float GetSpeed()
         {
             switch (GameStateManager.GetGameState())
             {
                 case GameState.PREINSERTION:
-                    return TRAVEL_SPEED;
+                    return travelSpeed;
                 case GameState.SHOOTING:
-                    return TRAVEL_SPEED;
+                    return travelSpeed;
                 case GameState.DISPERSING:
-                    return DISPERSE_SPEED;
+                    return disperseSpeed;
                 case GameState.MOVEBACK:
-                    return MOVEBACK_SPEED;
+                    return moveBackSpeed;
                 case GameState.RESETTING:
-                    return RESET_SPEED;
+                    return resetSpeed;
             }
             throw new NotImplementedException();
         }
 
+        // Get the linked list of nodes that the NodeManager is managing
         public static LinkedList<NumberNode> GetNodes()
         {
             if (numberList != null)
             {
-                return numberList.numberLinkedList;
+                return numberList.nodeLinkedList;
             }
             return new LinkedList<NumberNode>();
         }
@@ -357,7 +372,7 @@ namespace Nodes
 
         public static float GetPathLength()
         {
-            return numberList.numberArray[0].pathFollower.pathCreator.path.length;
+            return numberList.nodeArray[0].pathFollower.pathCreator.path.length;
         }
 
     }
