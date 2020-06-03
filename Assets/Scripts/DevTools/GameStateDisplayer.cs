@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace DevTools
 {
+    // Used to display the current game state in the inspector view
     class GameStateDisplayer : MonoBehaviour
     {
-
         public string currentGameState;
 
         void Update()
