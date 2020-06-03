@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 
 namespace States.Game
 {
+    // Handles switching of gamestates. 
+    // Loads the required scenes if these states take place in a different scene.
+    // Each gamestate has it's own SwitchTo method, making it easier to find
+    // where each gamestate is used by looking at the method's references.
     public static class GameStateManager
     {
         private static GameState currentGameState;
