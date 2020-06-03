@@ -10,6 +10,7 @@ using Assets.Scripts.Audio;
 
 namespace Nodes
 {
+    // This script makes this gameobject responsible for destroying nodes, and should be used only once.
     public class NodeDestroyer : MonoBehaviour
     {
         private HealthController healthController;
@@ -23,23 +24,31 @@ namespace Nodes
             screenShake = GameObject.FindGameObjectWithTag(Tags.SCREENSHAKE).GetComponent<ScreenShake>();
         }
             
+        // Destroys dead nodes from the NodeManager
         public void DestroyDeadNodes()
         {
             List<NumberNode> nodesToDestroy = new List<NumberNode>();
 
+            // Loop over each node and mark them for destruction
             foreach (NumberNode node in NodeManager.GetNodes())
             {
+                // If node is dead
                 if (!node.alive)
                 {
+                    // Mark node eligible for destruction
                     nodesToDestroy.Add(node);
+
+
                     ParticlesList.Add(node.transform.position); 
                     ScoreAdd.AddScore(10);
                     nodeDestroyedAudio.ShouldPlay = true;
                 }
                 else
                 {
+                    // If node is alive, but has reached the end of the gutter
                     if (node.pathFollower.distanceTravelled >= node.pathFollower.pathCreator.path.length)
                     {
+                        // Mark node eligible for destruction
                         nodesToDestroy.Add(node);
 
                         screenShake.CamShake();
@@ -49,6 +58,8 @@ namespace Nodes
                 }
             }
 
+            // Destroy nodes that are eligible for destruction
+            // (Do this afterwards to not mess with the array during the foreach loop)
             foreach (NumberNode node in nodesToDestroy)
             {
                 ScoreAdd.SetFurthestDistanceTravelled(node.pathFollower.distanceTravelled);
