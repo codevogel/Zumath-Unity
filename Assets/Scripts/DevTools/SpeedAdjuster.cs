@@ -8,6 +8,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.DevTools
 {
+    // Used to adjust the diverse travel speeds on runtime in the inspector view
     class SpeedAdjuster : MonoBehaviour
     {
         
