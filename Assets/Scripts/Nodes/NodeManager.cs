@@ -45,7 +45,7 @@ namespace Nodes
         }
         public static void UpdateMoveBackLenght()
         {
-            moveBackCountdownRemaining = moveb;
+            moveBackCountdownRemaining = movebackCountdownLength;
         }
 
         public static void SetTravelSpeed(float speed)
