@@ -10,6 +10,7 @@ namespace Assets.Scripts.DevTools
 {
     class MoveBackAdjuster : MonoBehaviour
     {
+        // Amount of seconds the balls will move back on damage.
         public float moveBackLenght = 1;
 
         private void Start()

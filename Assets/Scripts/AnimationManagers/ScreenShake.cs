@@ -14,6 +14,7 @@ namespace AnimationManagers
             gameObject.tag = Tags.SCREENSHAKE;
         }
 
+        // Triggers the screenshake animation.
         public void CamShake()
         {
             camAnim.SetTrigger("ScreenShake");

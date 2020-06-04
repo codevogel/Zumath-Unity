@@ -34,9 +34,9 @@ namespace Controllers
             DAMAGE_PER_DESTROYED_NODE = damage;
         }
         
+        // Is used to say what happens when you take damage.
         public void RemoveLife()
         {
-            
             AMOUNT_OF_HEALTH -= DAMAGE_PER_DESTROYED_NODE;
             healthAdjuster.UpdateHealth();
 
@@ -46,14 +46,6 @@ namespace Controllers
                 return;
             }
             damageAudio.ShouldPlay = true;
-        }
-
-        void Update()
-        {
-            if (GameStateManager.GetGameState() != GameState.PAUSED)
-            {
-                
-            }
         }
 
         public static float GetHealth()
