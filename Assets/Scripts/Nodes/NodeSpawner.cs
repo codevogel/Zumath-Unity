@@ -9,7 +9,6 @@ using States.Game;
 // This script is responsible for spawning the nodes that should fill the gutter at the start of the game and should only be used once
 public class NodeSpawner : MonoBehaviour
 {
-
     public GameObject numberBall;
     public Transform parentTransform;
     private PathCreator pathCreator;
