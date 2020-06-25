@@ -4,13 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using Nodes;
+using Assets.Scripts.DevTools;
 
 namespace PowerUps
 {
     public static class PowerUpManager
     {
         private static PowerUpList powerUpList = new PowerUpList();
-        
+
+        // If true, the powerup will activate
+        public static bool triggerPowerUp = false;
+
+        // Amount of seconds the powerup effect lasts
+        public static float powerUpEffectTimeLeft = 6f;
+
         public static void AddPowerUps(PowerUp powerUp)
         {
             powerUpList.powerUpLinkedList.AddFirst(powerUp);
@@ -21,13 +29,23 @@ namespace PowerUps
            powerUpList.powerUpLinkedList.Remove(powerUp);
         }
 
-        public static bool Contains(PowerUp powerUp)
+        public static void PowerUpEffect()
         {
-            if (powerUpList.powerUpLinkedList.Contains(powerUp))
+            if (triggerPowerUp)
             {
-                return true;
+                //insert time slow
+                powerUpEffectTimeLeft -= Time.deltaTime;
+                if (powerUpEffectTimeLeft < 0)
+                {
+                    //revert back to regular speed
+                    triggerPowerUp = false;
+                }
             }
-            return false;
+        }
+
+        public static void Update()
+        {
+            PowerUpEffect();
         }
 
         public static LinkedList<PowerUp> GetPowerUps()

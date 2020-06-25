@@ -252,6 +252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alive: 0
+  triggerPowerUp: 0
+  powerUpEffectTimeLeft: 2
 --- !u!50 &8542059459439604912
 Rigidbody2D:
   serializedVersion: 4

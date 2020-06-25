@@ -19,9 +19,9 @@ namespace PowerUps
         private CircleCollider2D circleCollider;
         private TextMeshPro textMeshPro;
 
-        public bool alive;
-
         public const float DIAMETER = 0.75f;
+
+        public bool alive;
 
         void Awake()
         {
@@ -61,13 +61,13 @@ namespace PowerUps
                 }
 
                 // Tells what happens when collision happens
-                Debug.Log("Ayyy");
                 Kill();
             }
         }
 
         public void Kill()
         {
+            PowerUpManager.triggerPowerUp = true;
             alive = false;
             DestroyDeadPowerUps();
         }
