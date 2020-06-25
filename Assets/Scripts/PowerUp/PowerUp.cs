@@ -16,9 +16,6 @@ namespace PowerUps
     [RequireComponent(typeof(CircleCollider2D))]
     public class PowerUp : MonoBehaviour
     {
-        private CircleCollider2D circleCollider;
-        private TextMeshPro textMeshPro;
-
         public const float DIAMETER = 0.75f;
 
         public bool alive;
@@ -31,9 +28,6 @@ namespace PowerUps
         public void Init()
         {
             alive = true;
-
-            circleCollider = GetComponent<CircleCollider2D>();
-            textMeshPro = GetComponentInChildren<TextMeshPro>();
         }
 
         public void SetColor()
@@ -61,13 +55,13 @@ namespace PowerUps
                 }
 
                 // Tells what happens when collision happens
+                PowerUpManager.triggerPowerUp = true;
                 Kill();
             }
         }
 
         public void Kill()
         {
-            PowerUpManager.triggerPowerUp = true;
             alive = false;
             DestroyDeadPowerUps();
         }

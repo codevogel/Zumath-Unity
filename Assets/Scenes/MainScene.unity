@@ -16454,7 +16454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c07983e4d6a5344b37cdb00eef49c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  travelSpeed: 0.2
+  travelSpeed: 1
   disperseSpeed: 2
   movebackSpeed: 2
   resetSpeed: 1
@@ -16524,7 +16524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c9cdee3fab692428dfd78d1c9fed9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpointsOn: 1
+  checkpointsOn: 0
   checkpointsTriggered: 0
 --- !u!114 &882107693
 MonoBehaviour:

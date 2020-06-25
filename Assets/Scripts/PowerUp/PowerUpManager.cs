@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using Nodes;
-using Assets.Scripts.DevTools;
+
 
 namespace PowerUps
 {
@@ -29,15 +29,14 @@ namespace PowerUps
            powerUpList.powerUpLinkedList.Remove(powerUp);
         }
 
-        public static void PowerUpEffect()
+        public static void PowerUpTimer()
         {
             if (triggerPowerUp)
             {
-                //insert time slow
                 powerUpEffectTimeLeft -= Time.deltaTime;
+
                 if (powerUpEffectTimeLeft < 0)
                 {
-                    //revert back to regular speed
                     triggerPowerUp = false;
                 }
             }
@@ -45,7 +44,7 @@ namespace PowerUps
 
         public static void Update()
         {
-            PowerUpEffect();
+            PowerUpTimer();
         }
 
         public static LinkedList<PowerUp> GetPowerUps()
