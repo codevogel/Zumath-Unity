@@ -3,9 +3,14 @@ using Controllers;
 using References;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace States.Game
 {
+    // Handles switching of gamestates. 
+    // Loads the required scenes if these states take place in a different scene.
+    // Each gamestate has it's own SwitchTo method, making it easier to find
+    // where each gamestate is used by looking at the method's references.
     public static class GameStateManager
     {
         private static GameState currentGameState;
@@ -18,8 +23,13 @@ namespace States.Game
 
         public static void Pause()
         {
+            if (currentGameState == GameState.PAUSED)
+            {
+                return;
+            }
             prePauseGameState = currentGameState;
             currentGameState = GameState.PAUSED;
+            SceneManager.LoadScene(sceneName: "PauseScreen", LoadSceneMode.Additive);
         }
 
         public static void Unpause()
@@ -47,19 +57,21 @@ namespace States.Game
             SetGameState(GameState.DISPERSING);
         }
 
+        public static void SwitchToMoveBack()
+        {
+            SetGameState(GameState.MOVEBACK);
+        }
+
         public static void SwitchToPreInsertion()
         {
             SetGameState(GameState.PREINSERTION);
         }
 
-        public static void SwitchToPaused()
+        public static void SwitchToGameover()
         {
-            Pause();
-        }
-
-        public static void SwitchToBeforePaused()
-        {
-            Unpause();
+            ScoreAdd.GameOverScore();
+            SceneManager.LoadScene("LossScreen");
+            SetGameState(GameState.GAMEOVER);
         }
 
         public static void SwitchToResetting()
@@ -70,7 +82,14 @@ namespace States.Game
         public static void SwitchToWon()
         {
             ScoreAdd.AddEndLevelScore();
-            SetGameState(GameState.WON);
+            SceneManager.LoadScene("WinScreen");
+        }
+
+        public static void SwitchToCheckpoint()
+        {
+            prePauseGameState = currentGameState;
+            SetGameState(GameState.CHECKPOINT);
+            SceneManager.LoadScene(sceneName: "Checkpoint", LoadSceneMode.Additive);
         }
     }
 }

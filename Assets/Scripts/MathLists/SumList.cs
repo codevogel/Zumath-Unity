@@ -9,12 +9,12 @@ namespace MathLists
     public class SumList
     {
         public List<int> sumList;
-        public List<int> indexList;
+        public List<int> correspondingIndexList;
 
         public SumList()
         {
             sumList = new List<int>();
-            indexList = new List<int>();
+            correspondingIndexList = new List<int>();
         }
 
         /**
@@ -22,10 +22,10 @@ namespace MathLists
          * @param sum the sum to be added
          * @param index
          */
-        public void Add(int sum, int index)
+        public void Add(int sum, int correspondingIndex)
         {
             sumList.Add(sum);
-            indexList.Add(index);
+            correspondingIndexList.Add(correspondingIndex);
         }
     }
 

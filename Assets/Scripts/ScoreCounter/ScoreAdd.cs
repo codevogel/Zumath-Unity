@@ -28,15 +28,14 @@ public static class ScoreAdd
         }
     }
 
+    static public void GameOverScore()
+    {
+        //score = 0;
+    }
+
     static public void AddScore(int newScore)
     {
         score += newScore;
-    }
-
-    static public void ReduceScore()
-    {
-        float r = -10;
-        AddScore((int)r);
     }
 
     static public void AddEndLevelScore()
@@ -49,6 +48,12 @@ public static class ScoreAdd
     {
         float c = 1000;
         AddScore((int)c);
+    }
+
+    static public void ReduceScore()
+    {
+        float r = -10;
+        AddScore((int)r);
     }
 }
 

@@ -8,6 +8,8 @@ TagManager:
   - NodeDestroyer
   - Canon
   - NodeSpawner
+  - Health
+  - ScreenShake
   layers:
   - Default
   - TransparentFX

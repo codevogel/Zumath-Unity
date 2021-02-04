@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace DevTools
 {
+    // Used to display the current game state in the inspector view
     class GameStateDisplayer : MonoBehaviour
     {
-
         public string currentGameState;
 
         void Update()
@@ -22,6 +22,9 @@ namespace DevTools
                 case GameState.DISPERSING:
                     currentGameState = "Dispersing";
                     return;
+                case GameState.MOVEBACK:
+                    currentGameState = "Move back";
+                    return;
                 case GameState.RESETTING:
                     currentGameState = "Resetting";
                     return;
@@ -33,6 +36,9 @@ namespace DevTools
                     return;
                 case GameState.WON:
                     currentGameState = "Won";
+                    return;
+                case GameState.GAMEOVER:
+                    currentGameState = "Gameover";
                     return;
                 default:
                     currentGameState = "Unknown";

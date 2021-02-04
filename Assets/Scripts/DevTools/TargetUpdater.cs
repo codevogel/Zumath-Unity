@@ -1,4 +1,5 @@
-﻿using Nodes;
+﻿using Controllers;
+using Nodes;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,6 +7,7 @@ using UnityEngine;
 
 namespace DevTools
 {
+    // Updates the text that displays the target
     public class TargetUpdater : MonoBehaviour
     {
 
@@ -19,7 +21,8 @@ namespace DevTools
 
         void Update()
         {
-            textMesh.SetText("Target: " + NodeManager.target.ToString() + "\nNext Ball: " + NodeManager.GetNextBallValue());
+            textMesh.SetText("Doel: " + NodeManager.target.ToString()
+                            + "\nLevens: " + HealthController.GetHealth());
         }
     }
 }

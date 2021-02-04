@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Controllers.CanonController">
+    <Position X="35.5" Y="2" Width="1.5" />
+    <AssociationLine Name="newNode" Type="Nodes.NumberNode" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="36.25" Y="4.261" />
+        <Point X="36.25" Y="5.323" />
+        <Point X="36.938" Y="5.323" />
+        <Point X="36.938" Y="7" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.243" Y="2.477" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAAAAABAAAAAgAAAQAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Controllers\CanonController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="newNode" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Controllers.WorldBoundsController">
+    <Position X="33" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Controllers\WorldBoundsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Following.PathFollower">
+    <Position X="39.5" Y="2" Width="1.5" />
+    <AssociationLine Name="attachedNode" Type="Nodes.NumberNode" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="39.5" Y="3.382" />
+        <Point X="39.125" Y="3.382" />
+        <Point X="39.125" Y="8.125" />
+        <Point X="37.25" Y="8.125" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.089" Y="4.852" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAgAAAAAAAAAAAgAgAAAAAABAAAAAAACAEU=</HashCode>
+      <FileName>Assets\Scripts\Followers\PathFollower.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="attachedNode" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MathLists.NumberList">
+    <Position X="36.5" Y="14" Width="1.5" />
+    <AssociationLine Name="numberArray" Type="Nodes.NumberNode">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.175" Y="3.465" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAQBQAEICAABAAAAAAAAAAAEAAQAAAABAAAAAAAAIA=</HashCode>
+      <FileName>Assets\Scripts\MathLists\NumberList.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="numberArray" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MathLists.ShortList">
+    <Position X="38.75" Y="14" Width="1.5" />
+    <AssociationLine Name="nodeArray" Type="Nodes.NumberNode">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.406" Y="-4.13" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACEAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\MathLists\ShortList.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="nodeArray" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MathLists.SumList">
+    <Position X="41" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAEAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\MathLists\SumList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Motors.NodeMotor">
+    <Position X="33" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAIAAAAAAAAAAAAAAAAQAQAACAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Motors\NodeMotor.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="numberNode" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Nodes.NodeDestroyer">
+    <Position X="29" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Nodes\NodeDestroyer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nodes.NodeManagerHandler">
+    <Position X="26.5" Y="7" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Nodes\NodeManagerHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nodes.NumberNode">
+    <Position X="35.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAARAAAAUAAAgAAAAAAAAAABEAIACAEAABCAAAgAEA=</HashCode>
+      <FileName>Assets\Scripts\Nodes\NumberNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NodeSpawner">
+    <Position X="31" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACgAAAAAAAAAAQQAIQAAAAAAAIAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Nodes\NodeSpawner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="References.LayerNames">
+    <Position X="20" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\References\LayerNames.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="References.Tags">
+    <Position X="21.75" Y="14.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAgAAAAAAAACAAAAAAAAAAAIAAAgAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\References\Tags.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="States.Game.GameStateManager">
+    <Position X="19.75" Y="5" Width="2.25" />
+    <AssociationLine Name="currentGameState" Type="States.Game.GameState" FixedToPoint="true">
+      <Path>
+        <Point X="20.562" Y="8.603" />
+        <Point X="20.562" Y="10.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.128" Y="1.317" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="prePauseGameState" Type="States.Game.GameState" FixedToPoint="true">
+      <Path>
+        <Point X="20.812" Y="8.603" />
+        <Point X="20.812" Y="10.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.548" Y="1.317" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAgCAAAAIAAgAAoAACAIAIEAAAACAABAAACAAAkAIA=</HashCode>
+      <FileName>Assets\Scripts\States\Game\GameStateManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="currentGameState" />
+      <Field Name="prePauseGameState" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DevTools.GameStateDisplayer">
+    <Position X="23.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\DevTools\GameStateDisplayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DevTools.GutterContents">
+    <Position X="27.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAAAAAACAAAAAAAAAAAAACAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Assets\Scripts\DevTools\GutterContents.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DevTools.TargetUpdater">
+    <Position X="19.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\DevTools\TargetUpdater.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.DevTools.SpeedAdjuster">
+    <Position X="25.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAIACAAAA=</HashCode>
+      <FileName>Assets\Scripts\DevTools\SpeedAdjuster.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nodes.NodeManager">
+    <Position X="26.75" Y="10.25" Width="1.5" />
+    <AssociationLine Name="numberList" Type="MathLists.NumberList">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="7.215" Y="0.151" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="nodeDestroyer" Type="Nodes.NodeDestroyer" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="28.25" Y="11.125" />
+        <Point X="29.75" Y="11.125" />
+        <Point X="29.75" Y="8.877" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.201" Y="1.882" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="newlyInsertedNode" Type="Nodes.NumberNode" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="28.25" Y="12.813" />
+        <Point X="36.281" Y="12.813" />
+        <Point X="36.281" Y="11.184" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="6.537" Y="1.32" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAwJAAAABBACgAEgIAAQAkAAgAMCgAAAAIECAAAYABM=</HashCode>
+      <FileName>Assets\Scripts\Nodes\NodeManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="numberList" />
+      <Field Name="nodeDestroyer" />
+      <Field Name="newlyInsertedNode" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="UnityEngine.MonoBehaviour" Collapsed="true">
+    <Position X="31" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DevTools.NextBallDisplayer">
+    <Position X="21.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAgAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\DevTools\NextBallDisplayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Follower.MoveType">
+    <Position X="41.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Followers\MoveType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="States.Game.GameState">
+    <Position X="20" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAIAACAAIAAQIAAAAAAAAAAAAIAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\States\Game\GameState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="States.Node.NodeState">
+    <Position X="22" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAQAgAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\States\Node\NodeState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

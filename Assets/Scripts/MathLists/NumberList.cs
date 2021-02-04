@@ -4,6 +4,7 @@ using Nodes;
 
 namespace MathLists
 {
+    // Used to store the nodes and check combinations between them.
     public class NumberList
     {
         public const int BOUND_LOW = 1;
@@ -12,15 +13,15 @@ namespace MathLists
         public const int COMBO_SIZE_MIN = 1;
         public const int COMBO_SIZE_MAX = 3;
 
-        public LinkedList<NumberNode> numberLinkedList = new LinkedList<NumberNode>();
-        public NumberNode[] numberArray;
+        public LinkedList<NumberNode> nodeLinkedList = new LinkedList<NumberNode>();
+        public NumberNode[] nodeArray;
 
         public int GetIndexOfNode(NumberNode node)
         {
             RefreshArray();
-            for (int i = 0; i < numberArray.Length; i++)
+            for (int i = 0; i < nodeArray.Length; i++)
             {
-                if (numberArray[i] == node)
+                if (nodeArray[i] == node)
                 {
                     return i;
                 }
@@ -28,13 +29,13 @@ namespace MathLists
             return -1;
         }
 
-
+        // Updates the numberArray with the latest values from the linked list.
         public void RefreshArray()
         {
-            if (numberLinkedList.Count > 0)
+            if (nodeLinkedList.Count > 0)
             {
-                NumberNode[] numberNodes = new NumberNode[numberLinkedList.Count];
-                LinkedListNode<NumberNode> currentNode = numberLinkedList.First;
+                NumberNode[] numberNodes = new NumberNode[nodeLinkedList.Count];
+                LinkedListNode<NumberNode> currentNode = nodeLinkedList.First;
                 int index = 0;
                 numberNodes[index] = currentNode.Value;
 
@@ -46,7 +47,7 @@ namespace MathLists
                     numberNodes[index] = currentNode.Value;
                 }
 
-                this.numberArray = numberNodes;
+                this.nodeArray = numberNodes;
             }
             else
             {
@@ -72,7 +73,7 @@ namespace MathLists
              * the shorter array with numbers that can.
              */
             ShortList shortList = FindShortList(startIndex, target);
-            NumberNode[] shortArray = shortList.array;
+            NumberNode[] shortArray = shortList.nodeArray;
 
             // Set the index to start counting from for counting towards
             // left and counting towards right.
@@ -112,20 +113,20 @@ namespace MathLists
                     {
                         // Found a combo!
                         // Kill all nodes that make up this combination.
-                        for (int k = 0; k < sumListLeftIndex + 1; k++)
+                        for (int iterator = 0; iterator < sumListLeftIndex + 1; iterator++)
                         {
-                            int index = sumListLeft.indexList[k];
-                            if (index > -1)
+                            int correspondingIndex = sumListLeft.correspondingIndexList[iterator];
+                            if (correspondingIndex > -1)
                             {
-                                shortArray[index].Kill();
+                                shortArray[correspondingIndex].Kill();
                             }
                         }
-                        for (int k = 0; k < sumListRightIndex + 1; k++)
+                        for (int iterator = 0; iterator < sumListRightIndex + 1; iterator++)
                         {
-                            int index = sumListRight.indexList[k];
-                            if (index > -1)
+                            int correspondingIndex = sumListRight.correspondingIndexList[iterator];
+                            if (correspondingIndex > -1)
                             {
-                                shortArray[index].Kill();
+                                shortArray[correspondingIndex].Kill();
                             }
                         }
                         return true;
@@ -160,7 +161,7 @@ namespace MathLists
             for (int i = startIndex; i > -1; i--)
             {
                 // Add the current value to the sum
-                NumberNode node = numberArray[i];
+                NumberNode node = nodeArray[i];
                 sum += node.value;
                 // If the sum exceeds the target, this number can't be part of the combo and we can stop looking.
                 if (sum > target)
@@ -177,10 +178,10 @@ namespace MathLists
 
             // Now add the numbers right of startIndex
             sum = 0;
-            for (int i = startIndex; i < numberLinkedList.Count; i++)
+            for (int i = startIndex; i < nodeLinkedList.Count; i++)
             {
                 // Add the current value to the sum
-                NumberNode node = numberArray[i];
+                NumberNode node = nodeArray[i];
                 sum += node.value;
                 // If the sum exceeds the target, this number can't extend the combo and we can stop looking.
                 if (sum > target)
@@ -205,14 +206,15 @@ namespace MathLists
             return new ShortList(shortArray, newStartIndex);
         }
 
+        // Get the values for easier access.
         public int[] GetValues()
         {
             RefreshArray();
-            int[] values = new int[numberArray.Length];
+            int[] values = new int[nodeArray.Length];
 
-            for (int i = 0; i < numberArray.Length; i++)
+            for (int i = 0; i < nodeArray.Length; i++)
             {
-                values[i] = numberArray[i].value;
+                values[i] = nodeArray[i].value;
             }
 
             return values;

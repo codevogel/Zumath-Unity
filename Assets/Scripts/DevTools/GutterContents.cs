@@ -6,10 +6,11 @@ using States.Game;
 
 namespace DevTools
 {
+    // Used to display the gameobjects that are in the gutter in the inspector view.
     public class GutterContents : MonoBehaviour
     {
 
-        public LinkedList<NumberNode> nodes = new LinkedList<NumberNode>();
+        public LinkedList<NumberNode> linkedNodeList = new LinkedList<NumberNode>();
         public List<NumberNode> nodeList = new List<NumberNode>();
 
         void Start()
@@ -20,7 +21,7 @@ namespace DevTools
         // Update is called once per frame
         void Update()
         {
-            if (GameStateManager.GetGameState() != GameState.PAUSED)
+            if (GameStateManager.GetGameState() != GameState.PAUSED && GameStateManager.GetGameState() != GameState.CHECKPOINT)
             {
                 RefreshGutter();
             }
@@ -28,8 +29,8 @@ namespace DevTools
 
         void RefreshGutter()
         {
-            nodes = NodeManager.GetNodes();
-            nodeList = nodes.ToList<NumberNode>();
+            linkedNodeList = NodeManager.GetNodes();
+            nodeList = linkedNodeList.ToList<NumberNode>();
         }
     }
 }

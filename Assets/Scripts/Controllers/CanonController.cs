@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts;
+using Assets.Scripts.Particles;
 using MathLists;
 using Nodes;
 using References;
@@ -8,6 +9,7 @@ using UnityEngine;
 
 namespace Controllers
 {
+    // Used to provide functionality to the canon gameobject
     public class CanonController : MonoBehaviour
     {
         // Start is called before the first frame update
@@ -15,6 +17,7 @@ namespace Controllers
         public GameObject nodePrefab;
         public Transform parentTransform;
         private NumberNode newNode;
+        public NodeInTransitParticles particles;
 
         private void Awake()
         {
@@ -24,7 +27,7 @@ namespace Controllers
         // Update is called once per frame
         void Update()
         {
-            if (GameStateManager.GetGameState() != GameState.PAUSED)
+            if (GameStateManager.GetGameState() != GameState.PAUSED && GameStateManager.GetGameState() != GameState.CHECKPOINT)
             {
                 // Rotate transform towards mouse position
                 Vector3 mousePos = Input.mousePosition;
@@ -48,18 +51,25 @@ namespace Controllers
         // Instantiates a new node and fires it towards the mouse position.
         private void Shoot(Vector3 mousePos)
         {
+            // Only accept shooting when we're in Pre-insertion
             if (GameStateManager.GetGameState() == GameState.PREINSERTION)
             {
+                // Create a new node
                 newNode = Instantiate(nodePrefab, transform.position, Quaternion.identity, parentTransform).GetComponent<NumberNode>();
 
                 // Get the directional vector towards the mouse position
                 Vector3 heading = mousePos - transform.position;
-                float distance = heading.magnitude;
-                newNode.nodeMotor.SetDirection(heading / distance);
+                newNode.nodeMotor.SetDirection(heading.normalized);
 
+                // Set the node state
                 newNode.SetState(NodeState.PROJECTILE);
+                // Set it's value and it's corresponding color
                 int ballValue = NodeManager.GetNextBallValue();
                 newNode.SetValue(ballValue);
+                newNode.SetColorToValue();
+                
+                particles.setNode(newNode);
+                // Let the gamestate manager know we're shooting now
                 GameStateManager.SwitchToShooting();
             }
         }

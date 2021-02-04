@@ -6,19 +6,11 @@ using UnityEngine;
 
 namespace Motors
 {
-    [RequireComponent(typeof(NumberNode))]
+    // Responsible for moving a node as a projectile
     public class NodeMotor : MonoBehaviour
     {
-
-        private NumberNode numberNode;
-
         private Vector3 direction;
         public float speed = 2f;
-
-        void Awake()
-        {
-            numberNode = GetComponent<NumberNode>();
-        }
 
         public void SetDirection(Vector3 direction)
         {
@@ -28,6 +20,7 @@ namespace Motors
         // Update is called once per frame
         void Update()
         {
+            // Confirm that the gamestate is shooting, (and not paused)
             if (GameStateManager.GetGameState() == GameState.SHOOTING)
             {
                 transform.Translate(direction * speed * Time.deltaTime);
